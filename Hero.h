@@ -42,6 +42,7 @@ private:
 	void UpdateVariables(double deltaTime);
 	DOUBLE2 ApplyPivot();
 	void ApplyImpulse(double deltaTime);
+	void Gone();
 
 	PhysicsActor* m_ActHeroPtr = nullptr;
 	PhysicsActor* m_ActHeroFeetPtr = nullptr;

@@ -246,7 +246,7 @@ void LevelOutdoor::CreateActors()
 			}
 		}
 
-		if (m_MapArr[i] == 54) // number 47 --> Single part flower block
+		if (m_MapArr[i] == 54) // number 54 --> Double part clock block
 		{
 			boxWidth = TILE_SIZE * 2; // 32 * 2
 			boxHeight = TILE_SIZE;

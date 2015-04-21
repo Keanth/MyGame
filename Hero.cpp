@@ -7,7 +7,7 @@
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 int Hero::m_health = INITIAL_HEALTH;
-const double Hero::AIR_TIMER = 2;
+const double Hero::AIR_TIMER = 0.3;
 
 Hero::Hero()
 {
@@ -41,6 +41,7 @@ void Hero::Tick(double deltaTime)
 	UpdateVariables(deltaTime);
 	UserInput(deltaTime);
 	ApplyImpulse(deltaTime);
+	Gone();
 }
 
 void Hero::UpdateVariables(double deltaTime)
@@ -256,6 +257,14 @@ void Hero::ApplyImpulse(double deltaTime)
 	DOUBLE2 deltaVel = m_DesiredVel - m_Vel;
 	DOUBLE2 j = m_Mass * deltaVel / PhysicsActor::SCALE;
 	m_ActHeroPtr->ApplyLinearImpulse(j);
+}
+
+void Hero::Gone()
+{
+	if (m_ActHeroPtr->GetPosition().y > 6000)
+	{
+		m_health = 0;
+	}
 }
 
 int Hero::GetDirection()
