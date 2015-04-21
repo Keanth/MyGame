@@ -38,3 +38,5 @@ build/
 bld/
 [Bb]in/
 [Oo]bj/
+ipch/
+*.sdf
