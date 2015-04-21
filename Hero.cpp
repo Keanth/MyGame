@@ -7,7 +7,6 @@
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 int Hero::m_health = INITIAL_HEALTH;
-const double Hero::AIR_TIMER = 0.3;
 
 Hero::Hero()
 {
@@ -57,7 +56,7 @@ void Hero::UpdateVariables(double deltaTime)
 
 	if (m_OnFloor)
 	{
-		m_BoostActive = false;
+		m_BoosterActive = false;
 		m_ActiveJump = false;
 	}
 }
@@ -169,15 +168,15 @@ void Hero::Up()
 void Hero::StartJump()
 {
 	m_ActionState = ActionState::STARTJUMP;
-	m_Active = true;
+	m_GravityActive = true;
 	m_ActiveJump = true;
-	m_BoostActive = true;
+	m_BoosterActive = true;
 	Anim();
 	if (m_OnFloor)
 	{
 		m_DesiredVel.y = -200;
 	}
-	if (m_Active = true)
+	if (m_GravityActive = true)
 	{
 		m_ActHeroPtr->SetGravityScale(0);
 	}
@@ -186,11 +185,16 @@ void Hero::StartJump()
 void Hero::StopJump()
 {
 	m_ActionState = ActionState::STOPJUMP;
-	m_Active = false;
-	m_BoostActive = true;
+	m_GravityActive = false;
 	m_ActHeroPtr->SetGravityScale(1);
 	Anim();
 }
+
+void Hero::StartBooster()
+{
+	m_DesiredVel.y = -500;
+}
+
 
 void Hero::Anim()
 {

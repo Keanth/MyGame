@@ -38,7 +38,8 @@ private:
 	void Anim();
 	void StartJump();
 	void StopJump();
-	void Booster();
+	void StartBooster();
+	void StopBooster();
 	void UpdateVariables(double deltaTime);
 	DOUBLE2 ApplyPivot();
 	void ApplyImpulse(double deltaTime);
@@ -54,6 +55,7 @@ private:
 		UP,
 		STARTJUMP,
 		STOPJUMP,
+		BOOSTER,
 		HIT,
 		DEATH,
 	}; 
@@ -77,7 +79,8 @@ private:
 	static const int BOW_FR_PER_SEC = 9;
 	const int CLIP_SIZE = 32;
 	const DOUBLE2 HERO_SPAWNPOINT = DOUBLE2(200, 5300);
-	static const double AIR_TIMER;
+	const double AIR_TIMER = 0.3;
+	const double BOOSTER_TIMER = 2.0;
 
 	DOUBLE2 m_HeroDirection = DOUBLE2(1,1);
 
@@ -89,13 +92,13 @@ private:
 	
 	// Jump
 	double m_Jump_Time = 0.0;
-	bool m_Active = false;
+	bool m_GravityActive = false;
 	bool m_ActiveJump = false;
 	bool m_OnFloor = false;
 
 	// Booster
-	bool m_BoostActive = false;
-	int m_BoosterFuel = 50;
+	bool m_BoosterActive = false;
+	double m_BoosterTimer = 0.0;
 
 	// Stats
 	static const int INITIAL_HEALTH = 20;
