@@ -193,7 +193,12 @@
     <ClCompile Include="ButtonManager.cpp">
       <Filter>Game Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="PickUpBase.cpp" />
+    <ClCompile Include="PickUpBase.cpp">
+      <Filter>Game Files\Pickups</Filter>
+    </ClCompile>
+    <ClCompile Include="Doritos.cpp">
+      <Filter>Game Files\Pickups</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -472,7 +477,12 @@
     <ClInclude Include="PolarStarBullet.h">
       <Filter>Game Files\Weapons\PolarStar</Filter>
     </ClInclude>
-    <ClInclude Include="PickUpBase.h" />
+    <ClInclude Include="PickUpBase.h">
+      <Filter>Game Files\Pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="Doritos.h">
+      <Filter>Game Files\Pickups</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

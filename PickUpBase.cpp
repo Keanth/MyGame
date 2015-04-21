@@ -10,6 +10,8 @@ PickUpBase::PickUpBase()
 
 PickUpBase::~PickUpBase()
 {
+	delete m_ActPickUpPtr;
+	delete m_BmpPickUpPtr;
 }
 
 void PickUpBase::Tick(double deltaTime)

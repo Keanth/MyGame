@@ -14,24 +14,20 @@ PolarStarBullet::PolarStarBullet(DOUBLE2 pos, int direction) :m_HeroPos(pos), m_
 	{
 	case 0:
 		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x + BULLET_OFFSET, m_HeroPos.y), 0, BodyType::DYNAMIC);
-		m_ActBulletPtr->AddBoxShape(BULLET_HEIGHT, BULLET_WIDTH, 0);
 		break;
 	case 1:
 		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x, m_HeroPos.y), 0, BodyType::DYNAMIC);
-		m_ActBulletPtr->AddBoxShape(BULLET_HEIGHT, BULLET_WIDTH, 0);
 		break;
 	case 2:
 		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x, m_HeroPos.y + BULLET_OFFSET), 0, BodyType::DYNAMIC);
-		m_ActBulletPtr->AddBoxShape(BULLET_WIDTH, BULLET_HEIGHT, 0);
 		break;
 	case 3:
 		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x, m_HeroPos.y + BULLET_OFFSET), 0, BodyType::DYNAMIC);
-		m_ActBulletPtr->AddBoxShape(BULLET_WIDTH, BULLET_HEIGHT, 0);
 		break;
 	default:
 		break;
 	}
-
+	m_ActBulletPtr->AddBoxShape(BULLET_HIT_REGION, BULLET_HEIGHT, 0);
 	m_ActBulletPtr->SetGravityScale(0);
 	m_ActBulletPtr->SetFixedRotation(true);
 	m_ActBulletPtr->SetBullet(true);

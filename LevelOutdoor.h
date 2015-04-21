@@ -18,14 +18,14 @@ public:
 	static const int LEVEL_WIDTH = 3200;
 	static const int LEVEL_HEIGHT = 5760;
 
+	static const int TILE_SIZE = 32;
+
 private:
 	void ReadFromFileStream();
 	RECT2 Rect(int pos);
 	void TilesToDraw();
 	void PaintTiles();
 	void CreateActors();
-
-	static const int TILE_SIZE = 32;
 
 	int m_ScreenWidth;
 	int m_ScreenHeight;

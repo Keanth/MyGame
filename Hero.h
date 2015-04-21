@@ -28,6 +28,7 @@ public:
 	static int m_health;
 
 private:
+	void Init();
 	void UserInput(double deltaTime);
 	RECT Rect();
 	void Idle();
@@ -40,6 +41,7 @@ private:
 	void StopJump();
 	void StartBooster();
 	void StopBooster();
+	void BoosterTrail();
 	void UpdateVariables(double deltaTime);
 	DOUBLE2 ApplyPivot();
 	void ApplyImpulse(double deltaTime);
@@ -80,7 +82,9 @@ private:
 	const int CLIP_SIZE = 32;
 	const DOUBLE2 HERO_SPAWNPOINT = DOUBLE2(200, 5300);
 	const double AIR_TIMER = 0.3;
-	const double BOOSTER_TIMER = 2.0;
+	const double BOOSTER_TIMER = 0.6;
+	const int BOOSTER_FR = 7;
+	const int BOOSTER_FR_PER_SEC = 15;
 
 	DOUBLE2 m_HeroDirection = DOUBLE2(1,1);
 
@@ -99,6 +103,9 @@ private:
 	// Booster
 	bool m_BoosterActive = false;
 	double m_BoosterTimer = 0.0;
+	Bitmap* m_BmpBoosterTrailPtr = nullptr;
+	bool m_BoolBoosterTrail = false;
+	int m_BoosterFrame = 0;
 
 	// Stats
 	static const int INITIAL_HEALTH = 20;

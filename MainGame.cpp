@@ -11,6 +11,7 @@
 #include "HUD.h"
 #include "ButtonManager.h"
 #include "HealthUp.h"
+#include "Doritos.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -36,7 +37,7 @@ void MainGame::Tick(double deltaTime)
 		m_IsPaused = !m_IsPaused;
 	}
 
-	for (int i = 0; i < m_ButtonManagerPtrArr.size(); ++i)
+	for (size_t i = 0; i < m_ButtonManagerPtrArr.size(); ++i)
 	{
 		m_ButtonManagerPtrArr[i]->CheckIsHit(GAME_ENGINE->GetMousePosition());
 
@@ -62,6 +63,7 @@ void MainGame::Tick(double deltaTime)
 		m_HeroPos = m_HeroPtr->GetPosition();
 
 		m_HealthUpPtr->Tick(deltaTime);
+		m_DoritosPtr->Tick(deltaTime);
 
 		_Test();
 
@@ -113,7 +115,7 @@ void MainGame::Paint()
 		m_ArrowListPtr->Paint();
 
 		m_HealthUpPtr->Paint();
-
+		m_DoritosPtr->Paint();
 	}
 	
 }
@@ -127,7 +129,8 @@ void MainGame::InitObj()
 	//	EnemyHandler(); //Do not use during testing phase;
 	m_ArrowListPtr = new BulletList(m_EnemyListPtr);
 	m_HudPtr = new HUD();
-	m_HealthUpPtr = new HealthUp(DOUBLE2(200, 4000));
+	m_HealthUpPtr = new HealthUp(DOUBLE2(400, 5300));
+	m_DoritosPtr = new Doritos(DOUBLE2(300, 5270));
 }
 
 void MainGame::RemoveAll()
@@ -139,6 +142,7 @@ void MainGame::RemoveAll()
 	delete m_EnemyListPtr;
 	delete m_HudPtr;
 	delete m_HealthUpPtr;
+	delete m_DoritosPtr;
 
 	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
 	{

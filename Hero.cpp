@@ -10,22 +10,35 @@ int Hero::m_health = INITIAL_HEALTH;
 
 Hero::Hero()
 {
+	Init();
+}
+
+void Hero::Init()
+{
 	m_BitmapManager = new BitmapManager();
 	m_BmpHeroPtr = m_BitmapManager->LoadBitmap(String("./Assets/Images/SpriteSheet_Hero.png"));
 
 	m_ActHeroPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
-	//m_ActHeroPtr->AddCircleShape(10, DOUBLE2(0, -CLIP_SIZE / 3), 0, 0); //head
-	//m_ActHeroPtr->AddBoxShape(10, 30, 0); //body
 	m_ActHeroPtr->AddBoxShape(20, 28, 0, 0);
 
 	m_ActHeroFeetPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
-	m_ActHeroFeetPtr->AddBoxShape(10, 2, 0); //feet
+
+	//std::vector<DOUBLE2> chain;
+	//chain.push_back(DOUBLE2(0, 0));
+	//chain.push_back(DOUBLE2(20, 0));
+	//chain.push_back(DOUBLE2(18, 2));
+	//chain.push_back(DOUBLE2(2, 2));
+
+	//m_ActHeroFeetPtr->AddChainShape(chain, true, 0, 0);
+	m_ActHeroFeetPtr->AddBoxShape(20, 2, 0); //feet
 	m_ActHeroFeetPtr->AddContactListener(this);
 	m_ActHeroFeetPtr->SetGravityScale(0);
 	m_ActHeroFeetPtr->SetTrigger(true);
 
 	m_ActHeroPtr->SetFixedRotation(true);
 	m_ActHeroFeetPtr->SetFixedRotation(true);
+
+	m_BmpBoosterTrailPtr = m_BitmapManager->LoadBitmapW(String("./Assets/Images/Sym.png"));
 }
 
 Hero::~Hero()
@@ -47,7 +60,7 @@ void Hero::UpdateVariables(double deltaTime)
 {
 	m_ActHeroFeetPtr->SetPosition(
 		DOUBLE2(m_ActHeroPtr->GetPosition().x,
-		m_ActHeroPtr->GetPosition().y + 15)); // position of the feet, trial and error
+		m_ActHeroPtr->GetPosition().y + 14)); // position of the feet, trial and error
 
 	m_AccuTime += deltaTime;
 	m_Vel = m_ActHeroPtr->GetLinearVelocity();
@@ -58,6 +71,11 @@ void Hero::UpdateVariables(double deltaTime)
 	{
 		m_BoosterActive = false;
 		m_ActiveJump = false;
+		m_BoosterFrame = 0;
+	}
+	if (m_ActiveJump)
+	{
+		m_Jump_Time += deltaTime;
 	}
 }
 
@@ -87,10 +105,9 @@ void Hero::UserInput(double deltaTime)
 		Idle();
 	}
 	// y-axis movement
-	if (GAME_ENGINE->IsKeyboardKeyDown(VK_SPACE))
+	if ((m_OnFloor) && (GAME_ENGINE->IsKeyboardKeyDown(VK_SPACE)))
 	{
 		StartJump();
-		m_Jump_Time += deltaTime;
 	}
 	if ((m_ActiveJump) && (!GAME_ENGINE->IsKeyboardKeyDown(VK_SPACE)))
 	{
@@ -101,12 +118,30 @@ void Hero::UserInput(double deltaTime)
 	{
 		StopJump();
 	}
+	if ((m_BoosterActive) && (GAME_ENGINE->IsKeyboardKeyDown(VK_SPACE)))
+	{
+		StartBooster();
+		m_BoosterTimer += deltaTime;
+	}
+	if ((m_BoosterActive) && (GAME_ENGINE->IsKeyboardKeyReleased(VK_SPACE)))
+	{
+		m_BoolBoosterTrail = false;
+	}
+	if ((m_BoosterActive) && (m_BoosterTimer > BOOSTER_TIMER))
+	{
+		StopBooster();
+	}
 }
 
 void Hero::Paint()
 {
 	CreateWorldMatrix();
 	GAME_ENGINE->DrawBitmap(m_BmpHeroPtr, Rect());
+	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
+//	GAME_ENGINE->DrawString(String(m_BoosterTimer), 0, 0);
+
+	GAME_ENGINE->DrawString(String(m_BoosterFrame), -20, -20);
+	BoosterTrail();
 }
 
 void Hero::CreateWorldMatrix()
@@ -170,7 +205,6 @@ void Hero::StartJump()
 	m_ActionState = ActionState::STARTJUMP;
 	m_GravityActive = true;
 	m_ActiveJump = true;
-	m_BoosterActive = true;
 	Anim();
 	if (m_OnFloor)
 	{
@@ -188,13 +222,53 @@ void Hero::StopJump()
 	m_GravityActive = false;
 	m_ActHeroPtr->SetGravityScale(1);
 	Anim();
+
+	if (GAME_ENGINE->IsKeyboardKeyReleased(VK_SPACE))
+	{
+		m_BoosterActive = true;
+	}
+
 }
 
 void Hero::StartBooster()
 {
-	m_DesiredVel.y = -500;
+	m_BoolBoosterTrail = true;
+	m_DesiredVel.y = -350;
+	m_ActiveJump = false;
 }
 
+void Hero::StopBooster()
+{
+	m_BoolBoosterTrail = false;
+	m_BoosterActive = false;
+	m_BoosterTimer = 0;
+}
+
+void Hero::BoosterTrail()
+{
+	if (m_BoolBoosterTrail)
+	{
+		DOUBLE2 pos;
+		pos.x = 8;
+		pos.y = 30;
+
+		if (m_AccuTime > 1.0 / BOOSTER_FR_PER_SEC)
+		{
+			m_AccuTime = 0;
+			m_BoosterFrame = ++m_BoosterFrame % BOOSTER_FR;
+		}
+
+		RECT2 r;
+
+		r.top = CLIP_SIZE * 3;
+		r.bottom = (CLIP_SIZE / 2) + r.top;
+		r.left = ((CLIP_SIZE / 2) * m_BoosterFrame) + (12 * (CLIP_SIZE / 2));
+		r.right = (CLIP_SIZE / 2) + r.left;
+
+
+		GAME_ENGINE->DrawBitmap(m_BmpBoosterTrailPtr, pos, r);
+	}
+}
 
 void Hero::Anim()
 {
@@ -249,8 +323,8 @@ RECT Hero::Rect()
 		break;
 	}
 
-	r.bottom = CLIP_SIZE + r.top;
 	r.left = CLIP_SIZE * m_CurrentFrame;
+	r.bottom = CLIP_SIZE + r.top;
 	r.right = CLIP_SIZE + r.left;
 
 	return r;

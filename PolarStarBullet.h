@@ -27,7 +27,7 @@ private:
 	static const int BULLET_HEIGHT = 4;
 	static const int BULLET_SPEED = 1000;
 	static const int BULLET_OFFSET = 5;
-
+	const int BULLET_HIT_REGION = 5;
 	int m_Direction;
 
 	// Bitmap Bank
