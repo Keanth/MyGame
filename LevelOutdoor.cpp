@@ -15,15 +15,6 @@ LevelOutdoor::LevelOutdoor(Camera* camera)
 
 	ReadFromFileStream();
 
-	/*std::vector<DOUBLE2> chainVector;
-	chainVector.push_back(DOUBLE2(0, 0));
-	chainVector.push_back(DOUBLE2(LEVEL_WIDTH, 0));
-	chainVector.push_back(DOUBLE2(LEVEL_WIDTH, LEVEL_HEIGHT - 447));
-	chainVector.push_back(DOUBLE2(0, LEVEL_HEIGHT - 447));
-
-	m_ActFloorPtr = new PhysicsActor(DOUBLE2(0.0, 0.0), 0, BodyType::STATIC);
-	m_ActFloorPtr->AddChainShape(chainVector, true, 0, 0);*/
-
 	CreateActors();
 }
 
