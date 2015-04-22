@@ -4,7 +4,7 @@
 class Doritos : public PickUpBase
 {
 public:
-	Doritos(DOUBLE2 position);
+	Doritos(DOUBLE2 position, PhysicsActor* hero);
 	virtual ~Doritos();
 
 	Doritos(const Doritos&) = delete;

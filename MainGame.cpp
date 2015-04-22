@@ -117,7 +117,6 @@ void MainGame::Paint()
 		m_HealthUpPtr->Paint();
 		m_DoritosPtr->Paint();
 	}
-	
 }
 
 void MainGame::InitObj()
@@ -129,8 +128,8 @@ void MainGame::InitObj()
 	//	EnemyHandler(); //Do not use during testing phase;
 	m_ArrowListPtr = new BulletList(m_EnemyListPtr);
 	m_HudPtr = new HUD();
-	m_HealthUpPtr = new HealthUp(DOUBLE2(400, 5300));
-	m_DoritosPtr = new Doritos(DOUBLE2(300, 5270));
+	m_HealthUpPtr = new HealthUp(DOUBLE2(400, 5300), m_HeroPtr->GetActor());
+	m_DoritosPtr = new Doritos(DOUBLE2(300, 5270), m_HeroPtr->GetActor());
 }
 
 void MainGame::RemoveAll()

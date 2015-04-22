@@ -20,20 +20,15 @@ void Hero::Init()
 
 	m_ActHeroPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
 	m_ActHeroPtr->AddBoxShape(20, 28, 0, 0);
+	m_ActHeroPtr->SetBullet(true);
 
 	m_ActHeroFeetPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
 
-	//std::vector<DOUBLE2> chain;
-	//chain.push_back(DOUBLE2(0, 0));
-	//chain.push_back(DOUBLE2(20, 0));
-	//chain.push_back(DOUBLE2(18, 2));
-	//chain.push_back(DOUBLE2(2, 2));
-
-	//m_ActHeroFeetPtr->AddChainShape(chain, true, 0, 0);
 	m_ActHeroFeetPtr->AddBoxShape(20, 2, 0); //feet
 	m_ActHeroFeetPtr->AddContactListener(this);
 	m_ActHeroFeetPtr->SetGravityScale(0);
 	m_ActHeroFeetPtr->SetTrigger(true);
+	m_ActHeroFeetPtr->SetBullet(true);
 
 	m_ActHeroPtr->SetFixedRotation(true);
 	m_ActHeroFeetPtr->SetFixedRotation(true);
