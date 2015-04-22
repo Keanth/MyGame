@@ -18,6 +18,10 @@ public:
 
 	virtual void Tick(double deltaTime);
 	virtual void Paint();
+	virtual bool IsHit() { return m_Hit; }
+	virtual PhysicsActor* GetActor()= 0;
+	virtual void RemoveContactListener();
+	virtual bool GetIsHit() { return m_Hit; }
 
 protected:
 	virtual void CreateMatrix();
@@ -39,6 +43,8 @@ protected:
 	Bitmap* m_BmpPickUpPtr = nullptr;
 	PhysicsActor* m_ActPickUpPtr = nullptr;
 	PhysicsActor* m_ActHeroPtr = nullptr;
+
+	bool m_Hit = false;
 
 };
 

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Doritos.h"
 #include "MyGame.h"
+#include "DamageHero.h"
 
 Doritos::Doritos(DOUBLE2 position, PhysicsActor* hero)
 {
@@ -24,9 +25,18 @@ void Doritos::Tick(double deltaTime)
 {
 	PickUpBase::Tick(deltaTime);
 	m_ActorPosition = m_ActPickUpPtr->GetPosition();
+//	Hit();
 }
 
 void Doritos::Paint()
 {
 	PickUpBase::Paint();
+}
+
+void Doritos::Hit()
+{
+	if (m_Hit)
+	{
+		DamageHero::DealDamage(10);
+	}
 }

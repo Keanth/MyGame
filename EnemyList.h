@@ -1,10 +1,13 @@
 #pragma once
 class Enemy;
 class BulletList;
+class Doritos;
+class PickUpList;
+class Hero;
 class EnemyList
 {
 public:
-	EnemyList();
+	EnemyList(PhysicsActor* hero);
 	virtual ~EnemyList();
 
 	EnemyList(const EnemyList&) = delete;
@@ -17,10 +20,16 @@ public:
 	void Paint();
 	bool IsHit(PhysicsActor* actOtherPtr);
 	int GetSize();
-	void HeDead();
+	bool HeDead();
 
 private:
 	const static int NR_OF_ENEMIES = 1;
 	std::vector<Enemy*> m_EnemyPtrArr;
+	void AddDoritos();
+
+	Doritos* m_DoritosPtr = nullptr;
+	PickUpList* m_PickUpListPtr = nullptr;
+	PhysicsActor* m_ActHeroPtr = nullptr;
+	bool m_Dead = false;
 };
 

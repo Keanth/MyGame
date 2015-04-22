@@ -59,21 +59,6 @@ void Enemy::Paint()
 		CreateWorldMatrix();
 		GAME_ENGINE->DrawBitmap(m_BmpNpc1Ptr, Rect());
 		GAME_ENGINE->DrawString(String(m_CurrentFrame), 0, 0);
-		/*MATRIX3X2 matPivot, matTranslate, matAngle, matTransform;
-		matPivot.SetAsTranslate(DOUBLE2(-25, -25));
-		matTranslate.SetAsTranslate(m_ActEnemyPtr->GetPosition());
-		matAngle.SetAsRotate(m_ActEnemyPtr->GetAngle());
-		matTransform = matPivot * matAngle * matTranslate;
-		GAME_ENGINE->SetWorldMatrix(matTransform);
-		GAME_ENGINE->FillRect(DOUBLE2(0, 0), DOUBLE2(50, 50));
-
-		GAME_ENGINE->SetColor(COLOR(220, 0, 40));
-		GAME_ENGINE->DrawString(String(m_Health), 0, 0);
-		GAME_ENGINE->DrawString(String(m_PosDif.x), 0, 15);
-		GAME_ENGINE->DrawString(String(m_DamageTime), 0, 25);
-		GAME_ENGINE->DrawString(String(m_BoolDealDamage), 0, 35);
-
-		GAME_ENGINE->SetColor(COLOR(255, 255, 255));*/
 	}
 }
 

@@ -12,5 +12,7 @@ public:
 
 	void Tick(double deltaTime);
 	void Paint();
+	PhysicsActor* GetActor() { return m_ActPickUpPtr; }
+	void Hit();
 };
 

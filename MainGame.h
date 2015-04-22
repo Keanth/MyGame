@@ -11,6 +11,7 @@ class ButtonManager;
 class PickUpBase;
 class HealthUp;
 class Doritos;
+class PickUpList;
 
 class MainGame
 {
@@ -46,8 +47,9 @@ private:
 	Camera* m_CameraPtr = nullptr;
 	BulletList* m_ArrowListPtr = nullptr;
 	HUD* m_HudPtr = nullptr;
-	HealthUp* m_HealthUpPtr = nullptr;
+//	HealthUp* m_HealthUpPtr = nullptr;
 	Doritos* m_DoritosPtr = nullptr;
+	PickUpList* m_PickUpListPtr = nullptr;
 
 	EnemyList* m_EnemyListPtr = nullptr;
 	std::vector<Enemy*> m_EnemyPtrArr;

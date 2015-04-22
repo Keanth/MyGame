@@ -25,6 +25,7 @@ void PickUpBase::Paint()
 {
 	CreateMatrix();
 	GAME_ENGINE->DrawBitmap(m_BmpPickUpPtr, Rect());
+	GAME_ENGINE->DrawString(String(m_Hit),0,0);
 }
 
 void PickUpBase::CreateMatrix()
@@ -57,11 +58,16 @@ void PickUpBase::Anim()
 	}
 }
 
+void PickUpBase::RemoveContactListener()
+{
+	m_ActPickUpPtr->RemoveContactListener(this);
+}
+
 void PickUpBase::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 {
 	if ((actOtherPtr == m_ActHeroPtr))
 	{
-		
+		m_Hit = true;
 	}
 }
 
