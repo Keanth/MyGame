@@ -82,10 +82,7 @@ void EnemyList::Tick(double deltaTime)
 			m_EnemyPtrArr[i]->Tick(deltaTime);
 		}
 	}
-	if (HeDead())
-	{
-		m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_ActHeroPtr));
-	}
+
 	m_PickUpListPtr->Tick(deltaTime);
 }
 
@@ -148,7 +145,11 @@ bool EnemyList::HeDead()
 
 void EnemyList::AddDoritos()
 {
-	m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_ActHeroPtr));
-
-	m_Dead = false;
+	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
+	{
+		if (m_EnemyPtrArr[i] != nullptr)
+		{
+			m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_ActHeroPtr));
+		}
+	}
 }

@@ -24,7 +24,7 @@ void Hero::Init()
 
 	m_ActHeroFeetPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
 
-	m_ActHeroFeetPtr->AddBoxShape(20, 2, 0); //feet
+	m_ActHeroFeetPtr->AddBoxShape(10, 10, 0); //feet
 	m_ActHeroFeetPtr->AddContactListener(this);
 	m_ActHeroFeetPtr->SetGravityScale(0);
 	m_ActHeroFeetPtr->SetTrigger(true);
@@ -67,6 +67,8 @@ void Hero::UpdateVariables(double deltaTime)
 		m_BoosterActive = false;
 		m_ActiveJump = false;
 		m_BoosterFrame = 0;
+		StopBooster();
+		StopJump();
 	}
 	if (m_ActiveJump)
 	{
@@ -122,7 +124,7 @@ void Hero::UserInput(double deltaTime)
 	{
 		m_BoolBoosterTrail = false;
 	}
-	if ((m_BoosterActive) && (m_BoosterTimer > BOOSTER_TIMER))
+	if (m_BoosterTimer > BOOSTER_TIMER)
 	{
 		StopBooster();
 	}
@@ -198,23 +200,18 @@ void Hero::Up()
 void Hero::StartJump()
 {
 	m_ActionState = ActionState::STARTJUMP;
-	m_GravityActive = true;
 	m_ActiveJump = true;
 	Anim();
 	if (m_OnFloor)
 	{
 		m_DesiredVel.y = -200;
 	}
-	if (m_GravityActive = true)
-	{
-		m_ActHeroPtr->SetGravityScale(0);
-	}
+	m_ActHeroPtr->SetGravityScale(0);
 }
 
 void Hero::StopJump()
 {
 	m_ActionState = ActionState::STOPJUMP;
-	m_GravityActive = false;
 	m_ActHeroPtr->SetGravityScale(1);
 	Anim();
 
@@ -237,6 +234,7 @@ void Hero::StopBooster()
 	m_BoolBoosterTrail = false;
 	m_BoosterActive = false;
 	m_BoosterTimer = 0;
+	m_ActHeroPtr->SetGravityScale(1);
 }
 
 void Hero::BoosterTrail()
@@ -366,7 +364,7 @@ int Hero::GetDirection()
 // ======== Collision ========												
 void Hero::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 {
-	if (actThisPtr == m_ActHeroFeetPtr)
+	if ((actThisPtr == m_ActHeroFeetPtr) && (actOtherPtr != m_ActHeroPtr))
 	{
 		m_OnFloor = true;
 	}
@@ -374,7 +372,7 @@ void Hero::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 
 void Hero::EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 {
-	if (actThisPtr == m_ActHeroFeetPtr)
+	if ((actThisPtr == m_ActHeroFeetPtr) && (actOtherPtr != m_ActHeroPtr))
 	{
 		m_OnFloor = false;
 	}

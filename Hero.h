@@ -96,7 +96,6 @@ private:
 	
 	// Jump
 	double m_Jump_Time = 0.0;
-	bool m_GravityActive = false;
 	bool m_ActiveJump = false;
 	bool m_OnFloor = false;
 
