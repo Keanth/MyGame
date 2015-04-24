@@ -83,6 +83,7 @@ void EnemyList::Tick(double deltaTime)
 		}
 	}
 
+	HeDead();
 	m_PickUpListPtr->Tick(deltaTime);
 }
 
