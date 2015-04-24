@@ -12,8 +12,8 @@ public:
 	Hero(const Hero&) = delete;
 	Hero& operator=(const Hero&) = delete;
 
-	virtual void BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr); 
-	virtual void EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);   
+	virtual void BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
+	virtual void EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
 	virtual void ContactImpulse(PhysicsActor *actThisPtr, double impulse);
 
 	void Paint();
@@ -47,6 +47,8 @@ private:
 	void ApplyImpulse(double deltaTime);
 	void Gone();
 
+	int GetActionState();
+
 	PhysicsActor* m_ActHeroPtr = nullptr;
 	PhysicsActor* m_ActHeroFeetPtr = nullptr;
 
@@ -60,7 +62,7 @@ private:
 		BOOSTER,
 		HIT,
 		DEATH,
-	}; 
+	};
 	ActionState m_ActionState = ActionState::IDLE;
 
 	enum class Direction
@@ -86,14 +88,14 @@ private:
 	const int BOOSTER_FR = 7;
 	const int BOOSTER_FR_PER_SEC = 15;
 
-	DOUBLE2 m_HeroDirection = DOUBLE2(1,1);
+	DOUBLE2 m_HeroDirection = DOUBLE2(1, 1);
 
 	double m_AccuTime = 0;
 	int m_CurrentFrame = 0;
 	DOUBLE2 m_Vel = DOUBLE2(0.0, 0.0);
 	double m_Mass = 0.0;
 	DOUBLE2 m_DesiredVel;
-	
+
 	// Jump
 	double m_Jump_Time = 0.0;
 	bool m_ActiveJump = false;
@@ -111,5 +113,5 @@ private:
 
 	// Bitmap Bank
 	BitmapManager* m_BitmapManager = nullptr;
-	Bitmap* m_BmpHeroPtr = nullptr;	
+	Bitmap* m_BmpHeroPtr = nullptr;
 };

@@ -2,21 +2,16 @@
 #include "EnemyList.h"
 #include "Enemy.h"
 #include "BulletList.h"
-#include "PickUpList.h"
-#include "Doritos.h"
-#include "Hero.h"
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-EnemyList::EnemyList(PhysicsActor* hero)
-:m_ActHeroPtr(hero)
+EnemyList::EnemyList()
 {
-	m_PickUpListPtr = new PickUpList();
+
 }
 
 EnemyList::~EnemyList()
 {
 	RemoveAll();
-	delete m_PickUpListPtr;
 }
 
 bool EnemyList::Add(Enemy* enemyPtr)
@@ -66,6 +61,7 @@ void EnemyList::RemoveAll()
 	{
 		if (m_EnemyPtrArr[i] != nullptr)
 		{
+//			m_EnemyPtrArr[i]->RemoveContactListener();
 			delete m_EnemyPtrArr[i];
 			m_EnemyPtrArr[i] = nullptr;
 		}
@@ -82,9 +78,8 @@ void EnemyList::Tick(double deltaTime)
 			m_EnemyPtrArr[i]->Tick(deltaTime);
 		}
 	}
-
+	
 	HeDead();
-	m_PickUpListPtr->Tick(deltaTime);
 }
 
 void EnemyList::Paint()
@@ -96,7 +91,6 @@ void EnemyList::Paint()
 			m_EnemyPtrArr[i]->Paint();
 		}
 	}
-	m_PickUpListPtr->Paint();
 }
 
 bool EnemyList::IsHit(PhysicsActor* actOtherPtr)
@@ -128,7 +122,7 @@ int EnemyList::GetSize()
 	return size;
 }
 
-bool EnemyList::HeDead()
+void EnemyList::HeDead()
 {
 	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
 	{
@@ -137,20 +131,7 @@ bool EnemyList::HeDead()
 			if (m_EnemyPtrArr[i]->GetHealth() <= 0)
 			{
 				m_EnemyPtrArr[i]->RemoveEnemy();
-				return true;
 			}
-		}
-	}
-	return false;
-}
-
-void EnemyList::AddDoritos()
-{
-	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
-	{
-		if (m_EnemyPtrArr[i] != nullptr)
-		{
-			m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_ActHeroPtr));
 		}
 	}
 }

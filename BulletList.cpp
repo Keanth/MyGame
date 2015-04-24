@@ -74,7 +74,6 @@ void BulletList::Paint()
 void BulletList::ShootHandler()
 {
 	m_HeroPos = MainGame::m_HeroPos;
-//	m_HeroDirection = MainGame::m_HeroDir;
 
 	for (int i = 0; i < NR_OF_MAX_BULLETS; ++i)
 	{

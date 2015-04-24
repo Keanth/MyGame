@@ -7,13 +7,18 @@
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 Enemy::Enemy(LevelOutdoor* level, Hero* hero, DOUBLE2 position) 
-: m_LevelPtr(level), m_HeroPtr(hero)
+: m_LevelPtr(level), m_HeroPtr(hero), m_Position(position)
+{
+	Init();
+}
+
+void Enemy::Init()
 {
 	m_BitmapManager = new BitmapManager();
 	m_BmpNpc1Ptr = m_BitmapManager->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc03.png"));
 
-	m_ActEnemyPtr = new PhysicsActor(position, 0, BodyType::DYNAMIC);
-	m_ActEnemyPtr->AddBoxShape(25, 40, 0, 1,50);
+	m_ActEnemyPtr = new PhysicsActor(m_Position, 0, BodyType::DYNAMIC);
+	m_ActEnemyPtr->AddBoxShape(25, 40, 0, 1, 50);
 	m_ActEnemyPtr->AddContactListener(this);
 	m_ActEnemyPtr->SetFixedRotation(true);
 }
@@ -133,7 +138,6 @@ void Enemy::RemoveEnemy()
 {
 	if (m_ActEnemyPtr != nullptr)
 	{
-		m_ActEnemyPtr->RemoveContactListener(this);
 		delete m_ActEnemyPtr;
 		m_ActEnemyPtr = nullptr;
 	}
@@ -230,6 +234,11 @@ void Enemy::ResetCurrentFrame()
 		m_CurrentFrame = 0;
 		m_BoolCurentFrame = false;
 	}
+}
+
+void Enemy::RemoveContactListener()
+{
+	m_ActEnemyPtr->RemoveContactListener(this);
 }
 
 //getters

@@ -12,7 +12,6 @@
 #include "ButtonManager.h"
 #include "HealthUp.h"
 #include "Doritos.h"
-#include "PickUpList.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -63,9 +62,8 @@ void MainGame::Tick(double deltaTime)
 
 		m_HeroPos = m_HeroPtr->GetPosition();
 
-//		m_HealthUpPtr->Tick(deltaTime);
-//		m_DoritosPtr->Tick(deltaTime);
-//		m_PickUpListPtr->Tick(deltaTime);
+		m_HealthUpPtr->Tick(deltaTime);
+		m_DoritosPtr->Tick(deltaTime);
 
 		_Test();
 
@@ -85,8 +83,8 @@ void MainGame::Tick(double deltaTime)
 
 void MainGame::Paint()
 {
-	if (m_IsPaused == false)
-	{
+	/*if (m_IsPaused == false)
+	{*/
 		m_LevelOutdoorPtr->Paint();
 
 		m_HudPtr->Paint();
@@ -116,8 +114,10 @@ void MainGame::Paint()
 
 		m_ArrowListPtr->Paint();
 
-//		m_PickUpListPtr->Paint();
-	}
+		m_HealthUpPtr->Paint();
+		m_DoritosPtr->Paint();
+//	}
+	
 }
 
 void MainGame::InitObj()
@@ -125,11 +125,12 @@ void MainGame::InitObj()
 	m_HeroPtr = new Hero();
 	m_CameraPtr = new Camera(m_HeroPtr);
 	m_LevelOutdoorPtr = new LevelOutdoor(m_CameraPtr);
-	m_EnemyListPtr = new EnemyList(m_HeroPtr->GetActor());
+	m_EnemyListPtr = new EnemyList();
 	//	EnemyHandler(); //Do not use during testing phase;
 	m_ArrowListPtr = new BulletList(m_EnemyListPtr);
 	m_HudPtr = new HUD();
-//	m_PickUpListPtr = new PickUpList();
+	m_HealthUpPtr = new HealthUp(DOUBLE2(400, 5300));
+	m_DoritosPtr = new Doritos(DOUBLE2(300, 5270));
 }
 
 void MainGame::RemoveAll()
@@ -140,7 +141,8 @@ void MainGame::RemoveAll()
 	delete m_ArrowListPtr;
 	delete m_EnemyListPtr;
 	delete m_HudPtr;
-//	delete m_PickUpListPtr;
+	delete m_HealthUpPtr;
+	delete m_DoritosPtr;
 
 	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
 	{
@@ -204,10 +206,6 @@ void MainGame::_Test()
 	{
 		m_EnemyListPtr->RemoveAll();
 	}
-	//if (GAME_ENGINE->IsKeyboardKeyPressed('K'))
-	//{
-	//	m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_HeroPtr->GetActor()));
-	//}
 }
 
 void MainGame::InitTestButton()

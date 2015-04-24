@@ -87,7 +87,6 @@
     <ClCompile Include="HealthUp.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="PickUpBase.cpp" />
-    <ClCompile Include="PickUpList.cpp" />
     <ClCompile Include="PolarStarBullet.cpp" />
     <ClCompile Include="BulletList.cpp" />
     <ClCompile Include="BitmapManager.cpp" />
@@ -139,7 +138,6 @@
     <ClInclude Include="HealthUp.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="PickUpBase.h" />
-    <ClInclude Include="PickUpList.h" />
     <ClInclude Include="PolarStarBullet.h" />
     <ClInclude Include="BulletList.h" />
     <ClInclude Include="BitmapManager.h" />

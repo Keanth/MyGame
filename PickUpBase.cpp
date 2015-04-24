@@ -1,6 +1,5 @@
 #include "stdafx.h"
 #include "PickUpBase.h"
-#include "DamageHero.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -25,7 +24,6 @@ void PickUpBase::Paint()
 {
 	CreateMatrix();
 	GAME_ENGINE->DrawBitmap(m_BmpPickUpPtr, Rect());
-	GAME_ENGINE->DrawString(String(m_Hit),0,0);
 }
 
 void PickUpBase::CreateMatrix()
@@ -41,7 +39,7 @@ RECT PickUpBase::Rect()
 {
 	RECT r;
 
-	r.top = int(CLIP_POS.y * CLIP_SIZE);
+	r.top = CLIP_POS.y * CLIP_SIZE;
 	r.bottom = r.top + CLIP_SIZE;
 	r.left = m_CurrentFrame * CLIP_SIZE;
 	r.right = r.left + CLIP_SIZE;
@@ -54,28 +52,6 @@ void PickUpBase::Anim()
 	if (m_AccuTime > 1.0 / FR_PER_SEC)
 	{
 		m_AccuTime = 0;
-		m_CurrentFrame = int((++m_CurrentFrame % FR) + CLIP_POS.x);
+		m_CurrentFrame = (++m_CurrentFrame % FR) + CLIP_POS.x;
 	}
-}
-
-void PickUpBase::RemoveContactListener()
-{
-	m_ActPickUpPtr->RemoveContactListener(this);
-}
-
-void PickUpBase::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
-{
-	if ((actOtherPtr == m_ActHeroPtr))
-	{
-		m_Hit = true;
-	}
-}
-
-void PickUpBase::EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
-{
-}
-
-void PickUpBase::ContactImpulse(PhysicsActor *actThisPtr, double impulse)
-{
-
 }

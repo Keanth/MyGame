@@ -24,7 +24,7 @@ void Hero::Init()
 
 	m_ActHeroFeetPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
 
-	m_ActHeroFeetPtr->AddBoxShape(10, 10, 0); //feet
+	m_ActHeroFeetPtr->AddBoxShape(2, 2, 0); //feet
 	m_ActHeroFeetPtr->AddContactListener(this);
 	m_ActHeroFeetPtr->SetGravityScale(0);
 	m_ActHeroFeetPtr->SetTrigger(true);
@@ -68,7 +68,6 @@ void Hero::UpdateVariables(double deltaTime)
 		m_ActiveJump = false;
 		m_BoosterFrame = 0;
 		StopBooster();
-		StopJump();
 	}
 	if (m_ActiveJump)
 	{
@@ -135,7 +134,7 @@ void Hero::Paint()
 	CreateWorldMatrix();
 	GAME_ENGINE->DrawBitmap(m_BmpHeroPtr, Rect());
 	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
-//	GAME_ENGINE->DrawString(String(m_BoosterTimer), 0, 0);
+	//	GAME_ENGINE->DrawString(String(m_BoosterTimer), 0, 0);
 
 	GAME_ENGINE->DrawString(String(m_BoosterFrame), -20, -20);
 	BoosterTrail();
@@ -149,7 +148,7 @@ void Hero::CreateWorldMatrix()
 	MATRIX3X2 matPivot, matTransform, matTranslate, matAngle, matScale;
 	matPivot.SetAsTranslate(DOUBLE2(-CLIP_SIZE / 2, -CLIP_SIZE / 2));
 	matAngle.SetAsRotate(actHeroAngle);
-	
+
 	switch (m_Direction)
 	{
 	case Hero::Direction::LEFT:

@@ -4,7 +4,7 @@
 class Doritos : public PickUpBase
 {
 public:
-	Doritos(DOUBLE2 position, PhysicsActor* hero);
+	Doritos(DOUBLE2 position);
 	virtual ~Doritos();
 
 	Doritos(const Doritos&) = delete;
@@ -12,7 +12,5 @@ public:
 
 	void Tick(double deltaTime);
 	void Paint();
-	PhysicsActor* GetActor() { return m_ActPickUpPtr; }
-	void Hit();
 };
 

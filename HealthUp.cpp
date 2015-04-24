@@ -4,17 +4,15 @@
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-HealthUp::HealthUp(DOUBLE2 position, PhysicsActor* hero)
+HealthUp::HealthUp(DOUBLE2 position)
 {
 	CLIP_POS = DOUBLE2(2, 4);
 	FR = 2;
 	FR_PER_SEC = 4;
-	m_ActHeroPtr = hero;
 
 	m_ActPickUpPtr = new PhysicsActor(position, 0, BodyType::DYNAMIC);
 	m_ActPickUpPtr->AddBoxShape(CLIP_SIZE, CLIP_SIZE, 0, 0);
 	m_ActPickUpPtr->SetFixedRotation(true);
-	
 }
 
 HealthUp::~HealthUp()

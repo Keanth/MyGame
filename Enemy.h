@@ -20,6 +20,7 @@ public:
 	void Tick(double deltaTime);
 	void Paint();
 	void RemoveEnemy();
+	void RemoveContactListener();
 	//getters
 	PhysicsActor* GetActor();
 	int GetHealth();
@@ -39,6 +40,7 @@ private:
 	RECT Rect();
 	void Anim();
 	void ResetCurrentFrame();
+	void Init();
 
 	static const int BASE_DAMAGE = 3;
 	static const int CLIP_SIZE = 48;
@@ -85,5 +87,6 @@ private:
 	// Bitmap Bank
 	BitmapManager* m_BitmapManager = nullptr;
 	Bitmap* m_BmpNpc1Ptr = nullptr;
+	DOUBLE2 m_Position;
 };
 

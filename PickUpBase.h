@@ -1,27 +1,16 @@
 #pragma once
-#include "ContactListener.h"
-
-class Hero;
-class PickUpBase : public ContactListener
+class PickUpBase
 {
 public:
 	PickUpBase();
-	PickUpBase(DOUBLE2 position, PhysicsActor* hero);
+	PickUpBase(DOUBLE2 position);
 	virtual ~PickUpBase();
 
 	PickUpBase (const PickUpBase&) = delete;
 	PickUpBase& operator=(const PickUpBase&) = delete;
 
-	virtual void BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
-	virtual void EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
-	virtual void ContactImpulse(PhysicsActor *actThisPtr, double impulse);
-
 	virtual void Tick(double deltaTime);
 	virtual void Paint();
-	virtual bool IsHit() { return m_Hit; }
-	virtual PhysicsActor* GetActor()= 0;
-	virtual void RemoveContactListener();
-	virtual bool GetIsHit() { return m_Hit; }
 
 protected:
 	virtual void CreateMatrix();
@@ -42,9 +31,6 @@ protected:
 
 	Bitmap* m_BmpPickUpPtr = nullptr;
 	PhysicsActor* m_ActPickUpPtr = nullptr;
-	PhysicsActor* m_ActHeroPtr = nullptr;
-
-	bool m_Hit = false;
 
 };
 
