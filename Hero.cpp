@@ -1,8 +1,6 @@
 #include "stdafx.h"
 #include "Hero.h"
-#include "LevelOutdoor.h"
-#include "PolarStarBullet.h"
-#include "BitmapManager.h"
+#include "Entity.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -15,53 +13,50 @@ Hero::Hero()
 
 void Hero::Init()
 {
+	m_BaseSpeed = 250;
+
 	m_BitmapManager = new BitmapManager();
 	m_BmpHeroPtr = m_BitmapManager->LoadBitmap(String("./Assets/Images/SpriteSheet_Hero.png"));
 
-	m_ActHeroPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
-	m_ActHeroPtr->AddBoxShape(20, 28, 0, 0);
-	m_ActHeroPtr->SetBullet(true);
+	m_ActPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
+	m_ActPtr->AddBoxShape(20, 28, 0, 0);
+	m_ActPtr->SetBullet(true);
 
-	m_ActHeroFeetPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
+	m_ActFeetPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
 
-	m_ActHeroFeetPtr->AddBoxShape(2, 2, 0); //feet
-	m_ActHeroFeetPtr->AddContactListener(this);
-	m_ActHeroFeetPtr->SetGravityScale(0);
-	m_ActHeroFeetPtr->SetTrigger(true);
-	m_ActHeroFeetPtr->SetBullet(true);
+	m_ActFeetPtr->AddBoxShape(10, 2, 0); //feet
+	m_ActFeetPtr->AddContactListener(this);
+	m_ActFeetPtr->SetGravityScale(0);
+	m_ActFeetPtr->SetTrigger(true);
+	m_ActFeetPtr->SetBullet(true);
 
-	m_ActHeroPtr->SetFixedRotation(true);
-	m_ActHeroFeetPtr->SetFixedRotation(true);
+	m_ActPtr->SetFixedRotation(true);
+	m_ActFeetPtr->SetFixedRotation(true);
 
 	m_BmpBoosterTrailPtr = m_BitmapManager->LoadBitmapW(String("./Assets/Images/Sym.png"));
 }
 
 Hero::~Hero()
 {
+	delete m_ActFeetPtr;
+	m_ActFeetPtr = nullptr;
 	delete m_BitmapManager;
-	delete m_ActHeroPtr;
-	delete m_ActHeroFeetPtr;
+	m_BitmapManager = nullptr;
 }
 
 void Hero::Tick(double deltaTime)
 {
 	UpdateVariables(deltaTime);
+	Entity::UpdateVariables(deltaTime);
 	UserInput(deltaTime);
-	ApplyImpulse(deltaTime);
-	Gone();
+	Entity:ApplyImpulse(deltaTime);
 }
 
 void Hero::UpdateVariables(double deltaTime)
 {
-	m_ActHeroFeetPtr->SetPosition(
-		DOUBLE2(m_ActHeroPtr->GetPosition().x,
-		m_ActHeroPtr->GetPosition().y + 14)); // position of the feet, trial and error
-
-	m_AccuTime += deltaTime;
-	m_Vel = m_ActHeroPtr->GetLinearVelocity();
-	m_DesiredVel = DOUBLE2(0.0, m_ActHeroPtr->GetLinearVelocity().y);
-	m_Mass = m_ActHeroPtr->GetMass();
-
+	m_ActFeetPtr->SetPosition(
+		DOUBLE2(m_ActPtr->GetPosition().x,
+		m_ActPtr->GetPosition().y + 14)); // position of the feet, trial and error
 	if (m_OnFloor)
 	{
 		m_BoosterActive = false;
@@ -131,62 +126,9 @@ void Hero::UserInput(double deltaTime)
 
 void Hero::Paint()
 {
-	CreateWorldMatrix();
+	Entity::Paint();
 	GAME_ENGINE->DrawBitmap(m_BmpHeroPtr, Rect());
-	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
-	//	GAME_ENGINE->DrawString(String(m_BoosterTimer), 0, 0);
-
-	GAME_ENGINE->DrawString(String(m_BoosterFrame), -20, -20);
 	BoosterTrail();
-}
-
-void Hero::CreateWorldMatrix()
-{
-	DOUBLE2 actHeroPos = m_ActHeroPtr->GetPosition();
-	double actHeroAngle = m_ActHeroPtr->GetAngle();
-
-	MATRIX3X2 matPivot, matTransform, matTranslate, matAngle, matScale;
-	matPivot.SetAsTranslate(DOUBLE2(-CLIP_SIZE / 2, -CLIP_SIZE / 2));
-	matAngle.SetAsRotate(actHeroAngle);
-
-	switch (m_Direction)
-	{
-	case Hero::Direction::LEFT:
-		matScale.SetAsScale(-1, 1);
-		break;
-	case Hero::Direction::RIGHT:
-		matScale.SetAsScale(1, 1);
-		break;
-	default:
-		break;
-	}
-
-	matTranslate.SetAsTranslate(actHeroPos);
-	matTransform = matPivot*matScale*matAngle*matTranslate;
-	GAME_ENGINE->SetWorldMatrix(matTransform);
-}
-
-void Hero::Idle()
-{
-	m_ActionState = ActionState::IDLE;
-	Anim();
-	m_DesiredVel.x = m_Vel.x * 0.85;
-}
-
-void Hero::MoveLeft()
-{
-	if (m_OnFloor)m_ActionState = ActionState::WALK;
-	Anim();
-	m_Direction = Direction::LEFT;
-	m_DesiredVel.x = -250;
-}
-
-void Hero::MoveRight()
-{
-	if (m_OnFloor)m_ActionState = ActionState::WALK;
-	Anim();
-	m_Direction = Direction::RIGHT;
-	m_DesiredVel.x = 250;
 }
 
 void Hero::Up()
@@ -205,13 +147,13 @@ void Hero::StartJump()
 	{
 		m_DesiredVel.y = -200;
 	}
-	m_ActHeroPtr->SetGravityScale(0);
+	m_ActPtr->SetGravityScale(0);
 }
 
 void Hero::StopJump()
 {
 	m_ActionState = ActionState::STOPJUMP;
-	m_ActHeroPtr->SetGravityScale(1);
+	m_ActPtr->SetGravityScale(1);
 	Anim();
 
 	if (GAME_ENGINE->IsKeyboardKeyReleased(VK_SPACE))
@@ -233,7 +175,7 @@ void Hero::StopBooster()
 	m_BoolBoosterTrail = false;
 	m_BoosterActive = false;
 	m_BoosterTimer = 0;
-	m_ActHeroPtr->SetGravityScale(1);
+	m_ActPtr->SetGravityScale(1);
 }
 
 void Hero::BoosterTrail()
@@ -322,16 +264,9 @@ RECT Hero::Rect()
 	return r;
 }
 
-void Hero::ApplyImpulse(double deltaTime)
-{
-	DOUBLE2 deltaVel = m_DesiredVel - m_Vel;
-	DOUBLE2 j = m_Mass * deltaVel / PhysicsActor::SCALE;
-	m_ActHeroPtr->ApplyLinearImpulse(j);
-}
-
 void Hero::Gone()
 {
-	if (m_ActHeroPtr->GetPosition().y > 6000)
+	if (m_ActPtr->GetPosition().y > 6000)
 	{
 		m_health = 0;
 	}
@@ -342,16 +277,16 @@ int Hero::GetDirection()
 	int id = 3;
 	switch (m_Direction)
 	{
-	case Hero::Direction::UP:
+	case Entity::Direction::UP:
 		id = 0;
 		break;
-	case Hero::Direction::DOWN:
+	case Entity::Direction::DOWN:
 		id = 1;
 		break;
-	case Hero::Direction::LEFT:
+	case Entity::Direction::LEFT:
 		id = 2;
 		break;
-	case Hero::Direction::RIGHT:
+	case Entity::Direction::RIGHT:
 		id = 3;
 		break;
 	default:
@@ -363,7 +298,7 @@ int Hero::GetDirection()
 // ======== Collision ========												
 void Hero::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 {
-	if ((actThisPtr == m_ActHeroFeetPtr) && (actOtherPtr != m_ActHeroPtr))
+	if ((actThisPtr == m_ActFeetPtr) && (actOtherPtr != m_ActPtr))
 	{
 		m_OnFloor = true;
 	}
@@ -371,7 +306,7 @@ void Hero::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 
 void Hero::EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 {
-	if ((actThisPtr == m_ActHeroFeetPtr) && (actOtherPtr != m_ActHeroPtr))
+	if ((actThisPtr == m_ActFeetPtr) && (actOtherPtr != m_ActPtr))
 	{
 		m_OnFloor = false;
 	}

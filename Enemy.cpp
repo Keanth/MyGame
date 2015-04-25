@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "Enemy.h"
-#include "Hero.h"
-#include "LevelOutdoor.h"
-#include "DamageHero.h"
-#include "BitmapManager.h"
+#include "Entity.h"
+
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 Enemy::Enemy(LevelOutdoor* level, Hero* hero, DOUBLE2 position) 
@@ -17,35 +15,34 @@ void Enemy::Init()
 	m_BitmapManager = new BitmapManager();
 	m_BmpNpc1Ptr = m_BitmapManager->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc03.png"));
 
-	m_ActEnemyPtr = new PhysicsActor(m_Position, 0, BodyType::DYNAMIC);
-	m_ActEnemyPtr->AddBoxShape(25, 40, 0, 1, 50);
-	m_ActEnemyPtr->AddContactListener(this);
-	m_ActEnemyPtr->SetFixedRotation(true);
+	m_ActPtr = new PhysicsActor(m_Position, 0, BodyType::DYNAMIC);
+	m_ActPtr->AddBoxShape(25, 40, 0, 1, 50);
+	m_ActPtr->AddContactListener(this);
+	m_ActPtr->SetFixedRotation(true);
 }
 
 Enemy::~Enemy()
 {
-	delete m_BitmapManager;
 	RemoveEnemy();
+	delete m_BitmapManager;
+	m_BitmapManager = nullptr;
 }
 
 void Enemy::Tick(double deltaTime)
 {
-	if (m_ActEnemyPtr != nullptr)
+	if (m_ActPtr != nullptr)
 	{
 		UpdateVariables(deltaTime);
+		Entity::UpdateVariables(deltaTime);
 		MoveTowardHero(deltaTime);
-		ApplyImpulse(deltaTime);
+		Entity::ApplyImpulse(deltaTime);
 	}
 }
 
 void Enemy::UpdateVariables(double deltaTime)
 {
-	m_AccuTime += deltaTime;
-	m_Vel = m_ActEnemyPtr->GetLinearVelocity();
-	m_DesiredVel = DOUBLE2(0.0, m_ActEnemyPtr->GetLinearVelocity().y);
-	m_Mass = m_ActEnemyPtr->GetMass();
-
+	m_BaseSpeed = 200;
+	
 	if (m_BoolDealDamage == false)
 	{
 		m_DamageTime += deltaTime;
@@ -59,52 +56,37 @@ void Enemy::UpdateVariables(double deltaTime)
 
 void Enemy::Paint()
 {
-	if (m_ActEnemyPtr != nullptr)
+	if (m_ActPtr != nullptr)
 	{
 		CreateWorldMatrix();
 		GAME_ENGINE->DrawBitmap(m_BmpNpc1Ptr, Rect());
-		GAME_ENGINE->DrawString(String(m_CurrentFrame), 0, 0);
 	}
 }
 
 void Enemy::CreateWorldMatrix()
 {
-	DOUBLE2 actHeroPos = m_ActEnemyPtr->GetPosition();
-	double actHeroAngle = m_ActEnemyPtr->GetAngle();
+	DOUBLE2 actHeroPos = m_ActPtr->GetPosition();
+	double actHeroAngle = m_ActPtr->GetAngle();
 
 	MATRIX3X2 matPivot, matTransform, matTranslate, matAngle, matScale;
-	matPivot.SetAsTranslate(DOUBLE2(-CLIP_SIZE / 2, -CLIP_SIZE / 2));
+	matPivot.SetAsTranslate(DOUBLE2(-TILE_SIZE / 2, -TILE_SIZE / 2));
 	matAngle.SetAsRotate(actHeroAngle);
-	matScale.SetAsScale(m_Direction.x, m_Direction.y);
-	matTranslate.SetAsTranslate(actHeroPos);
-	matTransform = matPivot*matScale*matAngle*matTranslate;
-	GAME_ENGINE->SetWorldMatrix(matTransform);
-}
 
-RECT Enemy::Rect()
-{
-	RECT r;
-
-	switch (m_ActionState)
+	switch (m_Direction)
 	{
-	case ActionState::IDLE:
-		r.top = CLIP_SIZE * 0;
+	case Entity::Direction::LEFT:
+		matScale.SetAsScale(1, 1);
 		break;
-	case ActionState::WALK:
-		r.top = CLIP_SIZE * 0;
-		break;
-	case ActionState::ATTACK:
-		r.top = CLIP_SIZE * 1;
+	case Entity::Direction::RIGHT:
+		matScale.SetAsScale(-1, 1);
 		break;
 	default:
 		break;
 	}
 
-	r.bottom = CLIP_SIZE + r.top;
-	r.left = CLIP_SIZE * m_CurrentFrame;
-	r.right = CLIP_SIZE + r.left;
-
-	return r;
+	matTranslate.SetAsTranslate(actHeroPos);
+	matTransform = matPivot*matScale*matAngle*matTranslate;
+	GAME_ENGINE->SetWorldMatrix(matTransform);
 }
 
 void Enemy::Anim()
@@ -134,41 +116,44 @@ void Enemy::Anim()
 	}
 }
 
+RECT Enemy::Rect()
+{
+	RECT r;
+
+	switch (m_ActionState)
+	{
+	case ActionState::IDLE:
+		r.top = CLIP_SIZE * 0;
+		break;
+	case ActionState::WALK:
+		r.top = CLIP_SIZE * 0;
+		break;
+	case ActionState::ATTACK:
+		r.top = CLIP_SIZE * 1;
+		break;
+	default:
+		break;
+	}
+
+	r.bottom = CLIP_SIZE + r.top;
+	r.left = CLIP_SIZE * m_CurrentFrame;
+	r.right = CLIP_SIZE + r.left;
+
+	return r;
+}
+
 void Enemy::RemoveEnemy()
 {
-	if (m_ActEnemyPtr != nullptr)
+	if (m_ActPtr != nullptr)
 	{
-		delete m_ActEnemyPtr;
-		m_ActEnemyPtr = nullptr;
+		delete m_ActPtr;
+		m_ActPtr = nullptr;
 	}
-}
-
-void Enemy::Idle()
-{
-	m_ActionState = ActionState::IDLE;
-	Anim();
-	m_DesiredVel.x = m_Vel.x * 0.85;
-}
-
-void Enemy::MoveLeft()
-{
-	m_ActionState = ActionState::WALK;
-	Anim();
-	m_DesiredVel.x = -200;
-	m_Direction = DOUBLE2(1, 1);
-}
-
-void Enemy::MoveRight()
-{
-	m_ActionState = ActionState::WALK;
-	Anim();
-	m_DesiredVel.x = 200;
-	m_Direction = DOUBLE2(-1, 1);
 }
 
 void Enemy::MoveTowardHero(double deltaTime)
 {
-	m_PosDif = m_ActEnemyPtr->GetPosition() - m_HeroPtr->GetPosition();
+	m_PosDif = m_ActPtr->GetPosition() - m_HeroPtr->GetPosition();
 	if ((m_PosDif.x < 50) && (m_PosDif.x > -50) || (m_AttackWorthy))
 	{
 		m_AttackWorthy = true;
@@ -220,39 +205,28 @@ void Enemy::DealDamage()
 	}
 }
 
-void Enemy::ApplyImpulse(double deltaTime)
-{
-	DOUBLE2 deltaVel = m_DesiredVel - m_Vel;
-	DOUBLE2 j = m_Mass * deltaVel / PhysicsActor::SCALE;
-	m_ActEnemyPtr->ApplyLinearImpulse(j);
-}
-
-void Enemy::ResetCurrentFrame()
-{
-	if (m_BoolCurentFrame)
-	{
-		m_CurrentFrame = 0;
-		m_BoolCurentFrame = false;
-	}
-}
-
-void Enemy::RemoveContactListener()
-{
-	m_ActEnemyPtr->RemoveContactListener(this);
-}
-
-//getters
-PhysicsActor* Enemy::GetActor()
-{
-	return m_ActEnemyPtr;
-}
-
 int Enemy::GetHealth()
 {
 	return m_Health;
 }
 
-//setters
+int Enemy::GetDirection()
+{
+	int id = 3;
+	switch (m_Direction)
+	{
+	case Entity::Direction::LEFT:
+		id = 2;
+		break;
+	case Entity::Direction::RIGHT:
+		id = 3;
+		break;
+	default:
+		break;
+	}
+	return id;
+}
+
 void Enemy::SetHealth(int health)
 {
 	m_Health -= health;

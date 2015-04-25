@@ -67,11 +67,11 @@ void MainGame::Tick(double deltaTime)
 
 		_Test();
 
-		if (Hero::m_health <= 0)
+		/*if (Hero::m_health <= 0)
 		{
 			MyGame::InitExit();
 			MyGame::m_GameState = GameState::EXIT;
-		}
+		}*/
 	}
 
 	if (m_IsPaused)

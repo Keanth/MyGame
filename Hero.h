@@ -1,9 +1,7 @@
 #pragma once
-#include "ContactListener.h"
-class LevelOutdoor;
-class PolarStarBullet;
-class BitmapManager;
-class Hero : public ContactListener
+#include "Entity.h"
+
+class Hero : public Entity
 {
 public:
 	Hero();
@@ -11,69 +9,36 @@ public:
 
 	Hero(const Hero&) = delete;
 	Hero& operator=(const Hero&) = delete;
+	
 
+	// Methods
 	virtual void BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
 	virtual void EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
 	virtual void ContactImpulse(PhysicsActor *actThisPtr, double impulse);
-
-	void Paint();
-	void Tick(double deltaTime);
-
-	//getters
-	DOUBLE2 GetPosition() { return m_ActHeroPtr->GetPosition(); }
-	PhysicsActor* GetActor() { return m_ActHeroPtr; }
-	int GetDirection();
+	virtual void Tick(double deltaTime);
+	virtual void Paint();
+	virtual int GetDirection();
 
 	// Stats
 	static int m_health;
 
 private:
-	void Init();
-	void UserInput(double deltaTime);
-	RECT Rect();
-	void Idle();
-	void MoveRight();
-	void MoveLeft();
-	void Up();
-	void CreateWorldMatrix();
-	void Anim();
-	void StartJump();
-	void StopJump();
-	void StartBooster();
-	void StopBooster();
-	void BoosterTrail();
-	void UpdateVariables(double deltaTime);
-	DOUBLE2 ApplyPivot();
-	void ApplyImpulse(double deltaTime);
-	void Gone();
-
-	int GetActionState();
-
-	PhysicsActor* m_ActHeroPtr = nullptr;
-	PhysicsActor* m_ActHeroFeetPtr = nullptr;
-
-	enum class ActionState
-	{
-		WALK,
-		IDLE,
-		UP,
-		STARTJUMP,
-		STOPJUMP,
-		BOOSTER,
-		HIT,
-		DEATH,
-	};
-	ActionState m_ActionState = ActionState::IDLE;
-
-	enum class Direction
-	{
-		UP,
-		DOWN,
-		LEFT,
-		RIGHT
-	};
-	Direction m_Direction = Direction::RIGHT;
-
+	// Methods
+	virtual void UserInput(double deltaTime);
+	virtual void Up();
+	virtual void StartJump();
+	virtual void StopJump();
+	virtual void StartBooster();
+	virtual void StopBooster();
+	virtual void BoosterTrail();
+	// Inheritance Methods
+	virtual void Init();
+	virtual void UpdateVariables(double deltaTime);
+	virtual void Anim();
+	virtual RECT Rect();
+	virtual void Gone();
+	
+	// Class dependable constants
 	static const int IDLE_FR = 1;
 	static const int WALK_FR = 3;
 	static const int WALK_FR_PER_SEC = 12;
@@ -87,19 +52,12 @@ private:
 	const double BOOSTER_TIMER = 0.6;
 	const int BOOSTER_FR = 7;
 	const int BOOSTER_FR_PER_SEC = 15;
-
-	DOUBLE2 m_HeroDirection = DOUBLE2(1, 1);
-
-	double m_AccuTime = 0;
-	int m_CurrentFrame = 0;
-	DOUBLE2 m_Vel = DOUBLE2(0.0, 0.0);
-	double m_Mass = 0.0;
-	DOUBLE2 m_DesiredVel;
+	// Stats
+	static const int INITIAL_HEALTH = 20;
 
 	// Jump
 	double m_Jump_Time = 0.0;
 	bool m_ActiveJump = false;
-	bool m_OnFloor = false;
 
 	// Booster
 	bool m_BoosterActive = false;
@@ -108,9 +66,8 @@ private:
 	bool m_BoolBoosterTrail = false;
 	int m_BoosterFrame = 0;
 
-	// Stats
-	static const int INITIAL_HEALTH = 20;
-
+	PhysicsActor* m_ActFeetPtr = nullptr;
+	
 	// Bitmap Bank
 	BitmapManager* m_BitmapManager = nullptr;
 	Bitmap* m_BmpHeroPtr = nullptr;
