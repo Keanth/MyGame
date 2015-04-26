@@ -42,6 +42,7 @@ private:
 	bool m_CameraLock = true;
 	bool m_Shooting = false;
 	void PopulatePickUpList();
+	void PopulateSound();
 
 
 	Hero* m_HeroPtr = nullptr;
@@ -51,10 +52,6 @@ private:
 	HUD* m_HudPtr = nullptr;
 	HealthUp* m_HealthUpPtr = nullptr;
 	Doritos* m_DoritosPtr = nullptr;
-
-	//Sound
-	Sound* m_SndOutSideIntro = nullptr;
-	Sound* m_SndOutsideLoop = nullptr;
 
 	//Enemies
 	EnemyList* m_EnemyListPtr = nullptr;

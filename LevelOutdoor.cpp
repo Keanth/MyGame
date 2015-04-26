@@ -2,6 +2,7 @@
 #include "LevelOutdoor.h"
 #include "MyGame.h"
 #include "Camera.h"
+#include "SoundManager.h"
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 LevelOutdoor::LevelOutdoor(Camera* camera)
@@ -16,6 +17,10 @@ LevelOutdoor::LevelOutdoor(Camera* camera)
 	ReadFromFileStream();
 
 	CreateActors();
+
+	m_SndOutsideLoop = MyGame::m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
+	m_SndOutsideLoop->Play();
+	m_SndOutsideLoop->Pause();
 }
 
 LevelOutdoor::~LevelOutdoor()
@@ -144,114 +149,69 @@ void LevelOutdoor::CreateActors()
 		x *= TILE_SIZE;
 		y *= TILE_SIZE;
 
-		if (m_MapArr[i] == 13) // number 13 to 29 --> 8 part block
+		EighPartBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
+		SinglePartMetalLedge(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
+		SinglePartMetalBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
+		SinglePartFlowerBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
+		DoublePartClockBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
+
+	}
+}
+
+void LevelOutdoor::EighPartBlock(int i, int &count, int boxWidth, int boxHeight,
+	DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13)
+{
+	if (m_MapArr[i] == 13) // number 13 to 29 --> 8 part block
+	{
+		if (m_MapArr[i + 4] == 13)
 		{
-			if (m_MapArr[i + 4] == 13)
+			count++;
+		}
+		else
+		{
+			count++;
+
+			boxWidth = (4 * TILE_SIZE) * count; // 4 * 32 * count
+			boxHeight = 2 * TILE_SIZE;
+
+			if (m_MapArr[i + 2] == 15)
 			{
-				count++;
+				pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE * 4, y + boxHeight / 2);
+
 			}
 			else
 			{
-				count++;
-									
-				boxWidth = (4 * TILE_SIZE) * count; // 4 * 32 * count
-				boxHeight = 2 * TILE_SIZE;
-
-				if (m_MapArr[i + 2] == 15)
-				{
-					pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE * 4, y + boxHeight / 2);
-
-				}
-				else
-				{
-					pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE * 2, y + boxHeight / 2);
-				}
-
-				localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
-				localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
-				m_LevelCollisionPtrArr.push_back(localActor);
-	
-				count = 0;
-
-				checkIs13 = false; //Exit
+				pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE * 2, y + boxHeight / 2);
 			}
+
+			localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
+			localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
+			m_LevelCollisionPtrArr.push_back(localActor);
+
+			count = 0;
+
+			checkIs13 = false; //Exit
 		}
+	}
+}
 
-		if (m_MapArr[i] == 59) // number 59 --> Single part metal ledge
+void LevelOutdoor::SinglePartMetalLedge(int i, int &count, int boxWidth, int boxHeight,
+	DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13)
+{
+	if (m_MapArr[i] == 59) // number 59 --> Single part metal ledge
+	{
+		if (m_MapArr[i + 1] == 59)
 		{
-			if (m_MapArr[i + 1] == 59)
-			{
-				count++;
-			}
-			else
-			{
-				count++;
-
-				boxWidth = TILE_SIZE * count; // 32 * count
-				boxHeight = TILE_SIZE;
-
-				pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE, y + (boxHeight / 2));
-
-				localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
-				localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
-				m_LevelCollisionPtrArr.push_back(localActor);
-				
-				count = 0;
-			}
+			count++;
 		}
-
-		if (m_MapArr[i] == 47) // number 47 --> Single part metal block
+		else
 		{
-			if (m_MapArr[i + 1] == 47)
-			{
-				count++;
-			}
-			else
-			{
-				count++;
+			count++;
 
-				boxWidth = TILE_SIZE * count; // 32 * count
-				boxHeight = TILE_SIZE;
-
-				pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE, y + (boxHeight / 2));
-
-				localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
-				localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
-				m_LevelCollisionPtrArr.push_back(localActor);
-
-				count = 0;
-			}
-		}
-
-		if (m_MapArr[i] == 49) // number 47 --> Single part flower block
-		{
-			if (m_MapArr[i + 1] == 49)
-			{
-				count++;
-			}
-			else
-			{
-				count++;
-
-				boxWidth = TILE_SIZE * count; // 32 * count
-				boxHeight = TILE_SIZE;
-
-				pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE, y + (boxHeight / 2));
-
-				localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
-				localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
-				m_LevelCollisionPtrArr.push_back(localActor);
-
-				count = 0;
-			}
-		}
-
-		if (m_MapArr[i] == 54) // number 54 --> Double part clock block
-		{
-			boxWidth = TILE_SIZE * 2; // 32 * 2
+			boxWidth = TILE_SIZE * count; // 32 * count
 			boxHeight = TILE_SIZE;
 
-			pos = DOUBLE2(x + TILE_SIZE, y + (boxHeight / 2));
+			pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE, y + (boxHeight / 2));
 
 			localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
 			localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
@@ -259,81 +219,77 @@ void LevelOutdoor::CreateActors()
 
 			count = 0;
 		}
-
 	}
 }
 
-//void LevelOutdoor::CreateActors()
-//{
-//	TilesToDraw();
-//	int count = 0;
-//	std::vector<DOUBLE2> chainArr;
-//
-//	for (size_t i = 0; i < m_MapArr.size(); i++)
-//	{
-//		DOUBLE2 pos;
-//		int w = LEVEL_WIDTH / TILE_SIZE; // = 100 tiles
-//		int h = LEVEL_HEIGHT / TILE_SIZE; // = 180 tiles
-//		int x = (i % w);
-//		int y = (i / w % h);
-//		DOUBLE2 chain;
-//		PhysicsActor* localActor = nullptr;
-//
-//		//		if ((x >= m_x) && (x <= m_xOff) && (y >= m_y) && (y <= m_yOff)) //Only render if within viewport dimensions 
-//		//		{
-//		x *= TILE_SIZE;
-//		y *= TILE_SIZE;
-//		pos = DOUBLE2(x, y);
-//
-//		if (m_MapArr[i] == 13)
-//		{
-//			if (m_MapArr[i + 4] == 13)
-//			{
-//				count++;
-//			}
-//			else
-//			{
-//				count++;
-//
-//				chain = DOUBLE2(pos.x, pos.y);
-//				std::cout << chain.x << " " << pos.x << std::endl;
-//				chainArr.push_back(chain);
-//
-//				chain.x += (TILE_SIZE * count);
-//				chainArr.push_back(chain);
-//
-//				chain.y += TILE_SIZE * 2;
-//				chainArr.push_back(chain);
-//
-//				chain.x -= (TILE_SIZE * count);
-//				chainArr.push_back(chain);
-//
-//				localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
-//				localActor->AddChainShape(chainArr, true, 0, 0);
-//				m_LevelCollisionPtrArr.push_back(localActor);
-//
-//				chainArr.clear();
-//
-//				count = 0;
-//			}
-//		}
-//
-//		//		}
-//	}
-//
-//
-//	for (size_t i = 0; i < m_LevelCollisionPtrArr.size(); i++)
-//	{
-//		m_LevelCollisionPtrArr[i]->AddChainShape(chainArr, true, 0, 0);
-//
-//		if (chainArr.size() >0)
-//		{
-//			for (size_t i = 0; i < 4; i++)
-//			{
-//			}
-//		}
-//	}
-//
-//	std::cout << std::endl << std::endl << chainArr.size() << std::endl;
-//	std::cout << m_LevelCollisionPtrArr.size();
-//}
+void LevelOutdoor::SinglePartMetalBlock(int i, int &count, int boxWidth, int boxHeight,
+	DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13)
+{
+	if (m_MapArr[i] == 47) // number 47 --> Single part metal block
+	{
+		if (m_MapArr[i + 1] == 47)
+		{
+			count++;
+		}
+		else
+		{
+			count++;
+
+			boxWidth = TILE_SIZE * count; // 32 * count
+			boxHeight = TILE_SIZE;
+
+			pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE, y + (boxHeight / 2));
+
+			localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
+			localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
+			m_LevelCollisionPtrArr.push_back(localActor);
+
+			count = 0;
+		}
+	}
+}
+
+void LevelOutdoor::SinglePartFlowerBlock(int i, int &count, int boxWidth, int boxHeight,
+	DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13)
+{
+	if (m_MapArr[i] == 49) // number 47 --> Single part flower block
+	{
+		if (m_MapArr[i + 1] == 49)
+		{
+			count++;
+		}
+		else
+		{
+			count++;
+
+			boxWidth = TILE_SIZE * count; // 32 * count
+			boxHeight = TILE_SIZE;
+
+			pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE, y + (boxHeight / 2));
+
+			localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
+			localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
+			m_LevelCollisionPtrArr.push_back(localActor);
+
+			count = 0;
+		}
+	}
+}
+
+void LevelOutdoor::DoublePartClockBlock(int i, int &count, int boxWidth, int boxHeight,
+	DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13)
+{
+	if (m_MapArr[i] == 54) // number 54 --> Double part clock block
+	{
+		boxWidth = TILE_SIZE * 2; // 32 * 2
+		boxHeight = TILE_SIZE;
+
+		pos = DOUBLE2(x + TILE_SIZE, y + (boxHeight / 2));
+
+		localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
+		localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
+		m_LevelCollisionPtrArr.push_back(localActor);
+
+		count = 0;
+	}
+}

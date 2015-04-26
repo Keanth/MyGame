@@ -4,8 +4,11 @@
 
 #include "MyGame.h"
 #include "PickUpList.h"
+#include "EnemyList.h"
 #include "MainGame.h"
+#include "PickUpBase.h"
 #include "Doritos.h"
+#include "HealthUp.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -78,6 +81,7 @@ void Enemy::Paint()
 		CreateWorldMatrix();
 		GAME_ENGINE->DrawBitmap(m_BmpNpc1Ptr, Rect());
 	}
+	GAME_ENGINE->DrawString(String(m_PosDif.ToString()), 0, 0);
 }
 
 void Enemy::CreateWorldMatrix()
@@ -163,16 +167,35 @@ void Enemy::RemoveEnemy()
 {
 	if (m_ActPtr != nullptr)
 	{
-		MainGame::m_PickUpListPtr->Add(new Doritos(m_ActPtr->GetPosition(), m_HeroPtr));
+		if (EnemyList::PickUpCount % 4 == 0)
+		{
+			MainGame::m_PickUpListPtr->Add(new HealthUp(m_ActPtr->GetPosition(), m_HeroPtr));
+		}
+		else
+		{
+			MainGame::m_PickUpListPtr->Add(new Doritos(m_ActPtr->GetPosition(), m_HeroPtr));
+		}
+
+		EnemyList::PickUpCount++;
 		delete m_ActPtr;
 		m_ActPtr = nullptr;
+		delete m_ActFeetPtr;
+		m_ActFeetPtr = nullptr;
 	}
 }
 
 void Enemy::MoveTowardHero(double deltaTime)
 {
 	m_PosDif = m_ActPtr->GetPosition() - m_HeroPtr->GetPosition();
-	if ((m_PosDif.x < 50) && (m_PosDif.x > -50) || (m_AttackWorthy))
+	int idleDif = 8;
+	int attackDif = 50;
+
+	if ((m_PosDif.x < idleDif) && (m_PosDif.x > -idleDif))
+	{
+		Idle();
+	}
+	else if (((m_PosDif.x < attackDif) && (m_PosDif.x > -attackDif) && 
+		(m_PosDif.y < attackDif) && (m_PosDif.y > -attackDif)) || (m_AttackWorthy))
 	{
 		m_AttackWorthy = true;
 		m_MoveWorthy = false;

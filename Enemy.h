@@ -37,14 +37,14 @@ private:
 
 
 	// Class dependable constants
-	static const int BASE_DAMAGE = 3;
-	static const int CLIP_SIZE = 48;
-	static const int WALK_FR = 2;
-	static const int WALK_FR_PER_SEC = 6;
-	static const int MOVE_RANGE = 600;
-	static const int ATT_FR = 3;
-	static const int ATT_FR_PER_SEC = 2;
-
+	const int BASE_DAMAGE = 3;
+	const int CLIP_SIZE = 48;
+	const int WALK_FR = 2;
+	const int WALK_FR_PER_SEC = 6;
+	const int MOVE_RANGE = 600;
+	const int ATT_FR = 3;
+	const int ATT_FR_PER_SEC = 2;
+	
 	LevelOutdoor* m_LevelPtr = nullptr;
 	Hero* m_HeroPtr = nullptr;
 
