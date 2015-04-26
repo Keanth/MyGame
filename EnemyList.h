@@ -1,10 +1,11 @@
 #pragma once
 class Enemy;
 class BulletList;
+class Hero;
 class EnemyList
 {
 public:
-	EnemyList();
+	EnemyList(Hero* hero);
 	virtual ~EnemyList();
 
 	EnemyList(const EnemyList&) = delete;
@@ -22,5 +23,6 @@ public:
 private:
 	const static int NR_OF_ENEMIES = 1;
 	std::vector<Enemy*> m_EnemyPtrArr;
+	Hero* m_HeroPtr = nullptr;
 };
 

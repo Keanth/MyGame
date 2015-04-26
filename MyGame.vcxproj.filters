@@ -199,6 +199,10 @@
     <ClCompile Include="Doritos.cpp">
       <Filter>Game Files\Pickups</Filter>
     </ClCompile>
+    <ClCompile Include="PickUpList.cpp">
+      <Filter>Game Files\Pickups</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -483,6 +487,10 @@
     <ClInclude Include="Doritos.h">
       <Filter>Game Files\Pickups</Filter>
     </ClInclude>
+    <ClInclude Include="PickUpList.h">
+      <Filter>Game Files\Pickups</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

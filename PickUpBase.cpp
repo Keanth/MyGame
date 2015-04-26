@@ -39,7 +39,7 @@ RECT PickUpBase::Rect()
 {
 	RECT r;
 
-	r.top = CLIP_POS.y * CLIP_SIZE;
+	r.top = int(CLIP_POS.y * CLIP_SIZE);
 	r.bottom = r.top + CLIP_SIZE;
 	r.left = m_CurrentFrame * CLIP_SIZE;
 	r.right = r.left + CLIP_SIZE;
@@ -52,6 +52,16 @@ void PickUpBase::Anim()
 	if (m_AccuTime > 1.0 / FR_PER_SEC)
 	{
 		m_AccuTime = 0;
-		m_CurrentFrame = (++m_CurrentFrame % FR) + CLIP_POS.x;
+		m_CurrentFrame = int((++m_CurrentFrame % FR) + CLIP_POS.x);
 	}
+}
+
+void PickUpBase::RemoveContactListener()
+{
+	m_ActPickUpPtr->RemoveContactListener(this);
+}
+
+DOUBLE2 PickUpBase::GetPosition()
+{
+	return m_ActPickUpPtr->GetPosition();
 }

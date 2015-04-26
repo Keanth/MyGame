@@ -1,4 +1,4 @@
-#pragma once
+ #pragma once
 #include "Entity.h"
 
 class Hero : public Entity
@@ -65,10 +65,7 @@ private:
 	Bitmap* m_BmpBoosterTrailPtr = nullptr;
 	bool m_BoolBoosterTrail = false;
 	int m_BoosterFrame = 0;
-
-	PhysicsActor* m_ActFeetPtr = nullptr;
 	
 	// Bitmap Bank
-	BitmapManager* m_BitmapManager = nullptr;
 	Bitmap* m_BmpHeroPtr = nullptr;
 };

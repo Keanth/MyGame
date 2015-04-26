@@ -18,11 +18,11 @@ public:
 	Entity(const Entity&) = delete;
 	Entity& operator=(const Entity&) = delete;
 
+
+	// Methods
 	virtual void BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr) = 0;
 	virtual void EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr) = 0;
 	virtual void ContactImpulse(PhysicsActor *actThisPtr, double impulse) = 0;
-
-	// Methods
 	virtual void Tick(double deltaTime);
 	virtual void Paint();
 	virtual void RemoveContactListener();
@@ -76,10 +76,10 @@ protected:
 	DOUBLE2 m_DesiredVel;
 	int m_CurrentFrame = 0;
 	double m_AccuTime = 0.0;
-//	DOUBLE2 m_Direction = DOUBLE2(1, 1);
 
 	// Actors
 	PhysicsActor* m_ActPtr = nullptr;
+	PhysicsActor* m_ActFeetPtr = nullptr;
 
 	// Bools
 	bool m_BoolCurrentFrame = true;

@@ -87,6 +87,7 @@
     <ClCompile Include="HealthUp.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="PickUpBase.cpp" />
+    <ClCompile Include="PickUpList.cpp" />
     <ClCompile Include="PolarStarBullet.cpp" />
     <ClCompile Include="BulletList.cpp" />
     <ClCompile Include="BitmapManager.cpp" />
@@ -118,6 +119,7 @@
     <ClCompile Include="LevelOutdoor.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -138,6 +140,7 @@
     <ClInclude Include="HealthUp.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="PickUpBase.h" />
+    <ClInclude Include="PickUpList.h" />
     <ClInclude Include="PolarStarBullet.h" />
     <ClInclude Include="BulletList.h" />
     <ClInclude Include="BitmapManager.h" />
@@ -217,6 +220,7 @@
     <ClInclude Include="MainMenu.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="EngineFiles\Sound.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="EngineFiles\String.h" />
     <ClInclude Include="EngineFiles\Structs.h" />

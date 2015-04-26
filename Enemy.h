@@ -21,6 +21,7 @@ public:
 	int GetHealth();
 	int GetDirection();
 	void SetHealth(int health);
+	DOUBLE2 GetPosition() { return m_ActPtr->GetPosition(); }
 
 private:
 	// Methods
@@ -63,7 +64,6 @@ private:
 	DOUBLE2 m_Position; //CHECK
 
 	// Bitmap Bank
-	BitmapManager* m_BitmapManager = nullptr;
 	Bitmap* m_BmpNpc1Ptr = nullptr;
 };
 

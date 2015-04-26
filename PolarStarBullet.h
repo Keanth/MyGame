@@ -16,22 +16,23 @@ public:
 	PhysicsActor* GetActor() { return m_ActBulletPtr; }
 
 	static int m_InstanceCounter;
+	static int m_Exp;
 
 private:
 	RECT Rect();
 	DOUBLE2 m_HeroPos;
 	PhysicsActor* m_ActBulletPtr = nullptr;
 
-	static const int BASE_DAMAGE = 1;
-	static const int BULLET_WIDTH = 32;
-	static const int BULLET_HEIGHT = 4;
-	static const int BULLET_SPEED = 1000;
-	static const int BULLET_OFFSET = 5;
-	const int BULLET_HIT_REGION = 5;
+	const int BASE_DAMAGE = 1;
+	static const int INITIAL_EXP = 0;
+	const int BULLET_WIDTH = 32;
+	const int BULLET_HEIGHT = 4;
+	const int BULLET_SPEED = 1000;
+	const int BULLET_OFFSET = 5;
+	int BULLET_HIT_REGION = 5;
 	int m_Direction;
 
 	// Bitmap Bank
-	BitmapManager* m_BitmapManager = nullptr;
 	Bitmap* m_BmpArrowPtr = nullptr;
 };
 

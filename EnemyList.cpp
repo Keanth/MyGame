@@ -2,9 +2,13 @@
 #include "EnemyList.h"
 #include "Enemy.h"
 #include "BulletList.h"
+#include "PickUpList.h"
+#include "MainGame.h"
+#include "Doritos.h"
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-EnemyList::EnemyList()
+EnemyList::EnemyList(Hero* hero)
+:m_HeroPtr(hero)
 {
 
 }
@@ -61,7 +65,7 @@ void EnemyList::RemoveAll()
 	{
 		if (m_EnemyPtrArr[i] != nullptr)
 		{
-//			m_EnemyPtrArr[i]->RemoveContactListener();
+			m_EnemyPtrArr[i]->RemoveContactListener();
 			delete m_EnemyPtrArr[i];
 			m_EnemyPtrArr[i] = nullptr;
 		}

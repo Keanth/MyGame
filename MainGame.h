@@ -5,6 +5,7 @@ class Camera;
 class PolarStarBullet;
 class BulletList;
 class Enemy;
+class PickUpList;
 class EnemyList;
 class HUD;
 class ButtonManager;
@@ -27,6 +28,7 @@ public:
 	void Paint();
 
 	static bool m_IsPaused;
+	static PickUpList* m_PickUpListPtr;
 
 private:
 	void InitObj();
@@ -39,6 +41,7 @@ private:
 	bool m_Physics = false;
 	bool m_CameraLock = true;
 	bool m_Shooting = false;
+	void PopulatePickUpList();
 
 
 	Hero* m_HeroPtr = nullptr;
@@ -49,6 +52,11 @@ private:
 	HealthUp* m_HealthUpPtr = nullptr;
 	Doritos* m_DoritosPtr = nullptr;
 
+	//Sound
+	Sound* m_SndOutSideIntro = nullptr;
+	Sound* m_SndOutsideLoop = nullptr;
+
+	//Enemies
 	EnemyList* m_EnemyListPtr = nullptr;
 	std::vector<Enemy*> m_EnemyPtrArr;
 	

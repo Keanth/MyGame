@@ -29,11 +29,12 @@ Bitmap* BitmapManager::LoadBitmap(const String& fileNameRef)
 			return m_BmpPtrArr[i];
 		}
 	}
-
+	
 	std::wcout << L"The bitmap with path: " << fileNameRef.C_str() << L" is loaded" << std::endl;
 	Bitmap* bmpPtr = new Bitmap(fileNameRef);
 	m_BmpPtrArr[m_NumberOfStoredBitmaps] = bmpPtr;
 	m_FileNameArr[m_NumberOfStoredBitmaps] = fileNameRef;
 	++m_NumberOfStoredBitmaps;
-	return bmpPtr;
+	return 0;
+//	return bmpPtr;
 }

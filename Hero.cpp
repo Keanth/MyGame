@@ -2,6 +2,9 @@
 #include "Hero.h"
 #include "Entity.h"
 
+#include "PolarStarBullet.h"
+#include "MyGame.h"
+
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 int Hero::m_health = INITIAL_HEALTH;
@@ -15,8 +18,8 @@ void Hero::Init()
 {
 	m_BaseSpeed = 250;
 
-	m_BitmapManager = new BitmapManager();
-	m_BmpHeroPtr = m_BitmapManager->LoadBitmap(String("./Assets/Images/SpriteSheet_Hero.png"));
+	m_BmpHeroPtr = MyGame::m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Hero.png"));
+	m_BmpBoosterTrailPtr = MyGame::m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Sym.png"));
 
 	m_ActPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
 	m_ActPtr->AddBoxShape(20, 28, 0, 0);
@@ -32,16 +35,10 @@ void Hero::Init()
 
 	m_ActPtr->SetFixedRotation(true);
 	m_ActFeetPtr->SetFixedRotation(true);
-
-	m_BmpBoosterTrailPtr = m_BitmapManager->LoadBitmapW(String("./Assets/Images/Sym.png"));
 }
 
 Hero::~Hero()
 {
-	delete m_ActFeetPtr;
-	m_ActFeetPtr = nullptr;
-	delete m_BitmapManager;
-	m_BitmapManager = nullptr;
 }
 
 void Hero::Tick(double deltaTime)
@@ -49,14 +46,15 @@ void Hero::Tick(double deltaTime)
 	UpdateVariables(deltaTime);
 	Entity::UpdateVariables(deltaTime);
 	UserInput(deltaTime);
-	Entity:ApplyImpulse(deltaTime);
+	Entity::ApplyImpulse(deltaTime);
+	Gone();
 }
 
 void Hero::UpdateVariables(double deltaTime)
 {
 	m_ActFeetPtr->SetPosition(
 		DOUBLE2(m_ActPtr->GetPosition().x,
-		m_ActPtr->GetPosition().y + 14)); // position of the feet, trial and error
+		m_ActPtr->GetPosition().y + 15)); // position of the feet, trial and error
 	if (m_OnFloor)
 	{
 		m_BoosterActive = false;
@@ -129,6 +127,8 @@ void Hero::Paint()
 	Entity::Paint();
 	GAME_ENGINE->DrawBitmap(m_BmpHeroPtr, Rect());
 	BoosterTrail();
+	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
+	GAME_ENGINE->DrawString(String(PolarStarBullet::m_Exp), -20, -20);
 }
 
 void Hero::Up()

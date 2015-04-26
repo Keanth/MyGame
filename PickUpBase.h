@@ -1,5 +1,8 @@
 #pragma once
-class PickUpBase
+#include "ContactListener.h"
+#include "Hero.h"
+
+class PickUpBase : public ContactListener
 {
 public:
 	PickUpBase();
@@ -9,8 +12,15 @@ public:
 	PickUpBase (const PickUpBase&) = delete;
 	PickUpBase& operator=(const PickUpBase&) = delete;
 
+	// Methods
+	virtual void BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr) = 0;
+	virtual void EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr) = 0;
+	virtual void ContactImpulse(PhysicsActor *actThisPtr, double impulse) = 0;
 	virtual void Tick(double deltaTime);
 	virtual void Paint();
+	virtual void RemoveContactListener();
+	virtual bool GetHit() { return m_Hit; }
+	virtual DOUBLE2 GetPosition();
 
 protected:
 	virtual void CreateMatrix();
@@ -31,6 +41,8 @@ protected:
 
 	Bitmap* m_BmpPickUpPtr = nullptr;
 	PhysicsActor* m_ActPickUpPtr = nullptr;
+	Hero* m_HeroPtr = nullptr;
 
+	bool m_Hit = false;
 };
 

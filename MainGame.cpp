@@ -12,21 +12,62 @@
 #include "ButtonManager.h"
 #include "HealthUp.h"
 #include "Doritos.h"
+#include "PickUpList.h"
+#include "SoundManager.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 DOUBLE2 MainGame::m_HeroPos = DOUBLE2(0.0, 0.0);
 bool MainGame::m_IsPaused = false;
+PickUpList* MainGame::m_PickUpListPtr = nullptr;
 
 MainGame::MainGame()
 {
 	InitObj();
 	InitTestButton();
+	m_SndOutsideLoop = MyGame::m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
+	m_SndOutsideLoop->Play();
+}
+
+void MainGame::InitObj()
+{
+	m_HeroPtr = new Hero();
+	m_CameraPtr = new Camera(m_HeroPtr);
+	m_LevelOutdoorPtr = new LevelOutdoor(m_CameraPtr);
+	m_PickUpListPtr = new PickUpList(m_HeroPtr);
+	m_EnemyListPtr = new EnemyList(m_HeroPtr);
+	//	EnemyHandler(); //Do not use during testing phase;
+	m_ArrowListPtr = new BulletList(m_EnemyListPtr);
+	m_HudPtr = new HUD();
 }
 
 MainGame::~MainGame()
 {
 	RemoveAll();
+}
+
+void MainGame::RemoveAll()
+{
+	delete m_LevelOutdoorPtr;
+	delete m_HeroPtr;
+	delete m_CameraPtr;
+	delete m_ArrowListPtr;
+	delete m_EnemyListPtr;
+	delete m_HudPtr;
+	delete m_PickUpListPtr;
+
+	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
+	{
+		delete m_EnemyPtrArr[i];
+		m_EnemyPtrArr[i] = nullptr;
+	}
+	m_EnemyPtrArr.clear();
+
+	for (size_t i = 0; i < m_ButtonManagerPtrArr.size(); i++)
+	{
+		delete m_ButtonManagerPtrArr[i];
+	}
+	m_ButtonManagerPtrArr.clear();
 }
 
 void MainGame::Tick(double deltaTime)
@@ -62,16 +103,16 @@ void MainGame::Tick(double deltaTime)
 
 		m_HeroPos = m_HeroPtr->GetPosition();
 
-		m_HealthUpPtr->Tick(deltaTime);
-		m_DoritosPtr->Tick(deltaTime);
+		PopulatePickUpList();
+		m_PickUpListPtr->Tick(deltaTime);
 
 		_Test();
 
-		/*if (Hero::m_health <= 0)
+		if (Hero::m_health <= 0)
 		{
 			MyGame::InitExit();
 			MyGame::m_GameState = GameState::EXIT;
-		}*/
+		}
 	}
 
 	if (m_IsPaused)
@@ -83,79 +124,36 @@ void MainGame::Tick(double deltaTime)
 
 void MainGame::Paint()
 {
-	/*if (m_IsPaused == false)
-	{*/
-		m_LevelOutdoorPtr->Paint();
+	m_LevelOutdoorPtr->Paint();
 
-		m_HudPtr->Paint();
+	m_HudPtr->Paint();
 
-		// ==== TESTING =====
-		if (m_BoolTestMenu)
+	// ==== TESTING =====
+	if (m_BoolTestMenu)
+	{
+		DrawUnderlay();
+		for (size_t i = 0; i < m_ButtonManagerPtrArr.size(); i++)
 		{
-			DrawUnderlay();
-			for (size_t i = 0; i < m_ButtonManagerPtrArr.size(); i++)
-			{
-				m_ButtonManagerPtrArr[i]->Paint();
-			}
+			m_ButtonManagerPtrArr[i]->Paint();
 		}
-		// ==== TESTING =====
+	}
+	// ==== TESTING =====
 		
-		if (m_CameraLock)
-		{
-			GAME_ENGINE->SetViewMatrix(m_CameraPtr->GetPlayerMatrix());
-		}
-		else
-		{
-			GAME_ENGINE->SetViewMatrix(m_CameraPtr->GetViewMatrix());
-		}
-		m_HeroPtr->Paint();
-
-		m_EnemyListPtr->Paint();
-
-		m_ArrowListPtr->Paint();
-
-		m_HealthUpPtr->Paint();
-		m_DoritosPtr->Paint();
-//	}
-	
-}
-
-void MainGame::InitObj()
-{
-	m_HeroPtr = new Hero();
-	m_CameraPtr = new Camera(m_HeroPtr);
-	m_LevelOutdoorPtr = new LevelOutdoor(m_CameraPtr);
-	m_EnemyListPtr = new EnemyList();
-	//	EnemyHandler(); //Do not use during testing phase;
-	m_ArrowListPtr = new BulletList(m_EnemyListPtr);
-	m_HudPtr = new HUD();
-	m_HealthUpPtr = new HealthUp(DOUBLE2(400, 5300));
-	m_DoritosPtr = new Doritos(DOUBLE2(300, 5270));
-}
-
-void MainGame::RemoveAll()
-{
-	delete m_LevelOutdoorPtr;
-	delete m_HeroPtr;
-	delete m_CameraPtr;
-	delete m_ArrowListPtr;
-	delete m_EnemyListPtr;
-	delete m_HudPtr;
-	delete m_HealthUpPtr;
-	delete m_DoritosPtr;
-
-	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
+	if (m_CameraLock)
 	{
-		delete m_EnemyPtrArr[i];
-		m_EnemyPtrArr[i] = nullptr;
+		GAME_ENGINE->SetViewMatrix(m_CameraPtr->GetPlayerMatrix());
 	}
-	m_EnemyPtrArr.clear();
-
-	for (size_t i = 0; i < m_ButtonManagerPtrArr.size(); i++)
+	else
 	{
-		delete m_ButtonManagerPtrArr[i];
+		GAME_ENGINE->SetViewMatrix(m_CameraPtr->GetViewMatrix());
 	}
-	m_ButtonManagerPtrArr.clear();
+	m_HeroPtr->Paint();
+
+	m_EnemyListPtr->Paint();
+
+	m_ArrowListPtr->Paint();
+
+	m_PickUpListPtr->Paint();	
 }
 
 void MainGame::PhysicsRendering()
@@ -252,5 +250,14 @@ void MainGame::CheckTestMenu()
 	if (GAME_ENGINE->IsKeyboardKeyPressed('M'))
 	{
 		m_BoolTestMenu = !m_BoolTestMenu;
+	}
+}
+
+void MainGame::PopulatePickUpList()
+{
+	if (GAME_ENGINE->IsKeyboardKeyPressed('X'))
+	{
+		m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_HeroPtr));
+		m_PickUpListPtr->Add(new HealthUp(DOUBLE2(400, 5300), m_HeroPtr));
 	}
 }

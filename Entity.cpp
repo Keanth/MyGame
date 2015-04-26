@@ -11,6 +11,8 @@ Entity::~Entity()
 {
 	delete m_ActPtr;
 	m_ActPtr = nullptr;
+	delete m_ActFeetPtr;
+	m_ActFeetPtr = nullptr;
 }
 
 // ==== PUBLIC METHODS ====
@@ -27,7 +29,10 @@ void Entity::Paint()
 
 void Entity::RemoveContactListener()
 {
-	m_ActPtr->RemoveContactListener(this);
+	if (m_ActPtr != nullptr)
+	{
+		m_ActPtr->RemoveContactListener(this);
+	}
 }
 
 int GetHealth()

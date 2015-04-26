@@ -1,14 +1,17 @@
 #include "stdafx.h"
 #include "PolarStarBullet.h"
 #include "BitmapManager.h"
+
+#include "MyGame.h"
+
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 int PolarStarBullet::m_InstanceCounter = 0;
+int PolarStarBullet::m_Exp = INITIAL_EXP;
 
 PolarStarBullet::PolarStarBullet(DOUBLE2 pos, int direction) :m_HeroPos(pos), m_Direction(direction)
 {
-	m_BitmapManager = new BitmapManager();
-	m_BmpArrowPtr = m_BitmapManager->LoadBitmap(String("./Assets/Images/Bullet.png"));
+	m_BmpArrowPtr = MyGame::m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Bullet.png"));
 	
 	switch (m_Direction)
 	{
@@ -42,8 +45,6 @@ PolarStarBullet::~PolarStarBullet()
 		delete m_ActBulletPtr;
 		m_ActBulletPtr = nullptr;
 	}
-
-	delete m_BitmapManager;
 }
 
 void PolarStarBullet::Tick()

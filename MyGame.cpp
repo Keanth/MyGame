@@ -14,6 +14,9 @@
 #include "Pause.h"
 #include "Exit.h"
 
+#include "BitmapManager.h"
+#include "SoundManager.h"
+
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 GameState MyGame::m_GameState = GameState::MAIN_GAME;
@@ -21,6 +24,9 @@ MainMenu* MyGame::m_MainMenu = nullptr;
 MainGame* MyGame::m_MainGame = nullptr;
 Pause* MyGame::m_Pause = nullptr;
 Exit* MyGame::m_Exit = nullptr;
+
+BitmapManager* MyGame::m_BitmapManagerPtr = nullptr;
+SoundManager* MyGame::m_SoundManagerPtr = nullptr;
 
 MyGame::MyGame()
 {
@@ -41,6 +47,8 @@ void MyGame::GameInitialize(GameSettings &gameSettings)
 
 void MyGame::GameStart()
 {
+	PopulateBank();
+
 	if (m_GameState == GameState::MAIN_MENU)
 	{
 		InitMainMenu();
@@ -57,11 +65,13 @@ void MyGame::GameEnd()
 	delete m_MainMenu;
 	delete m_Pause;
 	delete m_Exit;
+	delete m_BitmapManagerPtr;
+	delete m_SoundManagerPtr;
 }
 
 void MyGame::GameTick(double deltaTime)
 {
-	UpdateGameStates(deltaTime);
+	UpdateGameStates(deltaTime);	
 }
 
 void MyGame::GamePaint(RECT rect)
@@ -141,3 +151,15 @@ void MyGame::DrawGameStates()
 	}
 }
 
+void MyGame::PopulateBank()
+{
+	m_BitmapManagerPtr = new BitmapManager();
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Hero.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Sym.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc03.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Bullet.png"));
+
+	m_SoundManagerPtr = new SoundManager();
+	m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_intro.mp3"));
+	m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
+}

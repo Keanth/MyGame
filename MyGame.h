@@ -28,6 +28,8 @@ class MainMenu;
 class MainGame;
 class Pause;
 class Exit;
+class BitmapManager;
+class SoundManager;
 class MyGame : public AbstractGame
 {
 public:
@@ -53,6 +55,10 @@ public:
 
 	static const int TILE_SIZE = 32;
 
+	// Bank
+	static BitmapManager* m_BitmapManagerPtr;
+	static SoundManager* m_SoundManagerPtr;
+
 private:
 	void UpdateGameStates(double deltaTime);
 	void DrawGameStates();
@@ -61,5 +67,7 @@ private:
 	static MainGame* m_MainGame;
 	static Pause* m_Pause;
 	static Exit* m_Exit;
- 
+
+	// Bank
+	void PopulateBank();
 };

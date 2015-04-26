@@ -3,8 +3,11 @@
 #include "PickUpBase.h"
 #include "Hero.h"
 #include "DamageHero.h"
+#include "MainGame.h"
+#include "Doritos.h"
 
-PickUpList::PickUpList()
+PickUpList::PickUpList(Hero* hero)
+:m_HeroPtr(hero)
 {
 }
 
@@ -40,19 +43,13 @@ bool PickUpList::Add(PickUpBase* pickUpPtr)
 	return foo;
 }
 
-bool PickUpList::Remove(PickUpBase* pickUpPtr)
+void PickUpList::Remove()
 {
 	for (size_t i = 0; i < m_PickUpPtrArr.size(); ++i)
 	{
-		if (m_PickUpPtrArr[i] == pickUpPtr)
-		{
-			delete m_PickUpPtrArr[i];
-			m_PickUpPtrArr[i] = nullptr;
-			return true;
-		}
-
+		delete m_PickUpPtrArr[i];
+		m_PickUpPtrArr[i] = nullptr;
 	}
-	return false;
 }
 
 void PickUpList::RemoveAll()
@@ -95,15 +92,11 @@ void PickUpList::Hit()
 {
 	for (size_t i = 0; i < m_PickUpPtrArr.size(); i++)
 	{
-		if (m_PickUpPtrArr[i] != nullptr)
+		if ((m_PickUpPtrArr[i] != nullptr) && (m_PickUpPtrArr[i]->GetHit()))
 		{
-			if (m_PickUpPtrArr[i]->GetIsHit())
-			{
-				DamageHero::DealDamage(1);
-				m_PickUpPtrArr[i]->RemoveContactListener();
-				delete m_PickUpPtrArr[i];
-				m_PickUpPtrArr[i] = nullptr;
-			}
+			m_PickUpPtrArr[i]->RemoveContactListener();
+			delete m_PickUpPtrArr[i];
+			m_PickUpPtrArr[i] = nullptr;
 		}
 	}
 }

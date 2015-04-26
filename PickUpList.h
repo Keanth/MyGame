@@ -1,14 +1,15 @@
 #pragma once
 
 class PickUpBase;
+class Hero;
 class PickUpList
 {
 public:
-	PickUpList();
+	PickUpList(Hero* Hero);
 	virtual ~PickUpList();
 
 	bool Add(PickUpBase* pickUpObj);
-	bool Remove(PickUpBase* pickUpObj);
+	void Remove();
 	void RemoveAll();
 	void Tick(double deltaTime);
 	void Paint();
@@ -16,6 +17,7 @@ public:
 
 private:
 	std::vector<PickUpBase*> m_PickUpPtrArr;
+	Hero* m_HeroPtr = nullptr;
 };
 
 

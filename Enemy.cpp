@@ -2,6 +2,11 @@
 #include "Enemy.h"
 #include "Entity.h"
 
+#include "MyGame.h"
+#include "PickUpList.h"
+#include "MainGame.h"
+#include "Doritos.h"
+
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 Enemy::Enemy(LevelOutdoor* level, Hero* hero, DOUBLE2 position) 
@@ -12,20 +17,28 @@ Enemy::Enemy(LevelOutdoor* level, Hero* hero, DOUBLE2 position)
 
 void Enemy::Init()
 {
-	m_BitmapManager = new BitmapManager();
-	m_BmpNpc1Ptr = m_BitmapManager->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc03.png"));
+	m_BaseSpeed = 200;
+
+	m_BmpNpc1Ptr = MyGame::m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc03.png"));
 
 	m_ActPtr = new PhysicsActor(m_Position, 0, BodyType::DYNAMIC);
 	m_ActPtr->AddBoxShape(25, 40, 0, 1, 50);
 	m_ActPtr->AddContactListener(this);
 	m_ActPtr->SetFixedRotation(true);
+
+	m_ActFeetPtr = new PhysicsActor(m_Position, 0, BodyType::DYNAMIC);
+
+	m_ActFeetPtr->AddBoxShape(10, 2, 0); //feet
+	m_ActFeetPtr->AddContactListener(this);
+	m_ActFeetPtr->SetGravityScale(0);
+	m_ActFeetPtr->SetTrigger(true);
+	m_ActFeetPtr->SetBullet(true);
+	m_ActFeetPtr->SetFixedRotation(true);
 }
 
 Enemy::~Enemy()
 {
 	RemoveEnemy();
-	delete m_BitmapManager;
-	m_BitmapManager = nullptr;
 }
 
 void Enemy::Tick(double deltaTime)
@@ -42,7 +55,11 @@ void Enemy::Tick(double deltaTime)
 void Enemy::UpdateVariables(double deltaTime)
 {
 	m_BaseSpeed = 200;
-	
+
+	m_ActFeetPtr->SetPosition(
+		DOUBLE2(m_ActPtr->GetPosition().x,
+		m_ActPtr->GetPosition().y + 22));
+
 	if (m_BoolDealDamage == false)
 	{
 		m_DamageTime += deltaTime;
@@ -69,7 +86,7 @@ void Enemy::CreateWorldMatrix()
 	double actHeroAngle = m_ActPtr->GetAngle();
 
 	MATRIX3X2 matPivot, matTransform, matTranslate, matAngle, matScale;
-	matPivot.SetAsTranslate(DOUBLE2(-TILE_SIZE / 2, -TILE_SIZE / 2));
+	matPivot.SetAsTranslate(DOUBLE2(-TILE_SIZE, -TILE_SIZE));
 	matAngle.SetAsRotate(actHeroAngle);
 
 	switch (m_Direction)
@@ -146,6 +163,7 @@ void Enemy::RemoveEnemy()
 {
 	if (m_ActPtr != nullptr)
 	{
+		MainGame::m_PickUpListPtr->Add(new Doritos(m_ActPtr->GetPosition(), m_HeroPtr));
 		delete m_ActPtr;
 		m_ActPtr = nullptr;
 	}
@@ -239,10 +257,18 @@ void Enemy::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 	{
 		DealDamage();
 	}
+	if ((actThisPtr == m_ActFeetPtr) && (actOtherPtr != m_ActPtr))
+	{
+		m_OnFloor = true;
+	}
 }
 
 void Enemy::EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 {
+	if ((actThisPtr == m_ActFeetPtr) && (actOtherPtr != m_ActPtr))
+	{
+		m_OnFloor = false;
+	}
 }
 
 void Enemy::ContactImpulse(PhysicsActor *actThisPtr, double impulse)
