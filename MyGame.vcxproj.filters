@@ -202,7 +202,9 @@
     <ClCompile Include="PickUpList.cpp">
       <Filter>Game Files\Pickups</Filter>
     </ClCompile>
-    <ClCompile Include="SoundManager.cpp" />
+    <ClCompile Include="SoundManager.cpp">
+      <Filter>Game Files\Managers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -490,7 +492,9 @@
     <ClInclude Include="PickUpList.h">
       <Filter>Game Files\Pickups</Filter>
     </ClInclude>
-    <ClInclude Include="SoundManager.h" />
+    <ClInclude Include="SoundManager.h">
+      <Filter>Game Files\Managers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

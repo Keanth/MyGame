@@ -26,6 +26,7 @@ private:
 	// Methods
 	virtual void UserInput(double deltaTime);
 	virtual void Up();
+	virtual void Down();
 	virtual void StartJump();
 	virtual void StopJump();
 	virtual void StartBooster();

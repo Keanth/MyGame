@@ -37,7 +37,6 @@ PolarStarBullet::PolarStarBullet(DOUBLE2 pos, int direction) :m_HeroPos(pos), m_
 	m_ActBulletPtr->SetTrigger(true);
 }
 
-
 PolarStarBullet::~PolarStarBullet()
 {
 	if (m_ActBulletPtr != nullptr)
@@ -58,6 +57,7 @@ void PolarStarBullet::Tick()
 		NewVel.y = -800;
 		break;
 	case 1:
+		NewVel.y = 800;
 		break;
 	case 2:
 		NewVel.x = -800;
@@ -77,10 +77,16 @@ void PolarStarBullet::Tick()
 
 void PolarStarBullet::Paint()
 {
+	CreateMatrix();
+	GAME_ENGINE->DrawBitmap(m_BmpArrowPtr);
+}
+
+void PolarStarBullet::CreateMatrix()
+{
 	DOUBLE2 actArrowPos = m_ActBulletPtr->GetPosition();
 
 	MATRIX3X2 matPivot, matTransform, matTranslate, matRotation;
-	matPivot.SetAsTranslate(DOUBLE2(-BULLET_WIDTH/2, -BULLET_HEIGHT*4));
+	matPivot.SetAsTranslate(DOUBLE2(-BULLET_WIDTH / 2, -BULLET_HEIGHT * 4));
 	matTranslate.SetAsTranslate(actArrowPos);
 
 	switch (m_Direction)
@@ -89,7 +95,7 @@ void PolarStarBullet::Paint()
 		matRotation.SetAsRotate(M_PI / 2);
 		break;
 	case 1:
-		matRotation.SetAsRotate((3 / 2) * M_PI);
+		matRotation.SetAsRotate(M_PI / 2);
 		break;
 	case 2:
 		matRotation.SetAsRotate(M_PI);
@@ -103,6 +109,4 @@ void PolarStarBullet::Paint()
 
 	matTransform = matPivot * matRotation * matTranslate;
 	GAME_ENGINE->SetWorldMatrix(matTransform);
-
-	GAME_ENGINE->DrawBitmap(m_BmpArrowPtr);
 }

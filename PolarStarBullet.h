@@ -19,9 +19,17 @@ public:
 	static int m_Exp;
 
 private:
+	void CreateMatrix();
 	RECT Rect();
 	DOUBLE2 m_HeroPos;
 	PhysicsActor* m_ActBulletPtr = nullptr;
+
+	enum class LEVEL
+	{
+		LEVEL1,
+		LEVEL2,
+		LEVEL3
+	};
 
 	const int BASE_DAMAGE = 1;
 	static const int INITIAL_EXP = 0;

@@ -43,7 +43,6 @@ private:
 	bool m_Shooting = false;
 	void PopulatePickUpList();
 
-
 	Hero* m_HeroPtr = nullptr;
 	LevelOutdoor* m_LevelOutdoorPtr = nullptr;
 	Camera* m_CameraPtr = nullptr;
@@ -51,10 +50,6 @@ private:
 	HUD* m_HudPtr = nullptr;
 	HealthUp* m_HealthUpPtr = nullptr;
 	Doritos* m_DoritosPtr = nullptr;
-
-	//Sound
-	Sound* m_SndOutSideIntro = nullptr;
-	Sound* m_SndOutsideLoop = nullptr;
 
 	//Enemies
 	EnemyList* m_EnemyListPtr = nullptr;

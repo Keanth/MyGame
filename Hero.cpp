@@ -89,6 +89,10 @@ void Hero::UserInput(double deltaTime)
 	{
 		Up();
 	}
+	else if (GAME_ENGINE->IsKeyboardKeyDown('S'))
+	{
+		Down();
+	}
 	else
 	{
 		Idle();
@@ -135,6 +139,13 @@ void Hero::Up()
 {
 	m_ActionState = ActionState::UP;
 	m_Direction = Direction::UP;
+	Anim();
+}
+
+void Hero::Down()
+{
+	m_ActionState = ActionState::DOWN;
+	m_Direction = Direction::DOWN;
 	Anim();
 }
 
@@ -221,6 +232,9 @@ void Hero::Anim()
 	case Hero::ActionState::UP:
 		m_CurrentFrame = 2;
 		break;
+	case Hero::ActionState::DOWN:
+		m_CurrentFrame = 1;
+		break;
 	case Hero::ActionState::STARTJUMP:
 		m_CurrentFrame = 0;
 		break;
@@ -246,6 +260,9 @@ RECT Hero::Rect()
 		break;
 	case Hero::ActionState::UP:
 		r.top = CLIP_SIZE * 1;
+		break;
+	case Hero::ActionState::DOWN:
+		r.top = CLIP_SIZE * 2;
 		break;
 	case Hero::ActionState::STARTJUMP:
 		r.top = CLIP_SIZE * 0;

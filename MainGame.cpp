@@ -25,8 +25,6 @@ MainGame::MainGame()
 {
 	InitObj();
 	InitTestButton();
-	m_SndOutsideLoop = MyGame::m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
-	m_SndOutsideLoop->Play();
 }
 
 void MainGame::InitObj()
@@ -36,7 +34,7 @@ void MainGame::InitObj()
 	m_LevelOutdoorPtr = new LevelOutdoor(m_CameraPtr);
 	m_PickUpListPtr = new PickUpList(m_HeroPtr);
 	m_EnemyListPtr = new EnemyList(m_HeroPtr);
-	//	EnemyHandler(); //Do not use during testing phase;
+//	EnemyHandler(); //Do not use during testing phase;
 	m_ArrowListPtr = new BulletList(m_EnemyListPtr);
 	m_HudPtr = new HUD();
 }
@@ -191,6 +189,14 @@ void MainGame::EnemyHandler()
 	}
 }
 
+void MainGame::PopulatePickUpList()
+{
+	if (GAME_ENGINE->IsKeyboardKeyPressed('X'))
+	{
+		m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_HeroPtr));
+		m_PickUpListPtr->Add(new HealthUp(DOUBLE2(400, 5300), m_HeroPtr));
+	}
+}
 
 // ================ TESTING METHODS ==================
 void MainGame::_Test()
@@ -250,14 +256,5 @@ void MainGame::CheckTestMenu()
 	if (GAME_ENGINE->IsKeyboardKeyPressed('M'))
 	{
 		m_BoolTestMenu = !m_BoolTestMenu;
-	}
-}
-
-void MainGame::PopulatePickUpList()
-{
-	if (GAME_ENGINE->IsKeyboardKeyPressed('X'))
-	{
-		m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_HeroPtr));
-		m_PickUpListPtr->Add(new HealthUp(DOUBLE2(400, 5300), m_HeroPtr));
 	}
 }

@@ -20,6 +20,8 @@ public:
 	int GetSize();
 	void HeDead();
 
+	static int PickUpCount;
+
 private:
 	const static int NR_OF_ENEMIES = 1;
 	std::vector<Enemy*> m_EnemyPtrArr;

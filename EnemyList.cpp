@@ -7,6 +7,8 @@
 #include "Doritos.h"
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
+int EnemyList::PickUpCount = 0;
+
 EnemyList::EnemyList(Hero* hero)
 :m_HeroPtr(hero)
 {

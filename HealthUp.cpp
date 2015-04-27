@@ -9,7 +9,7 @@ HealthUp::HealthUp(DOUBLE2 position, Hero* hero)
 {
 	m_HeroPtr = hero;
 
-	CLIP_POS = DOUBLE2(2, 4);
+	CLIP_POS = DOUBLE2(0, 5);
 	FR = 2;
 	FR_PER_SEC = 4;
 
