@@ -29,6 +29,7 @@ private:
 	virtual void Down();
 	virtual void StartJump();
 	virtual void StopJump();
+	virtual void DownJump();
 	virtual void StartBooster();
 	virtual void StopBooster();
 	virtual void BoosterTrail();

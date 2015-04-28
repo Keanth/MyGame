@@ -27,6 +27,8 @@ private:
 	const int RECT_WIDTH = 117;
 	const int RECT_HEIGHT = 15;
 
+	const int MAX_XP_LEVEL1 = 10;
+
 	Bitmap* m_HUDPtr = nullptr;
 
 	int m_FirstNum = 0;
