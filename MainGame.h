@@ -42,6 +42,7 @@ private:
 	bool m_CameraLock = true;
 	bool m_Shooting = false;
 	void PopulatePickUpList();
+	void PopulateSound();
 
 	Hero* m_HeroPtr = nullptr;
 	LevelOutdoor* m_LevelOutdoorPtr = nullptr;
