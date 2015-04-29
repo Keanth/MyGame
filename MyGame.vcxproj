@@ -83,6 +83,7 @@
   <ItemGroup>
     <ClCompile Include="AbstractGame.cpp" />
     <ClCompile Include="Doritos.cpp" />
+    <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="HealthUp.cpp" />
     <ClCompile Include="Pause.cpp" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClInclude Include="AbstractGame.h" />
     <ClInclude Include="Doritos.h" />
+    <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="HealthUp.h" />
     <ClInclude Include="Pause.h" />

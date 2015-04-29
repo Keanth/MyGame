@@ -81,7 +81,6 @@ void Enemy::Paint()
 		CreateWorldMatrix();
 		GAME_ENGINE->DrawBitmap(m_BmpNpc1Ptr, Rect());
 	}
-	GAME_ENGINE->DrawString(String(m_PosDif.ToString()), 0, 0);
 }
 
 void Enemy::CreateWorldMatrix()

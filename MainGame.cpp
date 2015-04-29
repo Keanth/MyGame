@@ -189,14 +189,11 @@ void MainGame::EnemyHandler()
 	}
 }
 
-<<<<<<< HEAD
-=======
 void MainGame::PopulateSound()
 {
 	
 }
 
->>>>>>> c785ca07f6298344d7c551b016f74126e83d7c31
 void MainGame::PopulatePickUpList()
 {
 	if (GAME_ENGINE->IsKeyboardKeyPressed('X'))

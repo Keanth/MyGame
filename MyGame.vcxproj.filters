@@ -205,6 +205,7 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>Game Files\Managers</Filter>
     </ClCompile>
+    <ClCompile Include="EnemyBase.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -495,6 +496,7 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Game Files\Managers</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyBase.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
