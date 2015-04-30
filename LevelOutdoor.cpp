@@ -20,7 +20,7 @@ LevelOutdoor::LevelOutdoor(Camera* camera)
 
 	m_SndOutsideLoop = MyGame::m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
 	m_SndOutsideLoop->Play();
-//	m_SndOutsideLoop->Pause();
+	m_SndOutsideLoop->Pause();
 }
 
 LevelOutdoor::~LevelOutdoor()
