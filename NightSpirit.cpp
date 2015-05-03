@@ -47,7 +47,7 @@ void NightSpirit::Paint()
 void NightSpirit::MoveTowardHero(double deltaTime)
 {
 	m_PosDif = m_ActPtr->GetPosition() - m_HeroPtr->GetPosition();
-	int idleDif = 8;
+	int idleDif = 100;
 	int attackDif = 200;
 
 	if ((m_PosDif.y < idleDif) && (m_PosDif.y > -idleDif))
