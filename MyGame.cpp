@@ -156,6 +156,7 @@ void MyGame::PopulateBank()
 	m_BitmapManagerPtr = new BitmapManager();
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Hero.png"));
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Sym.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc02.png"));
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc03.png"));
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Bullet.png"));
 

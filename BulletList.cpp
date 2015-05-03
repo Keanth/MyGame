@@ -43,7 +43,7 @@ void BulletList::Tick(double deltaTime, int direction)
 	{
 		if (m_BulletPtrArr[i] != nullptr)
 		{
-			m_BulletPtrArr[i]->Tick();
+			m_BulletPtrArr[i]->Tick(deltaTime);
 		}
 	}
 }

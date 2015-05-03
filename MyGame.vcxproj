@@ -86,6 +86,7 @@
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="HealthUp.cpp" />
+    <ClCompile Include="NightSpirit.cpp" />
     <ClCompile Include="Pause.cpp" />
     <ClCompile Include="PickUpBase.cpp" />
     <ClCompile Include="PickUpList.cpp" />
@@ -120,6 +121,7 @@
     <ClCompile Include="LevelOutdoor.cpp" />
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MainMenu.cpp" />
+    <ClCompile Include="Projectile.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -131,7 +133,7 @@
     <ClCompile Include="EngineFiles\TextBox.cpp" />
     <ClCompile Include="MyGame.cpp" />
     <ClCompile Include="ContactListener.cpp" />
-    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="GraveKeeper.cpp" />
     <ClCompile Include="ButtonManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -140,6 +142,7 @@
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="HealthUp.h" />
+    <ClInclude Include="NightSpirit.h" />
     <ClInclude Include="Pause.h" />
     <ClInclude Include="PickUpBase.h" />
     <ClInclude Include="PickUpList.h" />
@@ -220,6 +223,7 @@
     <ClInclude Include="LevelOutdoor.h" />
     <ClInclude Include="MainGame.h" />
     <ClInclude Include="MainMenu.h" />
+    <ClInclude Include="Projectile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="EngineFiles\Sound.h" />
     <ClInclude Include="SoundManager.h" />
@@ -230,7 +234,7 @@
     <ClInclude Include="EngineFiles\TextBox.h" />
     <ClInclude Include="MyGame.h" />
     <ClInclude Include="ContactListener.h" />
-    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="GraveKeeper.h" />
     <ClInclude Include="ButtonManager.h" />
   </ItemGroup>
   <ItemGroup>

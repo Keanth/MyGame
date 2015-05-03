@@ -1,10 +1,12 @@
 #include "stdafx.h"
 #include "EnemyList.h"
-#include "Enemy.h"
+#include "GraveKeeper.h"
 #include "BulletList.h"
 #include "PickUpList.h"
 #include "MainGame.h"
 #include "Doritos.h"
+#include "EnemyBase.h"
+
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 int EnemyList::PickUpCount = 0;
@@ -20,7 +22,7 @@ EnemyList::~EnemyList()
 	RemoveAll();
 }
 
-bool EnemyList::Add(Enemy* enemyPtr)
+bool EnemyList::Add(EnemyBase* enemyPtr)
 {
 	bool foo = true;
 
@@ -46,7 +48,7 @@ bool EnemyList::Add(Enemy* enemyPtr)
 	return foo;
 }
 
-bool EnemyList::Remove(Enemy* enemyPtr)
+bool EnemyList::Remove(EnemyBase* enemyPtr)
 {
 	for (size_t i = 0; i < m_EnemyPtrArr.size(); ++i)
 	{

@@ -1,6 +1,15 @@
 #pragma once
 #include "Entity.h"
 
+#include "MyGame.h"
+#include "PickUpList.h"
+#include "EnemyList.h"
+#include "MainGame.h"
+#include "PickUpBase.h"
+#include "Doritos.h"
+#include "HealthUp.h"
+#include "Hero.h"
+
 class EnemyBase : public Entity
 {
 public:
@@ -22,7 +31,6 @@ public:
 
 protected:
 	// Methods
-	virtual void MoveTowardHero(double deltaTime);
 	virtual void Attack(double deltaTime);
 	virtual void DealDamage();
 	// Inheritance Methods
@@ -31,15 +39,27 @@ protected:
 	virtual void Anim();
 	virtual RECT Rect();
 	virtual void CreateWorldMatrix();
+	virtual void MoveTowardHero(double deltaTime) = 0;
 
 	// Class dependable constants
-	const int BASE_DAMAGE = 3;
-	const int CLIP_SIZE = 48;
-	const int WALK_FR = 2;
-	const int WALK_FR_PER_SEC = 6;
-	const int MOVE_RANGE = 600;
-	const int ATT_FR = 3;
-	const int ATT_FR_PER_SEC = 2;
+	//GraveKeepr
+	const int BASE_DAMAGE_GRAVEKEEPER = 3;
+	const int WALK_FR_GRAVEKEEPER = 2;
+	const int WALK_FR_PER_SEC_GRAVEKEEPER = 6;
+	const int MOVE_RANGE_GRAVEKEEPER = 600;
+	const int ATT_FR_GRAVEKEEPER = 3;
+	const int ATT_FR_PER_SEC_GRAVEKEEPER = 2;
+	//NightSpirit
+	const int BASE_DAMAGE_NIGHTSPIRIT = 3;
+	const int IDLE_FR_NIGHTSPIRIT = 3;
+	const int WALK_FR_NIGHTSPIRIT = 3;
+	const int WALK_FR_PER_SEC_NIGHTSPIRIT = 6;
+	const int MOVE_RANGE_NIGHTSPIRIT = 600;
+	const int ATT_FR_NIGHTSPIRIT = 3;
+	const int ATT_FR_PER_SEC_NIGHTSPIRIT = 2;
+
+
+	int m_ClipSize = 0;
 
 	LevelOutdoor* m_LevelPtr = nullptr;
 	Hero* m_HeroPtr = nullptr;
@@ -60,6 +80,6 @@ protected:
 	DOUBLE2 m_Position; //CHECK
 
 	// Bitmap Bank
-	Bitmap* m_BmpNpc1Ptr = nullptr;
+	Bitmap* m_BmpPtr = nullptr;
 };
 

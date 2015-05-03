@@ -6,7 +6,7 @@
 #include "Camera.h"
 #include "PolarStarBullet.h"
 #include "BulletList.h"
-#include "Enemy.h"
+#include "GraveKeeper.h"
 #include "EnemyList.h"
 #include "HUD.h"
 #include "ButtonManager.h"
@@ -14,6 +14,7 @@
 #include "Doritos.h"
 #include "PickUpList.h"
 #include "SoundManager.h"
+#include "NightSpirit.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -179,7 +180,7 @@ void MainGame::EnemyHandler()
 {
 	for (size_t i = 0; i < 2; i++)
 	{
-		Enemy* tempPtr = new Enemy(m_LevelOutdoorPtr, m_HeroPtr,
+		GraveKeeper* tempPtr = new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
 			DOUBLE2(m_HeroPos.x + 30, m_HeroPos.y - 100));
 		m_EnemyPtrArr.push_back(tempPtr);
 	}
@@ -208,7 +209,12 @@ void MainGame::_Test()
 {
 	if (GAME_ENGINE->IsKeyboardKeyPressed('U'))
 	{
-		m_EnemyListPtr->Add(new Enemy(m_LevelOutdoorPtr, m_HeroPtr,
+		m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+			DOUBLE2(m_HeroPos.x + 150, m_HeroPos.y - 100)));
+	}
+	if (GAME_ENGINE->IsKeyboardKeyPressed('N'))
+	{
+		m_EnemyListPtr->Add(new NightSpirit(m_LevelOutdoorPtr, m_HeroPtr,
 			DOUBLE2(m_HeroPos.x + 150, m_HeroPos.y - 100)));
 	}
 	if (GAME_ENGINE->IsKeyboardKeyPressed('I'))

@@ -133,9 +133,6 @@
     <ClCompile Include="EngineFiles\PhysicsRevoluteJoint.cpp">
       <Filter>Engine Files\Core\Box2D</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Game Files\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="EnemyList.cpp">
       <Filter>Game Files\Enemies</Filter>
     </ClCompile>
@@ -205,7 +202,16 @@
     <ClCompile Include="SoundManager.cpp">
       <Filter>Game Files\Managers</Filter>
     </ClCompile>
-    <ClCompile Include="EnemyBase.cpp" />
+    <ClCompile Include="GraveKeeper.cpp">
+      <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="NightSpirit.cpp">
+      <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyBase.cpp">
+      <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Projectile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -424,9 +430,6 @@
     <ClInclude Include="EngineFiles\PhysicsRevoluteJoint.h">
       <Filter>Engine Files\Core\Box2D</Filter>
     </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Game Files\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyList.h">
       <Filter>Game Files\Enemies</Filter>
     </ClInclude>
@@ -496,7 +499,16 @@
     <ClInclude Include="SoundManager.h">
       <Filter>Game Files\Managers</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyBase.h" />
+    <ClInclude Include="GraveKeeper.h">
+      <Filter>Game Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="NightSpirit.h">
+      <Filter>Game Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBase.h">
+      <Filter>Game Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Projectile.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

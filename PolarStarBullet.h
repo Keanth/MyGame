@@ -1,7 +1,8 @@
 #pragma once
-#include "ContactListener.h"
+#include "Projectile.h"
+
 class BitmapManager;
-class PolarStarBullet
+class PolarStarBullet : public Projectile 
 {
 public:
 	PolarStarBullet(DOUBLE2 pos, int direction);
@@ -10,37 +11,11 @@ public:
 	PolarStarBullet(const PolarStarBullet&) = delete;
 	PolarStarBullet& operator= (const PolarStarBullet&) = delete;
 
-	void Tick();
-	void Paint();
-	DOUBLE2 GetPosition() { return m_ActBulletPtr->GetPosition(); }
-	PhysicsActor* GetActor() { return m_ActBulletPtr; }
+	virtual void Tick(double deltaTime);
+	virtual void Paint();
 
 	static int m_InstanceCounter;
 	static int m_Exp;
 
-private:
-	void CreateMatrix();
-	RECT Rect();
-	DOUBLE2 m_HeroPos;
-	PhysicsActor* m_ActBulletPtr = nullptr;
-
-	enum class LEVEL
-	{
-		LEVEL1,
-		LEVEL2,
-		LEVEL3
-	};
-
-	const int BASE_DAMAGE = 1;
-	static const int INITIAL_EXP = 0;
-	const int BULLET_WIDTH = 32;
-	const int BULLET_HEIGHT = 4;
-	const int BULLET_SPEED = 1000;
-	const int BULLET_OFFSET = 5;
-	int BULLET_HIT_REGION = 5;
-	int m_Direction;
-
-	// Bitmap Bank
-	Bitmap* m_BmpArrowPtr = nullptr;
 };
 

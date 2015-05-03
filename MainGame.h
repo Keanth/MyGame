@@ -4,7 +4,7 @@ class Hero;
 class Camera;
 class PolarStarBullet;
 class BulletList;
-class Enemy;
+class GraveKeeper;
 class PickUpList;
 class EnemyList;
 class HUD;
@@ -12,6 +12,8 @@ class ButtonManager;
 class PickUpBase;
 class HealthUp;
 class Doritos;
+class NightSpirit;
+class EnemyBase;
 
 class MainGame
 {
@@ -54,7 +56,7 @@ private:
 
 	//Enemies
 	EnemyList* m_EnemyListPtr = nullptr;
-	std::vector<Enemy*> m_EnemyPtrArr;
+	std::vector<EnemyBase*> m_EnemyPtrArr;
 	
 	// ==== TESTING ====
 	void InitTestButton();

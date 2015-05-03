@@ -2,111 +2,30 @@
 #include "PolarStarBullet.h"
 #include "BitmapManager.h"
 
-#include "MyGame.h"
-
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 int PolarStarBullet::m_InstanceCounter = 0;
 int PolarStarBullet::m_Exp = INITIAL_EXP;
 
-PolarStarBullet::PolarStarBullet(DOUBLE2 pos, int direction) :m_HeroPos(pos), m_Direction(direction)
+PolarStarBullet::PolarStarBullet(DOUBLE2 pos, int direction)
 {
 	m_BmpArrowPtr = MyGame::m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Bullet.png"));
-	
-	switch (m_Direction)
-	{
-	case 0:
-		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x + BULLET_OFFSET, m_HeroPos.y), 0, BodyType::DYNAMIC);
-		break;
-	case 1:
-		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x, m_HeroPos.y), 0, BodyType::DYNAMIC);
-		break;
-	case 2:
-		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x, m_HeroPos.y + BULLET_OFFSET), 0, BodyType::DYNAMIC);
-		break;
-	case 3:
-		m_ActBulletPtr = new PhysicsActor(DOUBLE2(m_HeroPos.x, m_HeroPos.y + BULLET_OFFSET), 0, BodyType::DYNAMIC);
-		break;
-	default:
-		break;
-	}
-	m_ActBulletPtr->AddBoxShape(BULLET_HIT_REGION, BULLET_HEIGHT, 0);
-	m_ActBulletPtr->SetGravityScale(0);
-	m_ActBulletPtr->SetFixedRotation(true);
-	m_ActBulletPtr->SetBullet(true);
-	m_ActBulletPtr->SetTrigger(true);
+	m_HeroPos = pos; 
+	m_Direction = direction;
+
+	Projectile::Init();
 }
 
 PolarStarBullet::~PolarStarBullet()
 {
-	if (m_ActBulletPtr != nullptr)
-	{
-		delete m_ActBulletPtr;
-		m_ActBulletPtr = nullptr;
-	}
 }
 
-void PolarStarBullet::Tick()
+void PolarStarBullet::Tick(double deltaTime)
 {
-	DOUBLE2 Vel = m_ActBulletPtr->GetLinearVelocity();
-	DOUBLE2 NewVel = DOUBLE2(0.0, 0.0);
-
-	switch (m_Direction)
-	{
-	case 0:
-		NewVel.y = -800;
-		break;
-	case 1:
-		NewVel.y = 800;
-		break;
-	case 2:
-		NewVel.x = -800;
-		break;
-	case 3:
-		NewVel.x = 800;
-		break;
-	default:
-		break;
-	}
-
-	double mass = m_ActBulletPtr->GetMass();
-
-	DOUBLE2 j = mass * (NewVel - Vel) / PhysicsActor::SCALE;
-	m_ActBulletPtr->ApplyLinearImpulse(j);
+	Projectile::Tick(deltaTime);
 }
 
 void PolarStarBullet::Paint()
 {
-	CreateMatrix();
-	GAME_ENGINE->DrawBitmap(m_BmpArrowPtr);
-}
-
-void PolarStarBullet::CreateMatrix()
-{
-	DOUBLE2 actArrowPos = m_ActBulletPtr->GetPosition();
-
-	MATRIX3X2 matPivot, matTransform, matTranslate, matRotation;
-	matPivot.SetAsTranslate(DOUBLE2(-BULLET_WIDTH / 2, -BULLET_HEIGHT * 4));
-	matTranslate.SetAsTranslate(actArrowPos);
-
-	switch (m_Direction)
-	{
-	case 0:
-		matRotation.SetAsRotate(M_PI / 2);
-		break;
-	case 1:
-		matRotation.SetAsRotate(M_PI / 2);
-		break;
-	case 2:
-		matRotation.SetAsRotate(M_PI);
-		break;
-	case 3:
-		matRotation.SetAsRotate(0);
-		break;
-	default:
-		break;
-	}
-
-	matTransform = matPivot * matRotation * matTranslate;
-	GAME_ENGINE->SetWorldMatrix(matTransform);
+	Projectile::Paint();
 }

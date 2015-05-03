@@ -1,7 +1,8 @@
 #pragma once
-class Enemy;
+class GraveKeeper;
 class BulletList;
 class Hero;
+class EnemyBase;
 class EnemyList
 {
 public:
@@ -11,8 +12,8 @@ public:
 	EnemyList(const EnemyList&) = delete;
 	EnemyList& operator=(const EnemyList&) = delete;
 
-	bool Add(Enemy* enemyPtr);
-	bool Remove(Enemy* enemyPtr);
+	bool Add(EnemyBase* enemyPtr);
+	bool Remove(EnemyBase* enemyPtr);
 	void RemoveAll();
 	void Tick(double deltaTime);
 	void Paint();
@@ -24,7 +25,7 @@ public:
 
 private:
 	const static int NR_OF_ENEMIES = 1;
-	std::vector<Enemy*> m_EnemyPtrArr;
+	std::vector<EnemyBase*> m_EnemyPtrArr;
 	Hero* m_HeroPtr = nullptr;
 };
 
