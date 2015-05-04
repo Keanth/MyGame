@@ -17,5 +17,7 @@ protected:
 	virtual void Init(LevelOutdoor* level, Hero* hero, DOUBLE2 position);
 	virtual void MoveTowardHero(double deltaTime);
 	virtual void UpdateVariables(double deltaTime);
+	virtual void Anim();
+	virtual RECT Rect();
 };
 

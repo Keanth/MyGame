@@ -65,7 +65,7 @@ void NightSpirit::MoveTowardHero(double deltaTime)
 	}
 	else if ((m_PosDif.x < MOVE_RANGE_NIGHTSPIRIT) && (m_MoveWorthy))
 	{
-		MoveUp();
+		MoveUp();w
 	}
 	else
 	{
