@@ -27,7 +27,7 @@ void Hero::Init()
 
 	m_ActFeetPtr = new PhysicsActor(HERO_SPAWNPOINT, 0, BodyType::DYNAMIC);
 
-	m_ActFeetPtr->AddBoxShape(10, 2, 0); //feet
+	m_ActFeetPtr->AddBoxShape(10, 5, 0); //feet
 	m_ActFeetPtr->AddContactListener(this);
 	m_ActFeetPtr->SetGravityScale(0);
 	m_ActFeetPtr->SetTrigger(true);
@@ -54,7 +54,7 @@ void Hero::UpdateVariables(double deltaTime)
 {
 	m_ActFeetPtr->SetPosition(
 		DOUBLE2(m_ActPtr->GetPosition().x,
-		m_ActPtr->GetPosition().y + 15)); // position of the feet, trial and error
+		m_ActPtr->GetPosition().y + 16)); // position of the feet, trial and error
 	if (m_OnFloor)
 	{
 		m_BoosterActive = false;
@@ -65,6 +65,11 @@ void Hero::UpdateVariables(double deltaTime)
 	if (m_ActiveJump)
 	{
 		m_Jump_Time += deltaTime;
+	}
+	if (m_Godmode)
+	{
+		m_OnFloor = true;
+		m_ActPtr->SetGravityScale(0);
 	}
 }
 
@@ -139,6 +144,11 @@ void Hero::UserInput(double deltaTime)
 	{
 		m_IsShootWorthy = true;
 	}
+	//Godmode
+	if (GAME_ENGINE->IsKeyboardKeyPressed('G'))
+	{
+		GodMode();
+	}
 }
 
 void Hero::Paint()
@@ -147,8 +157,7 @@ void Hero::Paint()
 	GAME_ENGINE->DrawBitmap(m_BmpHeroPtr, Rect());
 	BoosterTrail();
 	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
-	GAME_ENGINE->DrawString(String(PolarStarBullet::m_Exp), -20, -20);
-	GAME_ENGINE->DrawString(String(m_IsShootWorthy), -20, -10);
+//	GAME_ENGINE->DrawString(String("WEAPON XP : " ) + String(PolarStarBullet::m_Exp), -20, -10);
 
 }
 
@@ -315,6 +324,19 @@ void Hero::Gone()
 	if (m_ActPtr->GetPosition().y > 6000)
 	{
 		m_health = 0;
+	}
+}
+
+void Hero::GodMode()
+{
+	m_Godmode =! m_Godmode;
+	if (m_Godmode)
+	{
+		m_ActPtr->SetGhost(true);
+	}
+	else if (!m_Godmode )
+	{
+		m_ActPtr->SetGhost(false);
 	}
 }
 

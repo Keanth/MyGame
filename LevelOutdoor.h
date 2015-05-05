@@ -38,6 +38,8 @@ private:
 		DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13);
 	void DoublePartClockBlock(int i, int &count, int boxWidth, int boxHeight,
 		DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13);
+	void SandBlock(int i, int &count, int boxWidth, int boxHeight,
+		DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13);
 
 	int m_ScreenWidth;
 	int m_ScreenHeight;

@@ -66,27 +66,24 @@ void GraveKeeper::MoveTowardHero(double deltaTime)
 	m_PosDif = m_ActPtr->GetPosition() - m_HeroPtr->GetPosition();
 	int idleDif = 8;
 	int attackDif = 50;
+	int yMovement = 100;
 
-	if ((m_PosDif.x < idleDif) && (m_PosDif.x > -idleDif))
-	{
-		Idle();
-	}
-	else if (((m_PosDif.x < attackDif) && (m_PosDif.x > -attackDif) &&
+	if (((m_PosDif.x < attackDif) && (m_PosDif.x > -attackDif) &&
 		(m_PosDif.y < attackDif) && (m_PosDif.y > -attackDif)) || (m_AttackWorthy))
 	{
 		m_AttackWorthy = true;
 		m_MoveWorthy = false;
 		Attack(deltaTime);
 	}
-	else if ((m_PosDif.x < 0) && (m_MoveWorthy))
-	{
-		MoveRight();
-	}
 	else if (m_PosDif.x < -MOVE_RANGE_GRAVEKEEPER)
 	{
 		Idle();
 	}
-	else if ((m_PosDif.x < MOVE_RANGE_GRAVEKEEPER) && (m_MoveWorthy))
+	else if ((m_PosDif.x < 0) && (m_MoveWorthy) && (m_PosDif.y < yMovement) && (m_PosDif.y > -yMovement))
+	{
+		MoveRight();
+	}
+	else if ((m_PosDif.x < MOVE_RANGE_GRAVEKEEPER) && (m_MoveWorthy) && (m_PosDif.y < yMovement) && (m_PosDif.y > -yMovement))
 	{
 		MoveLeft();
 	}

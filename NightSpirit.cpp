@@ -57,9 +57,6 @@ void NightSpirit::Tick(double deltaTime)
 void NightSpirit::Paint()
 {
 	EnemyBase::Paint();
-	GAME_ENGINE->DrawString(String(m_AttackTime), -10, -10);
-	GAME_ENGINE->DrawString(String(m_AttackSpanTimer), 0, 0);
-
 }
 
 void NightSpirit::MoveTowardHero(double deltaTime)

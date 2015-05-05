@@ -82,10 +82,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractGame.cpp" />
+    <ClCompile Include="CurlyBrace.cpp" />
     <ClCompile Include="Doritos.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="HealthUp.cpp" />
+    <ClCompile Include="Hoppy.cpp" />
     <ClCompile Include="NightSpirit.cpp" />
     <ClCompile Include="NightSpiritBullet.cpp" />
     <ClCompile Include="Pause.cpp" />
@@ -123,6 +125,7 @@
     <ClCompile Include="MainGame.cpp" />
     <ClCompile Include="MainMenu.cpp" />
     <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="Sandcrocs.cpp" />
     <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -139,10 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractGame.h" />
+    <ClInclude Include="CurlyBrace.h" />
     <ClInclude Include="Doritos.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="HealthUp.h" />
+    <ClInclude Include="Hoppy.h" />
     <ClInclude Include="NightSpirit.h" />
     <ClInclude Include="NightSpiritBullet.h" />
     <ClInclude Include="Pause.h" />
@@ -228,6 +233,7 @@
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="EngineFiles\Sound.h" />
+    <ClInclude Include="Sandcrocs.h" />
     <ClInclude Include="SoundManager.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="EngineFiles\String.h" />

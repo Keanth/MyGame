@@ -154,7 +154,7 @@ void LevelOutdoor::CreateActors()
 		SinglePartMetalBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
 		SinglePartFlowerBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
 		DoublePartClockBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
-
+		SandBlock(i, count, boxWidth, boxHeight, pos, x, y, localActor, checkIs13);
 	}
 }
 
@@ -291,5 +291,32 @@ void LevelOutdoor::DoublePartClockBlock(int i, int &count, int boxWidth, int box
 		m_LevelCollisionPtrArr.push_back(localActor);
 
 		count = 0;
+	}
+}
+
+void LevelOutdoor::SandBlock(int i, int &count, int boxWidth, int boxHeight,
+	DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13)
+{
+	if ((m_MapArr[i] == 61) || (m_MapArr[i] == 62)) // number 61 --> Single part flower block
+	{
+		if ((m_MapArr[i + 1] == 61) || (m_MapArr[i + 1] == 62))
+		{
+			count++;
+		}
+		else
+		{
+			count++;
+
+			boxWidth = TILE_SIZE * count; // 32 * count
+			boxHeight = TILE_SIZE;
+
+			pos = DOUBLE2(x - (boxWidth / 2) + TILE_SIZE, y + (boxHeight / 2));
+
+			localActor = new PhysicsActor(pos, 0, BodyType::STATIC);
+			localActor->AddBoxShape(boxWidth, boxHeight, 0, 0);
+			m_LevelCollisionPtrArr.push_back(localActor);
+
+			count = 0;
+		}
 	}
 }

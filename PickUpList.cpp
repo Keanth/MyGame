@@ -33,6 +33,7 @@ bool PickUpList::Add(PickUpBase* pickUpPtr)
 			{
 				m_PickUpPtrArr[i] = pickUpPtr;
 				foo = false;
+				break;
 			}
 		}
 		if (foo)
@@ -54,10 +55,16 @@ void PickUpList::Remove()
 
 void PickUpList::RemoveAll()
 {
-	for (size_t i = 0; i < m_PickUpPtrArr.size(); ++i)
+	for (size_t i = 0; i < m_PickUpPtrArr.size(); i++)
 	{
-		if (m_PickUpPtrArr[i] != nullptr)
+		if (m_PickUpPtrArr[i] == nullptr)
 		{
+			delete m_PickUpPtrArr[i];
+
+		}
+		else if (m_PickUpPtrArr[i] != nullptr)
+		{
+			m_PickUpPtrArr[i]->RemoveContactListener();
 			delete m_PickUpPtrArr[i];
 			m_PickUpPtrArr[i] = nullptr;
 		}
@@ -90,8 +97,13 @@ void PickUpList::Paint()
 
 void PickUpList::Hit()
 {
+
 	for (size_t i = 0; i < m_PickUpPtrArr.size(); i++)
 	{
+		if (m_PickUpPtrArr[i] == nullptr)
+		{
+			delete m_PickUpPtrArr[i];
+		}
 		if ((m_PickUpPtrArr[i] != nullptr) && (m_PickUpPtrArr[i]->GetHit()))
 		{
 			m_PickUpPtrArr[i]->RemoveContactListener();

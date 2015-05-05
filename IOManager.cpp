@@ -16,7 +16,7 @@ int IOManager::AppendToFileBegin(std::string fileName)
 
 	log << "<Session>" << std::endl;
 	log << "\t" << "<Start>" << std::endl;
-	log << "\t\t" << "<Date>" << " " << time.wYear << " : " << time.wDay << " : " << time.wDay << " " << "</Date>" << std::endl;
+	log << "\t\t" << "<Date>" << " " << time.wYear << " : " << time.wMonth << " : " << time.wDay << " " << "</Date>" << std::endl;
 	log << "\t\t" << "<Time>" << " " << time.wHour << " : " << time.wMinute << " : " << time.wSecond << " " << "</Time>" << std::endl;
 	log << "\t\t" << "<PlayerHealth>" << " " <<  Hero::m_health << " HP " << "</PlayerHealth>" << std::endl;
 	log << "\t\t" << "<Info2>" << " ... " << "</Info2>" << std::endl;
@@ -37,7 +37,7 @@ int IOManager::AppendToFileEnd(std::string fileName)
 	GetLocalTime(&time);
 
 	log << "\t" << "<End>" << std::endl;
-	log << "\t\t" << "<Date>" << " " << time.wYear << " : " << time.wDay << " : " << time.wDay << " " << "</Date>" << std::endl;
+	log << "\t\t" << "<Date>" << " " << time.wYear << " : " << time.wMonth << " : " << time.wDay << " " << "</Date>" << std::endl;
 	log << "\t\t" << "<Time>" << " " << time.wHour << " : " << time.wMinute << " : " << time.wSecond << " " << "</Time>" << std::endl;
 	log << "\t\t" << "<PlayerHealth>" << " " << Hero::m_health << " HP " << "</PlayerHealth>" << std::endl;
 	log << "\t\t" << "<Info2>" << " ... " << "</Info2>" << std::endl;
@@ -46,6 +46,15 @@ int IOManager::AppendToFileEnd(std::string fileName)
 
 	return 0;
 }
+
+//************** TEMPLATE **************
+////Name, first name – prog2 group	/**/
+//<ClassName						/**/
+//TABNameProp1 = ”valueProp1”		/**/
+//TABNameProp2 = ”valueProp2”		/**/
+//TABNameProp3 = ”valueProp3”		/**/
+//	/ >								/**/
+//************** TEMPLATE **************
 
 //************** TEMPLATE **************
 //<Session>							/**/

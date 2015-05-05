@@ -42,21 +42,24 @@ protected:
 	virtual void MoveTowardHero(double deltaTime) = 0;
 
 	// Class dependable constants
+	//CurlyBrace
+	//Sandcrocs
+	//Hoppy
 	//GraveKeepr
-	const int BASE_DAMAGE_GRAVEKEEPER = 3;
-	const int WALK_FR_GRAVEKEEPER = 2;
-	const int WALK_FR_PER_SEC_GRAVEKEEPER = 6;
-	const int MOVE_RANGE_GRAVEKEEPER = 100;
-	const int ATT_FR_GRAVEKEEPER = 3;
-	const int ATT_FR_PER_SEC_GRAVEKEEPER = 2;
+	static const int BASE_DAMAGE_GRAVEKEEPER = 3;
+	static const int WALK_FR_GRAVEKEEPER = 2;
+	static const int WALK_FR_PER_SEC_GRAVEKEEPER = 6;
+	static const int MOVE_RANGE_GRAVEKEEPER = 300;
+	static const int ATT_FR_GRAVEKEEPER = 3;
+	static const int ATT_FR_PER_SEC_GRAVEKEEPER = 2;
 	//NightSpirit
-	const int BASE_DAMAGE_NIGHTSPIRIT = 3;
-	const int IDLE_FR_NIGHTSPIRIT = 3;
-	const int WALK_FR_NIGHTSPIRIT = 3;
-	const int WALK_FR_PER_SEC_NIGHTSPIRIT = 6;
-	const int MOVE_RANGE_NIGHTSPIRIT = 600;
-	const int ATT_FR_NIGHTSPIRIT = 3;
-	const int ATT_FR_PER_SEC_NIGHTSPIRIT = 2;
+	static const int BASE_DAMAGE_NIGHTSPIRIT = 3;
+	static const int IDLE_FR_NIGHTSPIRIT = 3;
+	static const int WALK_FR_NIGHTSPIRIT = 3;
+	static const int WALK_FR_PER_SEC_NIGHTSPIRIT = 6;
+	static const int MOVE_RANGE_NIGHTSPIRIT = 600;
+	static const int ATT_FR_NIGHTSPIRIT = 3;
+	static const int ATT_FR_PER_SEC_NIGHTSPIRIT = 2;
 
 
 	int m_ClipSize = 0;

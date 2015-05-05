@@ -32,6 +32,7 @@ protected:
 	virtual void StartBooster();
 	virtual void StopBooster();
 	virtual void BoosterTrail();
+	virtual void GodMode();
 	// Inheritance Methods
 	virtual void Init();
 	virtual void UpdateVariables(double deltaTime);
@@ -72,4 +73,6 @@ protected:
 
 	//Shoot
 	bool m_IsShootWorthy = true;
+
+	bool m_Godmode = false;
 };

@@ -191,6 +191,7 @@ void MainGame::CameraLock(double deltaTime)
 
 void MainGame::EnemyHandler()
 {
+	// **** GraveKeeper ****
 	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
 		DOUBLE2(275,5040)));
 	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
@@ -199,6 +200,22 @@ void MainGame::EnemyHandler()
 		DOUBLE2(400, 3888)));
 	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
 		DOUBLE2(587, 3440)));
+	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(1280, 2220)));
+	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(1540, 1840)));
+	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(2164, 240)));
+
+	// **** NightSpirit ****
+	m_EnemyListPtr->Add(new NightSpirit(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(1200, 3700), m_BulletListPtr));
+	m_EnemyListPtr->Add(new NightSpirit(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(1000, 3500), m_BulletListPtr));
+	m_EnemyListPtr->Add(new NightSpirit(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(1700, 2000), m_BulletListPtr));
+	m_EnemyListPtr->Add(new NightSpirit(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(1500, 2100), m_BulletListPtr));
 }
 
 void MainGame::PopulateSound()

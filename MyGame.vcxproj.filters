@@ -217,6 +217,15 @@
     <ClCompile Include="NightSpiritBullet.cpp">
       <Filter>Game Files\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="CurlyBrace.cpp">
+      <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Hoppy.cpp">
+      <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Sandcrocs.cpp">
+      <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -518,6 +527,15 @@
     </ClInclude>
     <ClInclude Include="NightSpiritBullet.h">
       <Filter>Game Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="CurlyBrace.h">
+      <Filter>Game Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Hoppy.h">
+      <Filter>Game Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Sandcrocs.h">
+      <Filter>Game Files\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
