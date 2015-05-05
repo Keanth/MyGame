@@ -5,6 +5,7 @@
 #include "LevelOutdoor.h"
 #include "PolarStarBullet.h"
 #include "BitmapManager.h"
+#include "BulletList.h"
 
 class Hero;
 class LevelOutdoor;
@@ -30,6 +31,9 @@ public:
 	//Getters
 	virtual PhysicsActor* GetActor() { return m_ActPtr; }
 	virtual DOUBLE2 GetPosition() { return m_ActPtr->GetPosition(); }
+	virtual int GetDirection();
+	//Setters
+	virtual void SetBulletList(BulletList* bulletList);
 
 protected:
 	// Constants 
@@ -88,5 +92,7 @@ protected:
 	// Bools
 	bool m_BoolCurrentFrame = true;
 	bool m_OnFloor = false;
+
+	BulletList* m_BulletListPtr = nullptr;
 };
 

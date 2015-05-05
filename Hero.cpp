@@ -128,6 +128,17 @@ void Hero::UserInput(double deltaTime)
 	{
 		StopBooster();
 	}
+	//Shooter
+	if ((GAME_ENGINE->IsKeyboardKeyDown('J')) && (m_IsShootWorthy))
+	{
+		//m_BulletListPtr->ShootHandler(m_ActPtr->GetPosition(), GetDirection(), 0);
+		m_BulletListPtr->ShootHandler(new PolarStarBullet(m_ActPtr->GetPosition(), GetDirection()));
+		m_IsShootWorthy = false;
+	}
+	else if (!GAME_ENGINE->IsKeyboardKeyDown('J'))
+	{
+		m_IsShootWorthy = true;
+	}
 }
 
 void Hero::Paint()
@@ -137,6 +148,8 @@ void Hero::Paint()
 	BoosterTrail();
 	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
 	GAME_ENGINE->DrawString(String(PolarStarBullet::m_Exp), -20, -20);
+	GAME_ENGINE->DrawString(String(m_IsShootWorthy), -20, -10);
+
 }
 
 void Hero::Up()
@@ -303,29 +316,6 @@ void Hero::Gone()
 	{
 		m_health = 0;
 	}
-}
-
-int Hero::GetDirection()
-{
-	int id = 3;
-	switch (m_Direction)
-	{
-	case Entity::Direction::UP:
-		id = 0;
-		break;
-	case Entity::Direction::DOWN:
-		id = 1;
-		break;
-	case Entity::Direction::LEFT:
-		id = 2;
-		break;
-	case Entity::Direction::RIGHT:
-		id = 3;
-		break;
-	default:
-		break;
-	}
-	return id;
 }
 
 // ======== Collision ========												

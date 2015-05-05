@@ -29,6 +29,9 @@ public:
 	void Tick(double deltaTime);
 	void Paint();
 
+	//getters
+	BulletList* GetBulletList() { return m_BulletListPtr; }
+
 	static bool m_IsPaused;
 	static PickUpList* m_PickUpListPtr;
 
@@ -49,7 +52,7 @@ private:
 	Hero* m_HeroPtr = nullptr;
 	LevelOutdoor* m_LevelOutdoorPtr = nullptr;
 	Camera* m_CameraPtr = nullptr;
-	BulletList* m_ArrowListPtr = nullptr;
+	BulletList* m_BulletListPtr = nullptr;
 	HUD* m_HudPtr = nullptr;
 	HealthUp* m_HealthUpPtr = nullptr;
 	Doritos* m_DoritosPtr = nullptr;
@@ -65,6 +68,7 @@ private:
 	void CheckTestMenu();
 
 	bool m_BoolTestMenu = false;
+	bool m_EnemySpawn = true;
 
 	std::vector<ButtonManager*> m_ButtonManagerPtrArr;
 };

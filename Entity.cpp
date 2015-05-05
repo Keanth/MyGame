@@ -132,3 +132,31 @@ void Entity::ResetCurrentFrame()
 		m_BoolCurrentFrame = false;
 	}
 }
+
+int Entity::GetDirection()
+{
+	int id = 3;
+	switch (m_Direction)
+	{
+	case Entity::Direction::UP:
+		id = 0;
+		break;
+	case Entity::Direction::DOWN:
+		id = 1;
+		break;
+	case Entity::Direction::LEFT:
+		id = 2;
+		break;
+	case Entity::Direction::RIGHT:
+		id = 3;
+		break;
+	default:
+		break;
+	}
+	return id;
+}
+
+void Entity::SetBulletList(BulletList* bulletList)
+{
+	m_BulletListPtr = bulletList;
+}

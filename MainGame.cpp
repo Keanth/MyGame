@@ -35,9 +35,10 @@ void MainGame::InitObj()
 	m_LevelOutdoorPtr = new LevelOutdoor(m_CameraPtr);
 	m_PickUpListPtr = new PickUpList(m_HeroPtr);
 	m_EnemyListPtr = new EnemyList(m_HeroPtr);
-//	EnemyHandler(); //Do not use during testing phase;
-	m_ArrowListPtr = new BulletList(m_EnemyListPtr);
+	m_BulletListPtr = new BulletList(m_EnemyListPtr);
 	m_HudPtr = new HUD();
+
+	m_HeroPtr->SetBulletList(m_BulletListPtr);
 }
 
 MainGame::~MainGame()
@@ -50,7 +51,7 @@ void MainGame::RemoveAll()
 	delete m_LevelOutdoorPtr;
 	delete m_HeroPtr;
 	delete m_CameraPtr;
-	delete m_ArrowListPtr;
+	delete m_BulletListPtr;
 	delete m_EnemyListPtr;
 	delete m_HudPtr;
 	delete m_PickUpListPtr;
@@ -92,18 +93,29 @@ void MainGame::Tick(double deltaTime)
 
 		m_HeroPtr->Tick(deltaTime);
 
+		if (GAME_ENGINE->IsKeyboardKeyPressed('V'))
+		{
+			std::cout << int(m_HeroPos.x) << "  " << int(m_HeroPos.y) << std::endl;
+		}
+
 		PhysicsRendering();
 
 		CameraLock(deltaTime);
 
 		m_EnemyListPtr->Tick(deltaTime);
 
-		m_ArrowListPtr->Tick(deltaTime, m_HeroPtr->GetDirection());
+		m_BulletListPtr->Tick(deltaTime, m_HeroPtr->GetDirection());
 
 		m_HeroPos = m_HeroPtr->GetPosition();
 
 		PopulatePickUpList();
 		m_PickUpListPtr->Tick(deltaTime);
+
+		if (m_EnemySpawn)
+		{
+			EnemyHandler();
+			m_EnemySpawn = false;
+		}
 
 		_Test();
 
@@ -112,6 +124,7 @@ void MainGame::Tick(double deltaTime)
 			MyGame::InitExit();
 			MyGame::m_GameState = GameState::EXIT;
 		}
+
 	}
 
 	if (m_IsPaused)
@@ -150,9 +163,9 @@ void MainGame::Paint()
 
 	m_EnemyListPtr->Paint();
 
-	m_ArrowListPtr->Paint();
+	m_BulletListPtr->Paint();
 
-	m_PickUpListPtr->Paint();	
+	m_PickUpListPtr->Paint();
 }
 
 void MainGame::PhysicsRendering()
@@ -178,16 +191,14 @@ void MainGame::CameraLock(double deltaTime)
 
 void MainGame::EnemyHandler()
 {
-	for (size_t i = 0; i < 2; i++)
-	{
-		GraveKeeper* tempPtr = new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
-			DOUBLE2(m_HeroPos.x + 30, m_HeroPos.y - 100));
-		m_EnemyPtrArr.push_back(tempPtr);
-	}
-	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
-	{
-		m_EnemyListPtr->Add(m_EnemyPtrArr[i]);
-	}
+	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(275,5040)));
+	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(300, 3888)));
+	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(400, 3888)));
+	m_EnemyListPtr->Add(new GraveKeeper(m_LevelOutdoorPtr, m_HeroPtr,
+		DOUBLE2(587, 3440)));
 }
 
 void MainGame::PopulateSound()
@@ -215,7 +226,7 @@ void MainGame::_Test()
 	if (GAME_ENGINE->IsKeyboardKeyPressed('N'))
 	{
 		m_EnemyListPtr->Add(new NightSpirit(m_LevelOutdoorPtr, m_HeroPtr,
-			DOUBLE2(m_HeroPos.x + 150, m_HeroPos.y - 100)));
+			DOUBLE2(m_HeroPos.x + 150, m_HeroPos.y - 100), m_BulletListPtr));
 	}
 	if (GAME_ENGINE->IsKeyboardKeyPressed('I'))
 	{

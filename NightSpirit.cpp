@@ -1,19 +1,22 @@
 #include "stdafx.h"
 #include "NightSpirit.h"
+#include "NightSpiritBullet.h"
+#include "BulletList.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-NightSpirit::NightSpirit(LevelOutdoor* level, Hero* hero, DOUBLE2 position)
+NightSpirit::NightSpirit(LevelOutdoor* level, Hero* hero, DOUBLE2 position, BulletList* bulletList)
 {
-	Init(level, hero, position);
+	Init(level, hero, position, bulletList);
 	EnemyBase::Init();
 }
 
-void NightSpirit::Init(LevelOutdoor* level, Hero* hero, DOUBLE2 position)
+void NightSpirit::Init(LevelOutdoor* level, Hero* hero, DOUBLE2 position, BulletList* bulletList)
 {
 	m_LevelPtr = level;
 	m_HeroPtr = hero;
 	m_Position = position;
+	m_BulletListPtr = bulletList;
 
 	m_BmpPtr = MyGame::m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc02.png"));
 	m_BaseSpeed = 200;
@@ -162,6 +165,7 @@ void NightSpirit::Attack(double deltaTime)
 	m_ActionState = ActionState::ATTACK;
 	ResetCurrentFrame();
 	Anim();
+	Shoot();
 	if (m_AttackTime >= 2)
 	{
 		m_AttackTime = 0;
@@ -173,5 +177,5 @@ void NightSpirit::Attack(double deltaTime)
 
 void NightSpirit::Shoot()
 {
-
+//	m_BulletListPtr->ShootHandler(new NightSpiritBullet(DOUBLE2(m_ActPtr->GetPosition().x - 200, m_ActPtr->GetPosition().y), GetDirection()));
 }

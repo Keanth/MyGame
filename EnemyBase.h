@@ -46,7 +46,7 @@ protected:
 	const int BASE_DAMAGE_GRAVEKEEPER = 3;
 	const int WALK_FR_GRAVEKEEPER = 2;
 	const int WALK_FR_PER_SEC_GRAVEKEEPER = 6;
-	const int MOVE_RANGE_GRAVEKEEPER = 600;
+	const int MOVE_RANGE_GRAVEKEEPER = 100;
 	const int ATT_FR_GRAVEKEEPER = 3;
 	const int ATT_FR_PER_SEC_GRAVEKEEPER = 2;
 	//NightSpirit

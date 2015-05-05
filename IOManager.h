@@ -5,6 +5,7 @@
 class IOManager
 {
 public:
-	static int AppendToFile(std::string fileName, std::string data);
+	static int AppendToFileBegin(std::string fileName);
+	static int AppendToFileEnd(std::string fileName);
 };
 

@@ -30,6 +30,7 @@ class Pause;
 class Exit;
 class BitmapManager;
 class SoundManager;
+class IOManager;
 class MyGame : public AbstractGame
 {
 public:
@@ -70,4 +71,8 @@ private:
 
 	// Bank
 	void PopulateBank();
+
+	//Log
+	void WriteToLog(int number);
+	IOManager* m_IOManagerPtr = nullptr;
 };

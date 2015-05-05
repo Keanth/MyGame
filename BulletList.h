@@ -4,6 +4,7 @@
 
 class EnemyList;
 class PolarStarBullet;
+class Projectile;
 class BulletList : public ContactListener
 {
 public:
@@ -19,8 +20,8 @@ public:
 
 	void Tick(double deltaTime, int direction);
 	void Paint();
-	void Remove(PolarStarBullet* ArrowPtr);
-	void ShootHandler();
+	void Remove(Projectile* ArrowPtr);
+	void ShootHandler(Projectile* projectile);
 	void SetActor(PhysicsActor* actOtherPtr);
 	bool IsHit();
 
@@ -28,11 +29,8 @@ public:
 private:
 	double m_BulletTimer = 0.0;
 	const static int NR_OF_MAX_BULLETS = 10;
-	std::vector<PolarStarBullet*> m_BulletPtrArr;
-	bool m_IsShootWorthy = true;
-
-	DOUBLE2 m_HeroPos;
-	int m_HeroDirection;
+	std::vector<Projectile*> m_BulletPtrArr;
+	void RemoveFromList();
 
 	bool m_IsHit = false;
 	

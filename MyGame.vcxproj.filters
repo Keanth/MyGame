@@ -214,6 +214,9 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Game Files\Weapons</Filter>
     </ClCompile>
+    <ClCompile Include="NightSpiritBullet.cpp">
+      <Filter>Game Files\Weapons</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -511,6 +514,9 @@
       <Filter>Game Files\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Projectile.h">
+      <Filter>Game Files\Weapons</Filter>
+    </ClInclude>
+    <ClInclude Include="NightSpiritBullet.h">
       <Filter>Game Files\Weapons</Filter>
     </ClInclude>
   </ItemGroup>

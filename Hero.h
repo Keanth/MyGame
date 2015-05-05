@@ -17,12 +17,11 @@ public:
 	virtual void ContactImpulse(PhysicsActor *actThisPtr, double impulse);
 	virtual void Tick(double deltaTime);
 	virtual void Paint();
-	virtual int GetDirection();
 
 	// Stats
 	static int m_health;
 
-private:
+protected:
 	// Methods
 	virtual void UserInput(double deltaTime);
 	virtual void Up();
@@ -70,4 +69,7 @@ private:
 	
 	// Bitmap Bank
 	Bitmap* m_BmpHeroPtr = nullptr;
+
+	//Shoot
+	bool m_IsShootWorthy = true;
 };

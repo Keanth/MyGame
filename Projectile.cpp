@@ -4,6 +4,8 @@
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
+const double Projectile::DEFAULT_BULLET_DESPAWN_TIME = 0.5;
+
 Projectile::Projectile()
 {
 }
@@ -45,6 +47,8 @@ void Projectile::Init()
 
 void Projectile::Tick(double deltaTime)
 {
+	m_BulletTimer += deltaTime;
+
 	DOUBLE2 Vel = m_ActBulletPtr->GetLinearVelocity();
 	DOUBLE2 NewVel = DOUBLE2(0.0, 0.0);
 
@@ -106,4 +110,13 @@ void Projectile::CreateMatrix()
 
 	matTransform = matPivot * matRotation * matTranslate;
 	GAME_ENGINE->SetWorldMatrix(matTransform);
+}
+
+bool Projectile::Remove()
+{
+	if (m_BulletTimer >= m_BulletDespawnTime)
+	{
+		return true;
+	}
+	return false;
 }

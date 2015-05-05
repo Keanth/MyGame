@@ -16,6 +16,7 @@
 
 #include "BitmapManager.h"
 #include "SoundManager.h"
+#include "IOManager.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -47,7 +48,9 @@ void MyGame::GameInitialize(GameSettings &gameSettings)
 
 void MyGame::GameStart()
 {
+	WriteToLog(0);
 	PopulateBank();
+	m_IOManagerPtr = new IOManager();
 
 	if (m_GameState == GameState::MAIN_MENU)
 	{
@@ -61,12 +64,14 @@ void MyGame::GameStart()
 
 void MyGame::GameEnd()
 {
+	WriteToLog(1);
 	delete m_MainGame;
 	delete m_MainMenu;
 	delete m_Pause;
 	delete m_Exit;
 	delete m_BitmapManagerPtr;
 	delete m_SoundManagerPtr;
+	delete m_IOManagerPtr;
 }
 
 void MyGame::GameTick(double deltaTime)
@@ -163,4 +168,19 @@ void MyGame::PopulateBank()
 	m_SoundManagerPtr = new SoundManager();
 	m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_intro.mp3"));
 	m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
+}
+
+void MyGame::WriteToLog(int number)
+{
+	switch (number)
+	{
+	case 0:
+		m_IOManagerPtr->AppendToFileBegin("GameResults.txt");
+		break;
+	case 1:
+		m_IOManagerPtr->AppendToFileEnd("GameResults.txt");
+		break;
+	default:
+		break;
+	}
 }

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "BulletList.h"
 #include "PolarStarBullet.h"
+#include "NightSpiritBullet.h"
 #include "MainGame.h"
 #include "EnemyList.h"
 #define GAME_ENGINE (GameEngine::GetSingleton())
@@ -27,8 +28,6 @@ BulletList::~BulletList()
 
 void BulletList::Tick(double deltaTime, int direction)
 {
-	m_HeroDirection = direction;
-
 	for (size_t i = 0; i < m_BulletPtrArr.size(); ++i)
 	{
 		if (m_BulletPtrArr[i] != nullptr)
@@ -37,8 +36,6 @@ void BulletList::Tick(double deltaTime, int direction)
 		}
 	}
 	
-	m_BulletTimer += deltaTime;
-	ShootHandler();
 	for (size_t i = 0; i < m_BulletPtrArr.size(); ++i)
 	{
 		if (m_BulletPtrArr[i] != nullptr)
@@ -46,9 +43,11 @@ void BulletList::Tick(double deltaTime, int direction)
 			m_BulletPtrArr[i]->Tick(deltaTime);
 		}
 	}
+
+	RemoveFromList();
 }
 
-void BulletList::Remove(PolarStarBullet* ArrowPtr)
+void BulletList::Remove(Projectile* ArrowPtr)
 {
 	for (size_t i = 0; i < m_BulletPtrArr.size(); i++)
 	{
@@ -71,25 +70,25 @@ void BulletList::Paint()
 	}
 }
 
-void BulletList::ShootHandler()
+void BulletList::ShootHandler(Projectile* projectile)
 {
-	m_HeroPos = MainGame::m_HeroPos;
-
-	for (int i = 0; i < NR_OF_MAX_BULLETS; ++i)
+	for (size_t i = 0; i < NR_OF_MAX_BULLETS; ++i)
 	{
-		if ((GAME_ENGINE->IsKeyboardKeyDown('J')) && (m_IsShootWorthy) && (m_BulletPtrArr[i] == nullptr))
+		if (m_BulletPtrArr[i] == nullptr)
 		{
-			m_BulletTimer = 0;
-			m_IsShootWorthy = false;
-			m_BulletPtrArr[i] = new PolarStarBullet(m_HeroPos, m_HeroDirection);
+			m_BulletPtrArr[i] = projectile;
+			break;
 		}
-		else if (!GAME_ENGINE->IsKeyboardKeyDown('J'))
-		{
-			m_IsShootWorthy = true;
-		}
+	}
+}
+
+void BulletList::RemoveFromList()
+{
+	for (size_t i = 0; i < NR_OF_MAX_BULLETS; ++i)
+	{
 		if (m_BulletPtrArr[i] != nullptr)
 		{
-			if (m_BulletTimer >= 0.5)
+			if (m_BulletPtrArr[i]->Remove())
 			{
 				delete m_BulletPtrArr[i];
 				m_BulletPtrArr[i] = nullptr;
@@ -102,7 +101,7 @@ void BulletList::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPt
 {
 	for (size_t i = 0; i <m_BulletPtrArr.size(); i++)
 	{
-		if (m_EnemyListPtr->IsHit(actOtherPtr))
+		if ((m_EnemyListPtr->IsHit(actOtherPtr)))
 		{
 			Remove(m_BulletPtrArr[i]);
 		}
