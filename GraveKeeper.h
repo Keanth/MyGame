@@ -19,5 +19,6 @@ protected:
 	virtual void UpdateVariables(double deltaTime);
 	virtual void Anim();
 	virtual RECT Rect();
+	virtual void Attack(double deltaTime);
 };
 

@@ -31,13 +31,13 @@ public:
 
 protected:
 	// Methods
-	virtual void Attack(double deltaTime);
+	virtual void Attack(double deltaTime) = 0;
 	virtual void DealDamage();
 	// Inheritance Methods
 	virtual void Init();
 	virtual void UpdateVariables(double deltaTime);
-	virtual void Anim();
-	virtual RECT Rect();
+	virtual void Anim() = 0;
+	virtual RECT Rect() = 0;
 	virtual void CreateWorldMatrix();
 	virtual void MoveTowardHero(double deltaTime) = 0;
 

@@ -105,7 +105,6 @@ void Entity::MoveRight()
 
 void Entity::MoveUp()
 {
-//	if (m_OnFloor)m_ActionState = ActionState::WALK;
 	Anim();
 	m_Direction = Direction::UP;
 	m_DesiredVel.y = -m_BaseSpeed;
@@ -113,7 +112,6 @@ void Entity::MoveUp()
 
 void Entity::MoveDown()
 {
-//	if (m_OnFloor)m_ActionState = ActionState::WALK;
 	Anim();
 	m_Direction = Direction::DOWN;
 	m_DesiredVel.y = m_BaseSpeed;

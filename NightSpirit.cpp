@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "NightSpirit.h"
 
+#define GAME_ENGINE (GameEngine::GetSingleton())
+
 NightSpirit::NightSpirit(LevelOutdoor* level, Hero* hero, DOUBLE2 position)
 {
 	Init(level, hero, position);
@@ -37,35 +39,51 @@ void NightSpirit::Tick(double deltaTime)
 		MoveTowardHero(deltaTime);
 		Entity::ApplyImpulse(deltaTime);
 	}
+	if (m_AttackSpanTimeWorthy)
+	{
+		m_AttackSpanTimer += deltaTime;
+		if (m_AttackSpanTimer >= 5)
+		{
+			m_AttackSpanTimeWorthy = false;
+			m_AttackSpan = true;
+			m_AttackSpanTimer = 0;
+		}
+	}
 }
 
 void NightSpirit::Paint()
 {
 	EnemyBase::Paint();
+	GAME_ENGINE->DrawString(String(m_AttackTime), -10, -10);
+	GAME_ENGINE->DrawString(String(m_AttackSpanTimer), 0, 0);
+
 }
 
 void NightSpirit::MoveTowardHero(double deltaTime)
 {
 	m_PosDif = m_ActPtr->GetPosition() - m_HeroPtr->GetPosition();
-	int idleDif = 100;
-	int attackDif = 200;
+	int idleDif = 20;
+	int attackDif = 100;
 
-	if ((m_PosDif.y < idleDif) && (m_PosDif.y > -idleDif))
+	if (m_AttackSpan == false)
 	{
 		Idle();
 	}
-
-	else if ((m_PosDif.y < 0) && (m_MoveWorthy))
+	else if ((m_PosDif.y < attackDif) && (m_PosDif.y > -attackDif) && (m_AttackSpan))
 	{
-		MoveDown();
+		Attack(deltaTime);
 	}
 	else if (m_PosDif.y < -MOVE_RANGE_NIGHTSPIRIT)
 	{
 		Idle();
 	}
+	else if ((m_PosDif.y < 0) && (m_MoveWorthy))
+	{
+		MoveDown();
+	}
 	else if ((m_PosDif.x < MOVE_RANGE_NIGHTSPIRIT) && (m_MoveWorthy))
 	{
-		MoveUp();w
+		MoveUp();
 	}
 	else
 	{
@@ -129,4 +147,31 @@ RECT NightSpirit::Rect()
 	r.right = m_ClipSize + r.left;
 
 	return r;
+}
+
+void NightSpirit::Idle()
+{
+	m_ActionState = ActionState::IDLE;
+	Anim();
+	m_DesiredVel.y = m_Vel.y * 0.85;
+}
+
+void NightSpirit::Attack(double deltaTime)
+{
+	m_AttackTime += deltaTime;
+	m_ActionState = ActionState::ATTACK;
+	ResetCurrentFrame();
+	Anim();
+	if (m_AttackTime >= 2)
+	{
+		m_AttackTime = 0;
+		m_MoveWorthy = true;
+		m_AttackSpan = false;
+		m_AttackSpanTimeWorthy = true;
+	}
+}
+
+void NightSpirit::Shoot()
+{
+
 }

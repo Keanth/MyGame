@@ -14,8 +14,15 @@ PhysicsActor::PhysicsActor(DOUBLE2 pos, double angle, BodyType bodyType)
 
 PhysicsActor::~PhysicsActor()
 {
+	for (b2Fixture* fixturePtr = m_BodyPtr->GetFixtureList(); fixturePtr != nullptr; fixturePtr = fixturePtr->GetNext())
+	{
+		fixturePtr->SetUserData(nullptr);
+	}
+
 	// remove the body from the scene
 	(GameEngine::GetSingleton())->GetBox2DWorld()->DestroyBody(m_BodyPtr);
+	// from here, there can be a jump to GameEngine::EndContact !!
+	m_BodyPtr = nullptr;
 }
 
 void PhysicsActor::SetName(String name)

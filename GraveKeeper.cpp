@@ -53,7 +53,7 @@ void GraveKeeper::UpdateVariables(double deltaTime)
 {
 	m_ActFeetPtr->SetPosition(
 		DOUBLE2(m_ActPtr->GetPosition().x,
-		m_ActPtr->GetPosition().y + 22));
+		m_ActPtr->GetPosition().y + 25));
 }
 
 void GraveKeeper::Paint()
@@ -93,5 +93,76 @@ void GraveKeeper::MoveTowardHero(double deltaTime)
 	else
 	{
 		Idle();
+	}
+}
+
+void GraveKeeper::Anim()
+{
+	switch (m_ActionState)
+	{
+	case ActionState::IDLE:
+		m_CurrentFrame = 2;
+		break;
+	case ActionState::WALK:
+		if (m_AccuTime > 1.0 / WALK_FR_PER_SEC_GRAVEKEEPER)
+		{
+			m_AccuTime = 0;
+			m_CurrentFrame = ++m_CurrentFrame % WALK_FR_GRAVEKEEPER;
+		}
+		break;
+	case ActionState::ATTACK:
+		if (m_AccuTime > 1.0 / ATT_FR_PER_SEC_GRAVEKEEPER)
+		{
+			if (m_CurrentFrame > ATT_FR_GRAVEKEEPER - 1)
+				m_CurrentFrame = 0;
+			m_AccuTime = 0;
+			m_CurrentFrame = ++m_CurrentFrame % ATT_FR_GRAVEKEEPER;
+		}
+	default:
+		break;
+	}
+}
+
+RECT GraveKeeper::Rect()
+{
+	RECT r;
+
+	switch (m_ActionState)
+	{
+	case ActionState::IDLE:
+		r.top = m_ClipSize * 0;
+		break;
+	case ActionState::WALK:
+		r.top = m_ClipSize * 0;
+		break;
+	case ActionState::ATTACK:
+		r.top = m_ClipSize * 1;
+		break;
+	default:
+		break;
+	}
+
+	r.bottom = m_ClipSize + r.top;
+	r.left = m_ClipSize * m_CurrentFrame;
+	r.right = m_ClipSize + r.left;
+
+	return r;
+}
+
+void GraveKeeper::Attack(double deltaTime)
+{
+	m_AttackTime += deltaTime;
+	m_ActionState = ActionState::ATTACK;
+	ResetCurrentFrame();
+	Anim();
+	if (m_AttackTime >= 0.5)
+	{
+		m_AttackTime = 0;
+		m_MoveWorthy = true;
+		m_AttackWorthy = false;
+		if ((m_PosDif.x < 90) && (m_PosDif.x > -90))
+		{
+			DealDamage();
+		}
 	}
 }

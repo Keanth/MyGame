@@ -18,5 +18,12 @@ protected:
 	virtual void MoveTowardHero(double deltaTime);
 	virtual void Anim();
 	virtual RECT Rect();
+	virtual void Idle();
+	virtual void Attack(double deltaTime);
+	virtual void Shoot();
+
+	bool m_AttackSpan = true;
+	bool m_AttackSpanTimeWorthy = false;
+	double m_AttackSpanTimer = 0.0;
 };
 
