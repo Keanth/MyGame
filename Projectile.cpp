@@ -38,7 +38,7 @@ void Projectile::Init()
 	default:
 		break;
 	}
-	m_ActBulletPtr->AddBoxShape(BULLET_HIT_REGION, BULLET_HEIGHT, 0);
+	m_ActBulletPtr->AddBoxShape(BULLET_HIT_REGION, m_BulletHeight, 0);
 	m_ActBulletPtr->SetGravityScale(0);
 	m_ActBulletPtr->SetFixedRotation(true);
 	m_ActBulletPtr->SetBullet(true);
@@ -79,7 +79,9 @@ void Projectile::Tick(double deltaTime)
 void Projectile::Paint()
 {
 	CreateMatrix();
-	GAME_ENGINE->DrawBitmap(m_BmpArrowPtr);
+	GAME_ENGINE->DrawBitmap(m_BmpArrowPtr,Rect());
+//	GAME_ENGINE->DrawBitmap(m_BmpArrowPtr);
+
 }
 
 void Projectile::CreateMatrix()
@@ -87,7 +89,7 @@ void Projectile::CreateMatrix()
 	DOUBLE2 actArrowPos = m_ActBulletPtr->GetPosition();
 
 	MATRIX3X2 matPivot, matTransform, matTranslate, matRotation;
-	matPivot.SetAsTranslate(DOUBLE2(-BULLET_WIDTH / 2, -BULLET_HEIGHT * 4));
+	matPivot.SetAsTranslate(DOUBLE2(-m_BulletWidth / 2, -m_BulletHeight * 4));
 	matTranslate.SetAsTranslate(actArrowPos);
 
 	switch (m_Direction)

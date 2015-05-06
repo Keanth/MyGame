@@ -19,7 +19,7 @@ public:
 
 protected:
 	void CreateMatrix();
-	RECT Rect();
+	virtual RECT Rect() = 0;
 	DOUBLE2 m_HeroPos;
 	PhysicsActor* m_ActBulletPtr = nullptr;
 
@@ -34,13 +34,21 @@ protected:
 
 	static const int BASE_DAMAGE = 1;
 	static const int INITIAL_EXP = 0;
-	static const int BULLET_WIDTH = 32;
-	static const int BULLET_HEIGHT = 4;
 	static const int BULLET_SPEED = 1000;
 	static const int BULLET_OFFSET = 5;
 	static const int BULLET_HIT_REGION = 5;
 	static const double DEFAULT_BULLET_DESPAWN_TIME;
 	int m_Direction = 0;
+
+	//PolarStar
+	static const int BULLET_WIDTH_POLARSTAR = 32;
+	static const int BULLET_HEIGHT_POLARSTAR = 4;
+	//NightSpirit
+	static const int BULLET_WIDTH_NIGHTSPIRIT = 64;
+	static const int BULLET_HEIGHT_NIGHTSPIRIT = 32;
+
+	int m_BulletWidth = 0;
+	int m_BulletHeight = 0;
 
 	// Bitmap Bank
 	Bitmap* m_BmpArrowPtr = nullptr;

@@ -59,6 +59,9 @@
     <Filter Include="Game Files\Pickups">
       <UniqueIdentifier>{02c80e87-58f9-4971-8bdb-7e8b7eb9ae83}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Game Files\Weapons\Enemy">
+      <UniqueIdentifier>{300e57ba-78af-472f-b050-c0900f16f797}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameWinMain.cpp">
@@ -214,9 +217,6 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Game Files\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="NightSpiritBullet.cpp">
-      <Filter>Game Files\Weapons</Filter>
-    </ClCompile>
     <ClCompile Include="CurlyBrace.cpp">
       <Filter>Game Files\Enemies</Filter>
     </ClCompile>
@@ -225,6 +225,10 @@
     </ClCompile>
     <ClCompile Include="Sandcrocs.cpp">
       <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="Boxhead.cpp" />
+    <ClCompile Include="NightSpiritBullet.cpp">
+      <Filter>Game Files\Weapons\Enemy</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -525,9 +529,6 @@
     <ClInclude Include="Projectile.h">
       <Filter>Game Files\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="NightSpiritBullet.h">
-      <Filter>Game Files\Weapons</Filter>
-    </ClInclude>
     <ClInclude Include="CurlyBrace.h">
       <Filter>Game Files\Enemies</Filter>
     </ClInclude>
@@ -536,6 +537,10 @@
     </ClInclude>
     <ClInclude Include="Sandcrocs.h">
       <Filter>Game Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="Boxhead.h" />
+    <ClInclude Include="NightSpiritBullet.h">
+      <Filter>Game Files\Weapons\Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

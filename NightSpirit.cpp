@@ -52,6 +52,7 @@ void NightSpirit::Tick(double deltaTime)
 			m_AttackSpanTimer = 0;
 		}
 	}
+	m_ShootWorthyTimer += deltaTime;
 }
 
 void NightSpirit::Paint()
@@ -174,5 +175,14 @@ void NightSpirit::Attack(double deltaTime)
 
 void NightSpirit::Shoot()
 {
-//	m_BulletListPtr->ShootHandler(new NightSpiritBullet(DOUBLE2(m_ActPtr->GetPosition().x - 200, m_ActPtr->GetPosition().y), GetDirection()));
+	if (m_IsShootWorthy)
+	{
+		m_BulletListPtr->ShootHandler(new NightSpiritBullet(DOUBLE2(m_ActPtr->GetPosition().x - 80, m_ActPtr->GetPosition().y), 2));
+		m_ShootWorthyTimer = 0;
+		m_IsShootWorthy = false;
+	}
+	if (m_ShootWorthyTimer > 0.3)
+	{
+		m_IsShootWorthy = true;
+	}
 }

@@ -13,6 +13,9 @@ PolarStarBullet::PolarStarBullet(DOUBLE2 pos, int direction)
 	m_HeroPos = pos; 
 	m_Direction = direction;
 
+	m_BulletWidth = BULLET_WIDTH_POLARSTAR;
+	m_BulletHeight = BULLET_HEIGHT_POLARSTAR;
+
 	Projectile::Init();
 }
 
@@ -28,4 +31,16 @@ void PolarStarBullet::Tick(double deltaTime)
 void PolarStarBullet::Paint()
 {
 	Projectile::Paint();
+}
+
+RECT PolarStarBullet::Rect()
+{
+	RECT r;
+
+	r.top = m_BulletHeight * 0;
+	r.left = m_BulletWidth * 0;
+	r.bottom = 32 + r.top;
+	r.right = 32 + r.left;
+
+	return r;
 }

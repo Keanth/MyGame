@@ -28,6 +28,7 @@ protected:
 	double m_AttackSpanTimer = 0.0;
 
 	//Shoot
-//	bool m_IsShootWorthy = true;
+	bool m_IsShootWorthy = true;
+	double m_ShootWorthyTimer = 0.0;
 };
 

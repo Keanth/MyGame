@@ -42,15 +42,17 @@ void MyGame::GameInitialize(GameSettings &gameSettings)
 	gameSettings.SetWindowTitle(String("MyGame - Lenaerts, Kenneth - 1DAE03"));
 	gameSettings.SetWindowWidth(940);
 	gameSettings.SetWindowHeight(640);
+	/*gameSettings.SetWindowWidth(1440);
+	gameSettings.SetWindowHeight(900);*/
 	gameSettings.EnableConsole(true);
 	gameSettings.EnableAntiAliasing(true);
 }
 
 void MyGame::GameStart()
 {
+	m_IOManagerPtr = new IOManager();
 	WriteToLog(0);
 	PopulateBank();
-	m_IOManagerPtr = new IOManager();
 
 	if (m_GameState == GameState::MAIN_MENU)
 	{

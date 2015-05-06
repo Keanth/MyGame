@@ -82,6 +82,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="AbstractGame.cpp" />
+    <ClCompile Include="Boxhead.cpp" />
     <ClCompile Include="CurlyBrace.cpp" />
     <ClCompile Include="Doritos.cpp" />
     <ClCompile Include="EnemyBase.cpp" />
@@ -142,6 +143,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractGame.h" />
+    <ClInclude Include="Boxhead.h" />
     <ClInclude Include="CurlyBrace.h" />
     <ClInclude Include="Doritos.h" />
     <ClInclude Include="EnemyBase.h" />

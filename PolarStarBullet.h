@@ -17,5 +17,7 @@ public:
 	static int m_InstanceCounter;
 	static int m_Exp;
 
+private:
+	RECT Rect();
 };
 

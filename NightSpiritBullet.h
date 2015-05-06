@@ -15,5 +15,8 @@ public:
 	virtual void Paint();
 
 	static int m_InstanceCounter;
+
+private:
+	RECT Rect();
 };
 
