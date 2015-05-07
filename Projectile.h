@@ -16,6 +16,7 @@ public:
 	virtual DOUBLE2 GetPosition() { return m_ActBulletPtr->GetPosition(); }
 	virtual PhysicsActor* GetActor() { return m_ActBulletPtr; }
 	virtual bool Remove();
+	virtual void SetPause();
 
 protected:
 	void CreateMatrix();

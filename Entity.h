@@ -34,6 +34,7 @@ public:
 	virtual int GetDirection();
 	//Setters
 	virtual void SetBulletList(BulletList* bulletList);
+	virtual void SetPause(int number);
 
 protected:
 	// Constants 

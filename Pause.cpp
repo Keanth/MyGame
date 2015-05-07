@@ -30,6 +30,5 @@ void Pause::Paint()
 	int windowsHeight = (GAME_ENGINE->GetHeight() / 2) - 1;
 	DOUBLE2 strPos(windowWidth, windowsHeight);
 	GAME_ENGINE->SetViewMatrix(MATRIX3X2::CreateIdentityMatrix());
-//	GAME_ENGINE->DrawSolidBackground(COLOR(255, 100, 0));
 	GAME_ENGINE->DrawString(String("PAUSED!"), strPos);
 }

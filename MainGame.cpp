@@ -73,11 +73,6 @@ void MainGame::RemoveAll()
 void MainGame::Tick(double deltaTime)
 {
 	// ==== <TESTING> =====
-	if (GAME_ENGINE->IsKeyboardKeyPressed('L'))
-	{
-		m_IsPaused = !m_IsPaused;
-	}
-
 	for (size_t i = 0; i < m_ButtonManagerPtrArr.size(); ++i)
 	{
 		m_ButtonManagerPtrArr[i]->CheckIsHit(GAME_ENGINE->GetMousePosition());
@@ -86,6 +81,8 @@ void MainGame::Tick(double deltaTime)
 	// ==== </TESTING> =====
 
 	CheckTestMenu();
+
+	Pause(0);
 
 	if (m_IsPaused == false)
 	{
@@ -127,11 +124,11 @@ void MainGame::Tick(double deltaTime)
 
 	}
 
-	if (m_IsPaused)
+	/*if (m_IsPaused)
 	{
 		MyGame::InitPause();
 		MyGame::m_GameState = GameState::PAUSE;
-	}
+	}*/
 }
 
 void MainGame::Paint()
@@ -159,13 +156,18 @@ void MainGame::Paint()
 	{
 		GAME_ENGINE->SetViewMatrix(m_CameraPtr->GetViewMatrix());
 	}
+
 	m_HeroPtr->Paint();
 
+	
 	m_EnemyListPtr->Paint();
 
 	m_BulletListPtr->Paint();
 
 	m_PickUpListPtr->Paint();
+
+	Pause(1);
+	
 }
 
 void MainGame::PhysicsRendering()
@@ -230,6 +232,54 @@ void MainGame::PopulatePickUpList()
 		m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_HeroPtr));
 		m_PickUpListPtr->Add(new HealthUp(DOUBLE2(400, 5300), m_HeroPtr));
 	}*/
+}
+
+void MainGame::Pause(int number)
+{
+	int count = 0;
+	int windowWidth = (GAME_ENGINE->GetWidth() / 2) - 4;
+	int windowsHeight = (GAME_ENGINE->GetHeight() / 2) - 1;
+	DOUBLE2 strPos(windowWidth, windowsHeight);
+
+	switch (number)
+	{
+	case 0:
+		if (GAME_ENGINE->IsKeyboardKeyPressed('A'))
+		{
+			m_IsPaused = !m_IsPaused;
+		}
+		if (GAME_ENGINE->IsKeyboardKeyReleased('A'))
+		{
+			count++;
+		}
+		if (m_IsPaused)
+		{
+			m_HeroPtr->SetPause(0);
+			m_EnemyListPtr->Pause();
+			//		m_BulletListPtr->Pause();
+		}
+		if ((GAME_ENGINE->IsKeyboardKeyReleased('A')) && (count == 1))
+		{
+			m_HeroPtr->SetPause(1);
+		}
+		break;
+	case 1:
+		if (m_IsPaused)
+		{
+			GAME_ENGINE->SetWorldMatrix(MATRIX3X2::CreateIdentityMatrix());
+			GAME_ENGINE->SetViewMatrix(MATRIX3X2::CreateIdentityMatrix());
+			GAME_ENGINE->DrawString(String("PAUSED!"), strPos);
+			Inventory();
+		}
+		break;
+	default:
+		break;
+	}
+}
+
+void MainGame::Inventory()
+{
+
 }
 
 // ================ TESTING METHODS ==================

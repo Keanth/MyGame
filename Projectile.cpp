@@ -122,3 +122,15 @@ bool Projectile::Remove()
 	}
 	return false;
 }
+
+void Projectile::SetPause()
+{
+	if (m_ActBulletPtr != nullptr)
+	{
+		DOUBLE2 pos = m_ActBulletPtr->GetPosition();
+		m_ActBulletPtr->SetPosition(pos);
+		m_ActBulletPtr->SetLinearVelocity(DOUBLE2(0, 0));
+		m_ActBulletPtr->SetGravityScale(0);
+	}
+
+}

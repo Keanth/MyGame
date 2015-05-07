@@ -22,6 +22,15 @@ LevelOutdoor::LevelOutdoor(Camera* camera)
 	m_SndOutsideLoop = MyGame::m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
 	m_SndOutsideLoop->Play();
 	m_SndOutsideLoop->Pause();
+	
+	m_BmpBackgroundPtr = new Bitmap(String("./Assets/Images/Level_Outdoor_Bg.png"));
+	m_BmpLevelOutdoor1Ptr = new Bitmap(String("./Assets/Images/Level_Outdoor_1.png"));
+	m_BmpLevelOutdoor2Ptr = new Bitmap(String("./Assets/Images/Level_Outdoor_2.png"));
+	m_BmpLevelOutdoor3Ptr = new Bitmap(String("./Assets/Images/Level_Outdoor_3.png"));
+	m_BmpLevelOutdoor4Ptr = new Bitmap(String("./Assets/Images/Level_Outdoor_4.png"));
+
+	m_BitmapWidth = m_BmpLevelOutdoor1Ptr->GetWidth();
+	Background(2, 0);
 }
 
 LevelOutdoor::~LevelOutdoor()
@@ -35,21 +44,23 @@ LevelOutdoor::~LevelOutdoor()
 	}
 	m_LevelCollisionPtrArr.clear();
 	delete m_ActFloorPtr;
+	Background(3, 0);
 }
 
 void LevelOutdoor::Tick(double deltaTime)
 {
 	m_CameraPtr->Tick(deltaTime);
 	m_CamPos = m_CameraPtr->GetCamPos();
+	Background(1, deltaTime);
 	TilesToDraw();
 }
 
 void LevelOutdoor::Paint()
 {
-	GAME_ENGINE->SetBitmapInterpolationModeLinear();
 	GAME_ENGINE->SetViewMatrix(MATRIX3X2::CreateIdentityMatrix());
-	GAME_ENGINE->DrawBitmap(m_BmpBkMoonPtr);
+	Background(0, 0);
 	GAME_ENGINE->SetViewMatrix(m_CameraPtr->GetViewMatrix());
+	GAME_ENGINE->SetBitmapInterpolationModeNearestNeighbor();
 	PaintTiles();
 }
 
@@ -319,5 +330,107 @@ void LevelOutdoor::SandBlock(int i, int &count, int boxWidth, int boxHeight,
 
 			count = 0;
 		}
+	}
+}
+
+void LevelOutdoor::Background(int number, double deltaTime)
+{
+	int offset = 1;
+
+	switch (number)
+	{
+	case 0:
+		GAME_ENGINE->DrawBitmap(m_BmpBackgroundPtr);
+		BackgroundPaint();
+		break;
+	case 1:
+		BackgroundLoop();
+
+		m_Pos1.x += deltaTime * 32;
+		m_Pos2.x += deltaTime * 16;
+		m_Pos3.x += deltaTime * 8;
+		m_Pos4.x += deltaTime * 4;
+
+		m_Pos12.x += (deltaTime * 32);
+		m_Pos22.x += (deltaTime * 16);
+		m_Pos32.x += (deltaTime * 8);
+		m_Pos42.x += (deltaTime * 4);
+		break;
+	case 2:
+		m_Pos12.x = -m_BitmapWidth + offset;
+		m_Pos22.x = -m_BitmapWidth + offset;
+		m_Pos32.x = -m_BitmapWidth + offset;
+		m_Pos42.x = -m_BitmapWidth + offset;
+		break;
+	case 3:
+		delete m_BmpBackgroundPtr;
+		m_BmpBackgroundPtr = nullptr;
+		delete m_BmpLevelOutdoor1Ptr;
+		m_BmpLevelOutdoor1Ptr = nullptr;
+		delete m_BmpLevelOutdoor2Ptr;
+		m_BmpLevelOutdoor2Ptr = nullptr;
+		delete m_BmpLevelOutdoor3Ptr;
+		m_BmpLevelOutdoor3Ptr = nullptr;
+		delete m_BmpLevelOutdoor4Ptr;
+		m_BmpLevelOutdoor4Ptr = nullptr;
+		break;
+	default:
+		break;
+	}
+}
+
+void LevelOutdoor::BackgroundPaint()
+{
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor4Ptr, m_Pos1);
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor4Ptr, m_Pos12);
+
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor3Ptr, m_Pos2);
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor3Ptr, m_Pos22);
+
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor2Ptr, m_Pos3);
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor2Ptr, m_Pos32);
+
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor1Ptr, m_Pos4);
+	GAME_ENGINE->DrawBitmap(m_BmpLevelOutdoor1Ptr, m_Pos42);
+}
+
+void LevelOutdoor::BackgroundLoop()
+{
+	int offset = 3;
+
+	if (m_Pos1.x > m_BitmapWidth)
+	{
+		m_Pos1.x = -m_BitmapWidth + offset;
+	}
+	if (m_Pos12.x > m_BitmapWidth)
+	{
+		m_Pos12.x = -m_BitmapWidth;
+	}
+
+	if (m_Pos2.x > m_BitmapWidth)
+	{
+		m_Pos2.x = -m_BitmapWidth + offset;
+	}
+	if (m_Pos22.x > m_BitmapWidth)
+	{
+		m_Pos22.x = -m_BitmapWidth;
+	}
+
+	if (m_Pos3.x > m_BitmapWidth)
+	{
+		m_Pos3.x = -m_BitmapWidth + offset;
+	}
+	if (m_Pos32.x > m_BitmapWidth)
+	{
+		m_Pos32.x = -m_BitmapWidth;
+	}
+
+	if (m_Pos4.x > m_BitmapWidth)
+	{
+		m_Pos4.x = -m_BitmapWidth + offset;
+	}
+	if (m_Pos42.x > m_BitmapWidth)
+	{
+		m_Pos42.x = -m_BitmapWidth;
 	}
 }

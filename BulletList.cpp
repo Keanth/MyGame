@@ -97,6 +97,14 @@ void BulletList::RemoveFromList()
 	}
 }
 
+void BulletList::Pause()
+{
+	for (size_t i = 0; i < m_BulletPtrArr.size(); i++)
+	{
+		m_BulletPtrArr[i]->SetPause();
+	}
+}
+
 void BulletList::BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr)
 {
 	for (size_t i = 0; i <m_BulletPtrArr.size(); i++)

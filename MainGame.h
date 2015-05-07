@@ -48,6 +48,8 @@ private:
 	bool m_Shooting = false;
 	void PopulatePickUpList();
 	void PopulateSound();
+	void Pause(int number);
+	void Inventory();
 
 	Hero* m_HeroPtr = nullptr;
 	LevelOutdoor* m_LevelOutdoorPtr = nullptr;

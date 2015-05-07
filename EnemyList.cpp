@@ -143,3 +143,11 @@ void EnemyList::HeDead()
 		}
 	}
 }
+
+void EnemyList::Pause()
+{
+	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
+	{
+		m_EnemyPtrArr[i]->SetPause(0);
+	}
+}

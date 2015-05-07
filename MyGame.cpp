@@ -26,8 +26,13 @@ MainGame* MyGame::m_MainGame = nullptr;
 Pause* MyGame::m_Pause = nullptr;
 Exit* MyGame::m_Exit = nullptr;
 
+//Managers
 BitmapManager* MyGame::m_BitmapManagerPtr = nullptr;
 SoundManager* MyGame::m_SoundManagerPtr = nullptr;
+
+//Screen resolution
+int MyGame::m_ScreenResWidth = (GetSystemMetrics(SM_CXSCREEN));
+int MyGame::m_ScreenResHeight = (GetSystemMetrics(SM_CYSCREEN));
 
 MyGame::MyGame()
 {
@@ -42,8 +47,8 @@ void MyGame::GameInitialize(GameSettings &gameSettings)
 	gameSettings.SetWindowTitle(String("MyGame - Lenaerts, Kenneth - 1DAE03"));
 	gameSettings.SetWindowWidth(940);
 	gameSettings.SetWindowHeight(640);
-	/*gameSettings.SetWindowWidth(1680);
-	gameSettings.SetWindowHeight(1050);*/
+	/*gameSettings.SetWindowWidth(m_ScreenResWidth);
+	gameSettings.SetWindowHeight(m_ScreenResHeight);*/
 	gameSettings.EnableConsole(true);
 	gameSettings.EnableAntiAliasing(true);
 }
@@ -80,7 +85,7 @@ void MyGame::GameTick(double deltaTime)
 {
 	UpdateGameStates(deltaTime);
 
-	if (GAME_ENGINE->IsKeyboardKeyPressed(VK_DELETE))
+	if (GAME_ENGINE->IsKeyboardKeyPressed(VK_ESCAPE))
 	{
 		GAME_ENGINE->QuitGame();
 	}

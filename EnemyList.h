@@ -20,6 +20,7 @@ public:
 	bool IsHit(PhysicsActor* actOtherPtr);
 	int GetSize();
 	void HeDead();
+	void Pause();
 
 	static int PickUpCount;
 

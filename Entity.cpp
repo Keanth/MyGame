@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Entity.h"
+#include "MainGame.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
@@ -159,4 +160,25 @@ int Entity::GetDirection()
 void Entity::SetBulletList(BulletList* bulletList)
 {
 	m_BulletListPtr = bulletList;
+}
+
+void Entity::SetPause(int number)
+{	
+	if (m_ActPtr != nullptr)
+	{
+		DOUBLE2 pos = m_ActPtr->GetPosition();
+		switch (number)
+		{
+		case 0:
+			m_ActPtr->SetPosition(pos);
+			m_ActPtr->SetLinearVelocity(DOUBLE2(0, 0));
+			m_ActPtr->SetGravityScale(0);
+			break;
+		case 1:
+			m_ActPtr->SetGravityScale(1);
+			break;
+		default:
+			break;
+		}
+	}
 }

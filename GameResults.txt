@@ -1797,3 +1797,2138 @@
 		<Info2> ... </Info2>
 	</End>
 </Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 51 : 7 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 51 : 27 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 51 : 56 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 51 : 57 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 58 : 11 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 58 : 21 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 59 : 8 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 59 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 59 : 44 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 14 : 59 : 51 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 0 : 1 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 0 : 11 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 0 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 0 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 1 : 1 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 1 : 22 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 1 : 46 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 2 : 2 </Time>
+		<PlayerHealth> 22 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 3 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 3 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 3 : 16 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 3 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 37 : 40 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 15 : 38 : 12 </Time>
+		<PlayerHealth> 22 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 8 : 29 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 8 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 26 : 15 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 38 : 32 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 38 : 46 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 38 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 38 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 39 : 21 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 39 : 27 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 39 : 56 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 40 : 0 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 42 : 26 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 16 : 42 : 28 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 17 : 4 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 17 : 4 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 17 : 38 : 3 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 17 : 38 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 17 : 52 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 17 : 53 : 21 </Time>
+		<PlayerHealth> 0 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 11 : 44 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 11 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 13 : 36 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 13 : 45 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 14 : 50 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 14 : 54 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 14 : 56 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 14 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 15 : 8 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 15 : 10 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 29 : 6 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 29 : 8 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 29 : 14 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 29 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 42 : 57 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 43 : 3 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 44 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 44 : 20 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 44 : 35 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 44 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 45 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 45 : 36 </Time>
+		<PlayerHealth> 22 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 46 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 46 : 54 </Time>
+		<PlayerHealth> 22 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 49 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 49 : 42 </Time>
+		<PlayerHealth> 22 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 50 : 32 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 50 : 35 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 19 : 59 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 0 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 0 : 41 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 0 : 53 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 1 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 1 : 26 </Time>
+		<PlayerHealth> 0 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 2 : 32 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 2 : 40 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 2 : 53 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 3 : 37 </Time>
+		<PlayerHealth> 22 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 6 : 15 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 6 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 9 : 1 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 10 : 24 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 59 : 19 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 20 : 59 : 46 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 1 : 44 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 1 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 2 : 22 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 2 : 29 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 2 : 36 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 2 : 38 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 8 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 8 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 8 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 8 : 52 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 11 : 26 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 11 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 15 : 15 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 15 : 28 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 21 : 1 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 21 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 21 : 13 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 21 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 23 : 39 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 23 : 41 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 23 : 45 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 23 : 46 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 28 : 5 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 28 : 7 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 28 : 13 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 28 : 14 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 28 : 47 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 29 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 34 : 22 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 34 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 39 : 26 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 39 : 44 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 39 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 40 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 40 : 14 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 40 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 40 : 26 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 40 : 28 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 40 : 33 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 40 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 41 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 41 : 27 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 41 : 51 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 41 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 14 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 22 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 28 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 33 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 42 : 47 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 43 : 35 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 43 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 44 : 39 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 44 : 46 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 45 : 0 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 45 : 11 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 46 : 22 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 46 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 46 : 32 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 46 : 34 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 46 : 39 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 47 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 47 : 22 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 47 : 42 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 48 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 48 : 35 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 48 : 49 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 49 : 1 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 49 : 15 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 50 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 53 : 0 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 53 : 5 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 54 : 21 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 54 : 28 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 54 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 55 : 5 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 55 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 55 : 34 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 55 : 50 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 55 : 57 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 56 : 30 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 56 : 42 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 56 : 51 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 57 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 57 : 59 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 21 : 59 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 0 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 0 : 43 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 1 : 1 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 1 : 29 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 1 : 43 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 2 : 13 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 2 : 19 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 2 : 36 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 2 : 57 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 3 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 4 : 0 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 4 : 26 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 4 : 38 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 4 : 57 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 5 : 2 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 5 : 22 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 6 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 6 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 6 : 42 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 7 : 24 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 9 : 59 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 11 : 9 </Time>
+		<PlayerHealth> 0 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 12 : 20 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 12 : 21 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 16 : 26 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 16 : 52 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 22 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 23 : 47 </Time>
+		<PlayerHealth> 14 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 24 : 55 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 25 : 6 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 26 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 26 : 27 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 26 : 50 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 27 : 10 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 27 : 47 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 22 : 27 : 57 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 0 : 21 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 0 : 43 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 2 : 14 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 2 : 49 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 19 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 19 : 29 </Time>
+		<PlayerHealth> -1 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 19 : 38 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 19 : 40 </Time>
+		<PlayerHealth> -1 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 23 : 12 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 23 : 14 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 31 : 31 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 31 : 41 </Time>
+		<PlayerHealth> 19 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 33 : 2 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 33 : 20 </Time>
+		<PlayerHealth> 22 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 37 : 9 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 37 : 30 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 39 : 10 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 39 : 31 </Time>
+		<PlayerHealth> 0 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 42 : 13 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 42 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 42 : 31 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 42 : 36 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 42 : 45 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 42 : 50 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 43 : 18 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 43 : 24 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 43 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 44 : 10 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 48 : 50 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 49 : 15 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 49 : 34 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 49 : 53 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 50 : 5 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 50 : 30 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 57 : 45 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 7 </Date>
+		<Time> 23 : 58 : 16 </Time>
+		<PlayerHealth> 19 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 0 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 1 : 31 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 1 : 55 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 2 : 6 </Time>
+		<PlayerHealth> 19 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 32 : 6 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 32 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 35 : 7 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 35 : 24 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 35 : 46 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 37 : 0 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 38 : 19 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 38 : 36 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 40 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 41 : 11 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 41 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 41 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 42 : 30 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 43 : 6 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 43 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 43 : 28 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 43 : 51 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 44 : 8 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 44 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 44 : 23 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 44 : 31 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 44 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 44 : 51 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 44 : 53 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 45 : 51 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 45 : 59 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 46 : 25 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 46 : 32 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 46 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 46 : 56 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 56 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 56 : 8 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 0 : 59 : 44 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 0 : 2 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 8 : 42 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 8 : 55 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 9 : 33 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 9 : 43 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 11 : 17 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 11 : 58 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 13 : 16 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 15 : 57 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 19 : 31 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 19 : 45 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 20 : 4 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 20 : 15 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 20 : 20 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 20 : 37 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 25 : 5 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 25 : 15 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 25 : 39 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 25 : 48 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>
+<Session>
+	<Start>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 26 : 28 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</Start>
+	<End>
+		<Date> 2015 : 5 : 8 </Date>
+		<Time> 1 : 26 : 59 </Time>
+		<PlayerHealth> 20 HP </PlayerHealth>
+		<Info2> ... </Info2>
+	</End>
+</Session>

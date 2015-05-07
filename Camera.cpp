@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "hero.h"
 #include "LevelOutdoor.h"
+#include "MyGame.h"
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 Camera::Camera(Hero* avatarPtr)

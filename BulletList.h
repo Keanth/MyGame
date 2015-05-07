@@ -24,7 +24,7 @@ public:
 	void ShootHandler(Projectile* projectile);
 	void SetActor(PhysicsActor* actOtherPtr);
 	bool IsHit();
-
+	void Pause();
 
 private:
 	double m_BulletTimer = 0.0;

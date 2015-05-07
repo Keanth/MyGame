@@ -8,7 +8,7 @@
 // Static Variable Initialization
 //-----------------------------------------------------------------
 GameEngine* GameEngine::m_GameEnginePtr = nullptr;
-
+//b2World* GameEngine::m_Box2DWorldPtr = nullptr;
 //-----------------------------------------------------------------
 // Windows Functions
 //-----------------------------------------------------------------
@@ -237,6 +237,7 @@ int GameEngine::Run(HINSTANCE hInstance, int iCmdShow)
 					int32 velocityIterations = 6;
 					int32 positionIterations = 2;
 					m_Box2DWorldPtr->Step((float)m_PhysicsTimeStep, velocityIterations, positionIterations);
+//					m_Box2DWorldPtr->Step(0, 0, 0);
 
 					// Step generates contact lists, pass to Listeners and clear the vector
 					CallListeners();

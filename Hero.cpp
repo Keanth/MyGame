@@ -4,6 +4,7 @@
 
 #include "PolarStarBullet.h"
 #include "MyGame.h"
+#include "MainGame.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 

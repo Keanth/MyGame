@@ -364,6 +364,7 @@ public:
 	// Internal use only
 	void ApplyGameSettings(GameSettings &gameSettings);
 
+//	static b2World *m_Box2DWorldPtr;
 
 private:
 	// Set when the game loses focus

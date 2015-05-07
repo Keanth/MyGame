@@ -60,6 +60,10 @@ public:
 	static BitmapManager* m_BitmapManagerPtr;
 	static SoundManager* m_SoundManagerPtr;
 
+	//Screen resolution
+	static int m_ScreenResWidth;
+	static int m_ScreenResHeight;
+
 private:
 	void UpdateGameStates(double deltaTime);
 	void DrawGameStates();

@@ -27,6 +27,11 @@ private:
 	void PaintTiles();
 	void CreateActors();
 
+	//BG Methods
+	void Background(int number, double deltaTime);
+	void BackgroundPaint();
+	void BackgroundLoop();
+
 	//Tile Actors Methods
 	void EighPartBlock(int i, int &count, int boxWidth, int boxHeight,
 		DOUBLE2 pos, int x, int y, PhysicsActor* localActor, bool checkIs13);
@@ -64,6 +69,24 @@ private:
 	Sound* m_SndOutsideLoop = nullptr;
 	double m_IntroTimer = 0.0;
 
+	//BG
+	Bitmap* m_BmpBackgroundPtr = nullptr;
+	Bitmap* m_BmpLevelOutdoor1Ptr = nullptr;
+	Bitmap* m_BmpLevelOutdoor2Ptr = nullptr;
+	Bitmap* m_BmpLevelOutdoor3Ptr = nullptr;
+	Bitmap* m_BmpLevelOutdoor4Ptr = nullptr;
+
+	DOUBLE2 m_Pos1;
+	DOUBLE2 m_Pos2;
+	DOUBLE2 m_Pos3;
+	DOUBLE2 m_Pos4;
+
+	DOUBLE2 m_Pos12;
+	DOUBLE2 m_Pos22;
+	DOUBLE2 m_Pos32;
+	DOUBLE2 m_Pos42;
+
+	int m_BitmapWidth = 0;
 };
 
  
