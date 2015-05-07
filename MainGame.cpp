@@ -225,11 +225,11 @@ void MainGame::PopulateSound()
 
 void MainGame::PopulatePickUpList()
 {
-	if (GAME_ENGINE->IsKeyboardKeyPressed('X'))
+	/*if (GAME_ENGINE->IsKeyboardKeyPressed('X'))
 	{
 		m_PickUpListPtr->Add(new Doritos(DOUBLE2(300, 5270), m_HeroPtr));
 		m_PickUpListPtr->Add(new HealthUp(DOUBLE2(400, 5300), m_HeroPtr));
-	}
+	}*/
 }
 
 // ================ TESTING METHODS ==================

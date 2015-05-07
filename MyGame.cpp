@@ -20,7 +20,7 @@
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-GameState MyGame::m_GameState = GameState::MAIN_GAME;
+GameState MyGame::m_GameState = GameState::MAIN_MENU;
 MainMenu* MyGame::m_MainMenu = nullptr;
 MainGame* MyGame::m_MainGame = nullptr;
 Pause* MyGame::m_Pause = nullptr;
@@ -42,8 +42,8 @@ void MyGame::GameInitialize(GameSettings &gameSettings)
 	gameSettings.SetWindowTitle(String("MyGame - Lenaerts, Kenneth - 1DAE03"));
 	gameSettings.SetWindowWidth(940);
 	gameSettings.SetWindowHeight(640);
-	/*gameSettings.SetWindowWidth(1440);
-	gameSettings.SetWindowHeight(900);*/
+	/*gameSettings.SetWindowWidth(1680);
+	gameSettings.SetWindowHeight(1050);*/
 	gameSettings.EnableConsole(true);
 	gameSettings.EnableAntiAliasing(true);
 }
@@ -78,7 +78,12 @@ void MyGame::GameEnd()
 
 void MyGame::GameTick(double deltaTime)
 {
-	UpdateGameStates(deltaTime);	
+	UpdateGameStates(deltaTime);
+
+	if (GAME_ENGINE->IsKeyboardKeyPressed(VK_DELETE))
+	{
+		GAME_ENGINE->QuitGame();
+	}
 }
 
 void MyGame::GamePaint(RECT rect)

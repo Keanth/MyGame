@@ -76,29 +76,29 @@ void Hero::UpdateVariables(double deltaTime)
 void Hero::UserInput(double deltaTime)
 {
 	// x-axis movement
-	if ((GAME_ENGINE->IsKeyboardKeyDown('Q')) &&
-		(GAME_ENGINE->IsKeyboardKeyDown('D'))
+	if ((GAME_ENGINE->IsKeyboardKeyDown(VK_LEFT)) &&
+		(GAME_ENGINE->IsKeyboardKeyDown(VK_RIGHT))
 		)
 	{
 		Idle();
 	}
-	else if (GAME_ENGINE->IsKeyboardKeyDown('Q'))
+	else if (GAME_ENGINE->IsKeyboardKeyDown(VK_LEFT))
 	{
 		MoveLeft();
 	}
-	else if (GAME_ENGINE->IsKeyboardKeyDown('D'))
+	else if (GAME_ENGINE->IsKeyboardKeyDown(VK_RIGHT))
 	{
 		MoveRight();
 	}
-	else if (GAME_ENGINE->IsKeyboardKeyDown('Z'))
+	else if (GAME_ENGINE->IsKeyboardKeyDown(VK_UP))
 	{
 		Up();
 	}
-	else if ((GAME_ENGINE->IsKeyboardKeyDown('S')) && (m_OnFloor == false))
+	else if ((GAME_ENGINE->IsKeyboardKeyDown(VK_DOWN)) && (m_OnFloor == false))
 	{
 		DownJump();
 	}
-	else if (GAME_ENGINE->IsKeyboardKeyDown('S'))
+	else if (GAME_ENGINE->IsKeyboardKeyDown(VK_DOWN))
 	{
 		Down();
 	}
@@ -107,11 +107,11 @@ void Hero::UserInput(double deltaTime)
 		Idle();
 	}
 	// y-axis movement
-	if ((m_OnFloor) && (GAME_ENGINE->IsKeyboardKeyDown(VK_SPACE)))
+	if ((m_OnFloor) && (GAME_ENGINE->IsKeyboardKeyDown('W')))
 	{
 		StartJump();
 	}
-	if ((m_ActiveJump) && (!GAME_ENGINE->IsKeyboardKeyDown(VK_SPACE)))
+	if ((m_ActiveJump) && (!GAME_ENGINE->IsKeyboardKeyDown('W')))
 	{
 		StopJump();
 		m_Jump_Time = 0;
@@ -120,12 +120,12 @@ void Hero::UserInput(double deltaTime)
 	{
 		StopJump();
 	}
-	if ((m_BoosterActive) && (GAME_ENGINE->IsKeyboardKeyDown(VK_SPACE)))
+	if ((m_BoosterActive) && (GAME_ENGINE->IsKeyboardKeyDown('W')))
 	{
 		StartBooster();
 		m_BoosterTimer += deltaTime;
 	}
-	if ((m_BoosterActive) && (GAME_ENGINE->IsKeyboardKeyReleased(VK_SPACE)))
+	if ((m_BoosterActive) && (GAME_ENGINE->IsKeyboardKeyReleased('W')))
 	{
 		m_BoolBoosterTrail = false;
 	}
@@ -134,13 +134,13 @@ void Hero::UserInput(double deltaTime)
 		StopBooster();
 	}
 	//Shooter
-	if ((GAME_ENGINE->IsKeyboardKeyDown('J')) && (m_IsShootWorthy))
+	if ((GAME_ENGINE->IsKeyboardKeyDown('X')) && (m_IsShootWorthy))
 	{
 		//m_BulletListPtr->ShootHandler(m_ActPtr->GetPosition(), GetDirection(), 0);
 		m_BulletListPtr->ShootHandler(new PolarStarBullet(m_ActPtr->GetPosition(), GetDirection()));
 		m_IsShootWorthy = false;
 	}
-	else if (!GAME_ENGINE->IsKeyboardKeyDown('J'))
+	else if (!GAME_ENGINE->IsKeyboardKeyDown('X'))
 	{
 		m_IsShootWorthy = true;
 	}
@@ -192,7 +192,7 @@ void Hero::StopJump()
 	m_ActPtr->SetGravityScale(1);
 	Anim();
 
-	if (GAME_ENGINE->IsKeyboardKeyReleased(VK_SPACE))
+	if (GAME_ENGINE->IsKeyboardKeyReleased('W'))
 	{
 		m_BoosterActive = true;
 	}

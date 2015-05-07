@@ -13,13 +13,17 @@ public:
 	void Paint();
 
 private:
-	void RemoveButton();
-	
-	static const int _buttonWidth = 100;
-	static const int _buttonHeight = 30;
-	
-	Button* _button = nullptr;
-	bool m_ButtonIsRemoved = false;
+	RECT2 Rect(int number);
 
+	static const int FONT_HEIGHT = 16;
+	static const int FONT_WIDTH = 160;
+
+	int m_Pointer = 0;
+	std::vector<String> m_MenuArr;
+
+	Font* m_FntPixelFontPtr = nullptr;
+	Bitmap* m_BmpFontPtr = nullptr;
+	Bitmap* m_BmpFontSelectedPtr = nullptr;
+	Bitmap* m_BmpBackgroundPtr = nullptr;
 };
 

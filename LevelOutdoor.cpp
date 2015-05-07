@@ -3,6 +3,7 @@
 #include "MyGame.h"
 #include "Camera.h"
 #include "SoundManager.h"
+
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 LevelOutdoor::LevelOutdoor(Camera* camera)

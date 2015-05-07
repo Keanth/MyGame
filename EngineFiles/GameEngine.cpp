@@ -330,8 +330,14 @@ bool GameEngine::RegisterWindowClass()
 bool GameEngine::OpenWindow(int iCmdShow)
 {
 	// Calculate the window size and position based upon the game size
-	DWORD windowStyle = WS_POPUPWINDOW | WS_CAPTION | WS_MINIMIZEBOX | WS_CLIPCHILDREN;
-	RECT R = { 0, 0, m_iWidth, m_iHeight };
+//	DWORD windowStyle = WS_POPUPWINDOW | WS_CAPTION | WS_MINIMIZEBOX | WS_CLIPCHILDREN;
+	DWORD windowStyle = WS_POPUP;
+
+	int width = (GetSystemMetrics(SM_CXSCREEN));
+	int height = (GetSystemMetrics(SM_CYSCREEN));
+
+//	RECT R = { 0, 0, m_iWidth, m_iHeight };
+	RECT R = { 0, 0, width, height };
 	AdjustWindowRect(&R, windowStyle, false);
 	int iWindowWidth = R.right - R.left;
 	int iWindowHeight = R.bottom - R.top;
