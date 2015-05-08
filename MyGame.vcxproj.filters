@@ -230,6 +230,7 @@
     <ClCompile Include="NightSpiritBullet.cpp">
       <Filter>Game Files\Weapons\Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="SplashScreen.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -542,6 +543,7 @@
     <ClInclude Include="NightSpiritBullet.h">
       <Filter>Game Files\Weapons\Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="SplashScreen.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

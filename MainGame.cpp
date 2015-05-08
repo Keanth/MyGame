@@ -83,6 +83,7 @@ void MainGame::Tick(double deltaTime)
 	CheckTestMenu();
 
 	Pause(0);
+	EndGame();
 
 	if (m_IsPaused == false)
 	{
@@ -96,15 +97,10 @@ void MainGame::Tick(double deltaTime)
 		}
 
 		PhysicsRendering();
-
 		CameraLock(deltaTime);
-
 		m_EnemyListPtr->Tick(deltaTime);
-
 		m_BulletListPtr->Tick(deltaTime, m_HeroPtr->GetDirection());
-
 		m_HeroPos = m_HeroPtr->GetPosition();
-
 		PopulatePickUpList();
 		m_PickUpListPtr->Tick(deltaTime);
 
@@ -121,14 +117,7 @@ void MainGame::Tick(double deltaTime)
 			MyGame::InitExit();
 			MyGame::m_GameState = GameState::EXIT;
 		}
-
 	}
-
-	/*if (m_IsPaused)
-	{
-		MyGame::InitPause();
-		MyGame::m_GameState = GameState::PAUSE;
-	}*/
 }
 
 void MainGame::Paint()
@@ -280,6 +269,31 @@ void MainGame::Pause(int number)
 void MainGame::Inventory()
 {
 
+}
+
+void MainGame::EndGame()
+{
+	int count = 0;
+	
+	if (GAME_ENGINE->IsKeyboardKeyPressed(VK_ESCAPE))
+	{
+		m_IsPaused = !m_IsPaused;
+	}
+	if (GAME_ENGINE->IsKeyboardKeyReleased(VK_ESCAPE))
+	{
+		count++;
+	}
+	if (m_IsPaused)
+	{
+		m_HeroPtr->SetPause(0);
+		m_EnemyListPtr->Pause();
+		//		m_BulletListPtr->Pause();
+	}
+	if ((GAME_ENGINE->IsKeyboardKeyReleased(VK_ESCAPE)) && (count == 1))
+	{
+		m_HeroPtr->SetPause(1);
+	}
+	//GAME_ENGINE->QuitGame();
 }
 
 // ================ TESTING METHODS ==================

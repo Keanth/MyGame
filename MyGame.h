@@ -17,6 +17,7 @@
 
 enum class GameState
 {
+	SPLASH_SCREEN,
 	MAIN_MENU,
 	MAIN_GAME,
 	OPTIONS,
@@ -24,6 +25,7 @@ enum class GameState
 	EXIT
 };
 
+class SplashScreen;
 class MainMenu;
 class MainGame;
 class Pause;
@@ -46,6 +48,7 @@ public:
 	virtual void GameTick(double deltaTime);
 	virtual void GamePaint(RECT rect);
 	
+	static void InitSplashScreen();
 	static void InitMainMenu();
 	static void InitMainGame();
 	static void InitPause();
@@ -68,6 +71,7 @@ private:
 	void UpdateGameStates(double deltaTime);
 	void DrawGameStates();
 
+	static SplashScreen* m_SplashScreen;
 	static MainMenu* m_MainMenu;
 	static MainGame* m_MainGame;
 	static Pause* m_Pause;

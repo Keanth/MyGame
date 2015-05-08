@@ -50,6 +50,7 @@ private:
 	void PopulateSound();
 	void Pause(int number);
 	void Inventory();
+	void EndGame();
 
 	Hero* m_HeroPtr = nullptr;
 	LevelOutdoor* m_LevelOutdoorPtr = nullptr;

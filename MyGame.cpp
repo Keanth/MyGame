@@ -9,6 +9,7 @@
 #include "stdafx.h"	
 #include "MyGame.h"	
 
+#include "SplashScreen.h"
 #include "MainMenu.h"
 #include "MainGame.h"
 #include "Pause.h"
@@ -20,7 +21,9 @@
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-GameState MyGame::m_GameState = GameState::MAIN_MENU;
+GameState MyGame::m_GameState = GameState::SPLASH_SCREEN;
+
+SplashScreen* MyGame::m_SplashScreen = nullptr;
 MainMenu* MyGame::m_MainMenu = nullptr;
 MainGame* MyGame::m_MainGame = nullptr;
 Pause* MyGame::m_Pause = nullptr;
@@ -45,8 +48,8 @@ MyGame::~MyGame()
 void MyGame::GameInitialize(GameSettings &gameSettings)
 {
 	gameSettings.SetWindowTitle(String("MyGame - Lenaerts, Kenneth - 1DAE03"));
-	gameSettings.SetWindowWidth(940);
-	gameSettings.SetWindowHeight(640);
+	gameSettings.SetWindowWidth(1080);
+	gameSettings.SetWindowHeight(720);
 	/*gameSettings.SetWindowWidth(m_ScreenResWidth);
 	gameSettings.SetWindowHeight(m_ScreenResHeight);*/
 	gameSettings.EnableConsole(true);
@@ -59,7 +62,11 @@ void MyGame::GameStart()
 	WriteToLog(0);
 	PopulateBank();
 
-	if (m_GameState == GameState::MAIN_MENU)
+	if (m_GameState == GameState::SPLASH_SCREEN)
+	{
+		InitSplashScreen();
+	}
+	else if (m_GameState == GameState::MAIN_MENU)
 	{
 		InitMainMenu();
 	}
@@ -72,6 +79,7 @@ void MyGame::GameStart()
 void MyGame::GameEnd()
 {
 	WriteToLog(1);
+	delete m_SplashScreen;
 	delete m_MainGame;
 	delete m_MainMenu;
 	delete m_Pause;
@@ -84,16 +92,19 @@ void MyGame::GameEnd()
 void MyGame::GameTick(double deltaTime)
 {
 	UpdateGameStates(deltaTime);
-
-	if (GAME_ENGINE->IsKeyboardKeyPressed(VK_ESCAPE))
-	{
-		GAME_ENGINE->QuitGame();
-	}
 }
 
 void MyGame::GamePaint(RECT rect)
 {
 	DrawGameStates();
+}
+
+void MyGame::InitSplashScreen()
+{
+	if (m_SplashScreen == nullptr)
+	{
+		m_SplashScreen = new SplashScreen();
+	}
 }
 
 void MyGame::InitMainMenu()
@@ -130,7 +141,11 @@ void MyGame::InitExit()
 
 void MyGame::UpdateGameStates(double deltaTime)
 {
-	if (m_GameState == GameState::MAIN_GAME)
+	if (m_GameState == GameState::SPLASH_SCREEN)
+	{
+		m_SplashScreen->Tick(deltaTime);
+	}
+	else if (m_GameState == GameState::MAIN_GAME)
 	{
 		m_MainGame->Tick(deltaTime);
 	}
@@ -150,7 +165,11 @@ void MyGame::UpdateGameStates(double deltaTime)
 
 void MyGame::DrawGameStates()
 {
-	if (m_GameState == GameState::MAIN_GAME)
+	if (m_GameState == GameState::SPLASH_SCREEN)
+	{
+		m_SplashScreen->Paint();
+	}
+	else if (m_GameState == GameState::MAIN_GAME)
 	{
 		m_MainGame->Paint();
 	}
