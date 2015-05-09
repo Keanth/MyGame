@@ -67,6 +67,9 @@ public:
 	static int m_ScreenResWidth;
 	static int m_ScreenResHeight;
 
+	//Music
+	static bool m_MusicOn;
+
 private:
 	void UpdateGameStates(double deltaTime);
 	void DrawGameStates();

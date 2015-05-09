@@ -32,9 +32,6 @@
     <Filter Include="Game Files\Enemies">
       <UniqueIdentifier>{6d13a1b9-557b-44bc-8197-0d8c88ada70f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Game Files\Visual Elements">
-      <UniqueIdentifier>{7bc93afb-90cb-481f-82ef-c246cd5dd6ad}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Game Files\_GameStates">
       <UniqueIdentifier>{04e8f992-c3eb-4d08-b8a8-9adf06bc3bba}</UniqueIdentifier>
     </Filter>
@@ -61,6 +58,12 @@
     </Filter>
     <Filter Include="Game Files\Weapons\Enemy">
       <UniqueIdentifier>{300e57ba-78af-472f-b050-c0900f16f797}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Files\Other Elements">
+      <UniqueIdentifier>{7bc93afb-90cb-481f-82ef-c246cd5dd6ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game Files\Regular">
+      <UniqueIdentifier>{650579a7-358d-405a-a9b1-16bc11b405f6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -146,7 +149,7 @@
       <Filter>Game Files\Hero</Filter>
     </ClCompile>
     <ClCompile Include="HUD.cpp">
-      <Filter>Game Files\Visual Elements</Filter>
+      <Filter>Game Files\Other Elements</Filter>
     </ClCompile>
     <ClCompile Include="MainGame.cpp">
       <Filter>Game Files\_GameStates</Filter>
@@ -182,7 +185,7 @@
       <Filter>Game Files\_GameStates</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Game Files\Visual Elements</Filter>
+      <Filter>Game Files\Other Elements</Filter>
     </ClCompile>
     <ClCompile Include="Entity.cpp">
       <Filter>Game Files\Entity</Filter>
@@ -217,20 +220,30 @@
     <ClCompile Include="Projectile.cpp">
       <Filter>Game Files\Weapons</Filter>
     </ClCompile>
-    <ClCompile Include="CurlyBrace.cpp">
-      <Filter>Game Files\Enemies</Filter>
-    </ClCompile>
     <ClCompile Include="Hoppy.cpp">
       <Filter>Game Files\Enemies</Filter>
     </ClCompile>
     <ClCompile Include="Sandcrocs.cpp">
       <Filter>Game Files\Enemies</Filter>
     </ClCompile>
-    <ClCompile Include="Boxhead.cpp" />
     <ClCompile Include="NightSpiritBullet.cpp">
       <Filter>Game Files\Weapons\Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="SplashScreen.cpp" />
+    <ClCompile Include="Boxhead.cpp">
+      <Filter>Game Files\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="SplashScreen.cpp">
+      <Filter>Game Files\_GameStates</Filter>
+    </ClCompile>
+    <ClCompile Include="DialogueTree.cpp">
+      <Filter>Game Files\Other Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="EndGame.cpp">
+      <Filter>Game Files\Other Elements</Filter>
+    </ClCompile>
+    <ClCompile Include="CurlyBrace.cpp">
+      <Filter>Game Files\Regular</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -459,7 +472,7 @@
       <Filter>Game Files\Hero</Filter>
     </ClInclude>
     <ClInclude Include="HUD.h">
-      <Filter>Game Files\Visual Elements</Filter>
+      <Filter>Game Files\Other Elements</Filter>
     </ClInclude>
     <ClInclude Include="MainGame.h">
       <Filter>Game Files\_GameStates</Filter>
@@ -492,7 +505,7 @@
       <Filter>Game Files\_GameStates</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Game Files\Visual Elements</Filter>
+      <Filter>Game Files\Other Elements</Filter>
     </ClInclude>
     <ClInclude Include="Entity.h">
       <Filter>Game Files\Entity</Filter>
@@ -530,20 +543,30 @@
     <ClInclude Include="Projectile.h">
       <Filter>Game Files\Weapons</Filter>
     </ClInclude>
-    <ClInclude Include="CurlyBrace.h">
-      <Filter>Game Files\Enemies</Filter>
-    </ClInclude>
     <ClInclude Include="Hoppy.h">
       <Filter>Game Files\Enemies</Filter>
     </ClInclude>
     <ClInclude Include="Sandcrocs.h">
       <Filter>Game Files\Enemies</Filter>
     </ClInclude>
-    <ClInclude Include="Boxhead.h" />
     <ClInclude Include="NightSpiritBullet.h">
       <Filter>Game Files\Weapons\Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="SplashScreen.h" />
+    <ClInclude Include="Boxhead.h">
+      <Filter>Game Files\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="SplashScreen.h">
+      <Filter>Game Files\_GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="DialogueTree.h">
+      <Filter>Game Files\Other Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGame.h">
+      <Filter>Game Files\Other Elements</Filter>
+    </ClInclude>
+    <ClInclude Include="CurlyBrace.h">
+      <Filter>Game Files\Regular</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

@@ -13,7 +13,11 @@ class PickUpBase;
 class HealthUp;
 class Doritos;
 class NightSpirit;
+class EndGame;
 class EnemyBase;
+class DialogueTree;
+class BitmapManager;
+class CurlyBrace;
 
 class MainGame
 {
@@ -34,6 +38,7 @@ public:
 
 	static bool m_IsPaused;
 	static PickUpList* m_PickUpListPtr;
+	static bool m_DialogueActive;
 
 private:
 	void InitObj();
@@ -48,17 +53,24 @@ private:
 	bool m_Shooting = false;
 	void PopulatePickUpList();
 	void PopulateSound();
+	void StopRunning(char key);
 	void Pause(int number);
 	void Inventory();
-	void EndGame();
+	void QuitGame(int number, double deltaTime);
+	void Dialogue(int number, double deltaTime);
+	void MovieBorder(int number, double deltaTime);
 
 	Hero* m_HeroPtr = nullptr;
+	CurlyBrace* m_CurlyBracePtr = nullptr;
 	LevelOutdoor* m_LevelOutdoorPtr = nullptr;
 	Camera* m_CameraPtr = nullptr;
 	BulletList* m_BulletListPtr = nullptr;
 	HUD* m_HudPtr = nullptr;
 	HealthUp* m_HealthUpPtr = nullptr;
 	Doritos* m_DoritosPtr = nullptr;
+	EndGame* m_EndGamePtr = nullptr;
+	DialogueTree* m_DialogueTreePtr = nullptr;
+	BitmapManager* m_BitmapManagerPtr = nullptr;
 
 	//Enemies
 	EnemyList* m_EnemyListPtr = nullptr;
@@ -74,4 +86,10 @@ private:
 	bool m_EnemySpawn = true;
 
 	std::vector<ButtonManager*> m_ButtonManagerPtrArr;
+
+	bool m_IsPauseActive = false;
+	bool m_IsEndGameActive = false;
+	bool m_DialogueWorthy = true;
+	bool m_IsMovieBorderActive = true;
+	double m_MovieBorderOffset = 100;
 };

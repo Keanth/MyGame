@@ -21,7 +21,7 @@
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-GameState MyGame::m_GameState = GameState::SPLASH_SCREEN;
+GameState MyGame::m_GameState = GameState::MAIN_GAME;
 
 SplashScreen* MyGame::m_SplashScreen = nullptr;
 MainMenu* MyGame::m_MainMenu = nullptr;
@@ -36,6 +36,9 @@ SoundManager* MyGame::m_SoundManagerPtr = nullptr;
 //Screen resolution
 int MyGame::m_ScreenResWidth = (GetSystemMetrics(SM_CXSCREEN));
 int MyGame::m_ScreenResHeight = (GetSystemMetrics(SM_CYSCREEN));
+
+//Music
+bool MyGame::m_MusicOn = false;
 
 MyGame::MyGame()
 {
@@ -73,6 +76,10 @@ void MyGame::GameStart()
 	else if (m_GameState == GameState::MAIN_GAME)
 	{
 		InitMainGame();
+	}
+	else if (m_GameState == GameState::EXIT)
+	{
+		InitExit();
 	}
 }
 
@@ -195,6 +202,10 @@ void MyGame::PopulateBank()
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc02.png"));
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Npc03.png"));
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Bullet.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/HUD.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Dialogue/CurlyHappy.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Dialogue/Quote.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Regular.png"));
 
 	m_SoundManagerPtr = new SoundManager();
 	m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_intro.mp3"));

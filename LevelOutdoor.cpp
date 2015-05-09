@@ -20,8 +20,6 @@ LevelOutdoor::LevelOutdoor(Camera* camera)
 	CreateActors();
 
 	m_SndOutsideLoop = MyGame::m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_loop.mp3"));
-	m_SndOutsideLoop->Play();
-	m_SndOutsideLoop->Pause();
 	
 	m_BmpBackgroundPtr = new Bitmap(String("./Assets/Images/Level_Outdoor_Bg.png"));
 	m_BmpLevelOutdoor1Ptr = new Bitmap(String("./Assets/Images/Level_Outdoor_1.png"));
@@ -49,6 +47,15 @@ LevelOutdoor::~LevelOutdoor()
 
 void LevelOutdoor::Tick(double deltaTime)
 {
+	if (MyGame::m_MusicOn)
+	{
+		m_SndOutsideLoop->Play();
+	}
+	else
+	{
+		m_SndOutsideLoop->Pause();
+	}
+
 	m_CameraPtr->Tick(deltaTime);
 	m_CamPos = m_CameraPtr->GetCamPos();
 	Background(1, deltaTime);

@@ -110,7 +110,7 @@ MATRIX3X2 Camera::GetViewMatrix()
 
 void Camera::Tick(double deltaTime)
 {
-	if (GAME_ENGINE->IsKeyboardKeyDown(VK_UP))
+	/*if (GAME_ENGINE->IsKeyboardKeyDown(VK_UP))
 	{
 		m_CamPos.y -= CAM_MOVEMENT;
 	}
@@ -125,12 +125,30 @@ void Camera::Tick(double deltaTime)
 	if (GAME_ENGINE->IsKeyboardKeyDown(VK_RIGHT))
 	{
 		m_CamPos.x += CAM_MOVEMENT;
+	}*/
+
+	if (GAME_ENGINE->IsKeyboardKeyDown('Z'))
+	{
+		m_CamPos.y -= CAM_MOVEMENT;
 	}
-	if (GAME_ENGINE->IsKeyboardKeyDown('T'))
+	if (GAME_ENGINE->IsKeyboardKeyDown('S'))
+	{
+		m_CamPos.y += CAM_MOVEMENT;
+	}
+	if (GAME_ENGINE->IsKeyboardKeyDown('Q'))
+	{
+		m_CamPos.x -= CAM_MOVEMENT;
+	}
+	if (GAME_ENGINE->IsKeyboardKeyDown('D'))
+	{
+		m_CamPos.x += CAM_MOVEMENT;
+	}
+
+	if (GAME_ENGINE->IsKeyboardKeyDown('Y'))
 	{
 		m_CameraScale -= 0.01;
 	}
-	if (GAME_ENGINE->IsKeyboardKeyDown('Y'))
+	if (GAME_ENGINE->IsKeyboardKeyDown('T'))
 	{
 		m_CameraScale += 0.01;
 	}

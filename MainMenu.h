@@ -18,6 +18,7 @@ private:
 	void Background(int number, double deltaTime);
 	void BackgroundPaint();
 	void BackgroundLoop();
+	void Extra(int number, double deltaTime);
 
 	static const int FONT_HEIGHT = 16;
 	static const int FONT_WIDTH = 160;
@@ -51,5 +52,12 @@ private:
 
 	int m_BitmapWidth = 0;
 
+	Bitmap* m_BmpLogoPtr = nullptr;
+	Bitmap* m_BmpMenuBoxPtr = nullptr;
+	Bitmap* m_BmpExtraPtr = nullptr;
+	Bitmap* m_BmpExtraSmallPtr = nullptr;
+	double m_ExtraScale = 1;
+	double m_ExtraCount = 0;
+	bool m_IsSmall = false;
 };
 

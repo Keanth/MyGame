@@ -19,6 +19,5 @@ private:
 	double m_Opacity = 255;
 	bool m_CountDown = false;
 	bool m_CountUp = false;
-
 };
 

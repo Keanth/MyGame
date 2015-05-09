@@ -31,6 +31,12 @@ Sound::~Sound()
 	m_pSourceVoice->Stop(0);
 	m_pSourceVoice->DestroyVoice();
 	delete m_Buffer.pAudioData;
+	
+	for (auto it = m_OverlappingVoices.begin(); it != m_OverlappingVoices.end(); ++it)
+	{
+		(*it)->Stop(0);
+		(*it)->DestroyVoice();
+	}
 }
 
 void Sound::Extract(int resourceID, const String& typeRef, String &resultingFilenameRef)
@@ -103,6 +109,51 @@ bool Sound::Play()
 		}
 	}
 	return false;
+}
+
+bool Sound::PlayImmediately()
+{
+	HRESULT hr = S_FALSE;
+	IXAudio2SourceVoice * pSourceVoice = nullptr;
+
+	for (auto it = m_OverlappingVoices.begin(); it != m_OverlappingVoices.end(); ++it)
+	{
+		IXAudio2SourceVoice* pExistingVoice = *it;
+		XAUDIO2_VOICE_STATE state;
+		pExistingVoice->GetState(&state);
+
+		if (state.BuffersQueued == 0){
+			pSourceVoice = pExistingVoice;
+		}
+		
+	}
+	if (pSourceVoice == nullptr)
+	{
+
+		if (FAILED(hr = GameEngine::GetSingleton()->GetXAudio()->GetIXAudio()->CreateSourceVoice(&pSourceVoice, (WAVEFORMATEX*)&m_Wfx, 0, XAUDIO2_DEFAULT_FREQ_RATIO, &m_VoiceCallback, NULL, NULL)))
+			//if (FAILED(hr = AudioSystem::m_pXAudio2->CreateSourceVoice(&m_pSourceVoice, (WAVEFORMATEX*)&m_Wfx)))
+		{
+			MessageBoxA(NULL, "Error Creating the Sound", "GameEngine says NO", MB_OK);
+			exit(-1);
+		}
+		else
+		{
+			m_OverlappingVoices.push_back(pSourceVoice);
+		}
+	}
+	
+	// 4. Submit an XAUDIO2_BUFFER to the source voice using the function SubmitSourceBuffer.
+	//m_pSourceVoice->
+	if (FAILED(hr = pSourceVoice->SubmitSourceBuffer(&m_Buffer)))
+	{
+		MessageBoxA(NULL, "Error SubmitSourceBuffer", "GameEngine says NO", MB_OK);
+		exit(-1);
+	}
+		
+		
+	hr = pSourceVoice->Start(0);
+		
+	return hr != S_FALSE;
 }
 
 bool Sound::Stop()
@@ -186,6 +237,7 @@ void __stdcall VoiceCallback::OnStreamEnd()
 {
 	m_pXSound->SetPlayState(Sound::PlayState::Stopped);
 }
+
 void VoiceCallback::SetVoice(Sound *pXSound)
 {
 	m_pXSound = pXSound;

@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "MyGame.h"
 #include "MainGame.h"
+#include "BitmapManager.h"
 #include "LevelOutdoor.h"
 #include "Hero.h"
 #include "Camera.h"
@@ -15,12 +16,16 @@
 #include "PickUpList.h"
 #include "SoundManager.h"
 #include "NightSpirit.h"
+#include "EndGame.h"
+#include "DialogueTree.h"
+#include "CurlyBrace.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
 DOUBLE2 MainGame::m_HeroPos = DOUBLE2(0.0, 0.0);
 bool MainGame::m_IsPaused = false;
 PickUpList* MainGame::m_PickUpListPtr = nullptr;
+bool MainGame::m_DialogueActive = false;
 
 MainGame::MainGame()
 {
@@ -30,13 +35,18 @@ MainGame::MainGame()
 
 void MainGame::InitObj()
 {
+	m_BitmapManagerPtr = MyGame::m_BitmapManagerPtr;
+
 	m_HeroPtr = new Hero();
+	m_CurlyBracePtr = new CurlyBrace();
 	m_CameraPtr = new Camera(m_HeroPtr);
 	m_LevelOutdoorPtr = new LevelOutdoor(m_CameraPtr);
 	m_PickUpListPtr = new PickUpList(m_HeroPtr);
 	m_EnemyListPtr = new EnemyList(m_HeroPtr);
 	m_BulletListPtr = new BulletList(m_EnemyListPtr);
 	m_HudPtr = new HUD();
+	m_EndGamePtr = new EndGame();
+	m_DialogueTreePtr = new DialogueTree();
 
 	m_HeroPtr->SetBulletList(m_BulletListPtr);
 }
@@ -55,6 +65,9 @@ void MainGame::RemoveAll()
 	delete m_EnemyListPtr;
 	delete m_HudPtr;
 	delete m_PickUpListPtr;
+	delete m_EndGamePtr;
+	delete m_DialogueTreePtr;
+	delete m_CurlyBracePtr;
 
 	for (size_t i = 0; i < m_EnemyPtrArr.size(); i++)
 	{
@@ -83,13 +96,14 @@ void MainGame::Tick(double deltaTime)
 	CheckTestMenu();
 
 	Pause(0);
-	EndGame();
+	QuitGame(0, deltaTime);
 
 	if (m_IsPaused == false)
 	{
 		m_LevelOutdoorPtr->Tick(deltaTime);
 
 		m_HeroPtr->Tick(deltaTime);
+		m_CurlyBracePtr->Tick(deltaTime);
 
 		if (GAME_ENGINE->IsKeyboardKeyPressed('V'))
 		{
@@ -118,12 +132,14 @@ void MainGame::Tick(double deltaTime)
 			MyGame::m_GameState = GameState::EXIT;
 		}
 	}
+	Dialogue(0, deltaTime);
+	MovieBorder(0, deltaTime);
+	
 }
 
 void MainGame::Paint()
 {
 	m_LevelOutdoorPtr->Paint();
-
 	m_HudPtr->Paint();
 
 	// ==== TESTING =====
@@ -147,16 +163,21 @@ void MainGame::Paint()
 	}
 
 	m_HeroPtr->Paint();
-
-	
+	m_CurlyBracePtr->Paint();
 	m_EnemyListPtr->Paint();
-
 	m_BulletListPtr->Paint();
-
 	m_PickUpListPtr->Paint();
-
 	Pause(1);
-	
+	QuitGame(1,0);
+	Dialogue(1, 0);
+
+	if (m_DialogueWorthy)
+	{
+		m_DialogueActive = true;
+		m_DialogueWorthy = false;
+	}
+
+	MovieBorder(1, 0);
 }
 
 void MainGame::PhysicsRendering()
@@ -223,9 +244,49 @@ void MainGame::PopulatePickUpList()
 	}*/
 }
 
-void MainGame::Pause(int number)
+void MainGame::StopRunning(char key)
 {
 	int count = 0;
+
+	if (GAME_ENGINE->IsKeyboardKeyPressed(key))
+	{
+		if (key == 'A')
+		{
+			m_IsEndGameActive = false;
+		}
+		else if (key == VK_ESCAPE)
+		{
+			m_IsEndGameActive = true;
+		}
+		m_IsPaused = !m_IsPaused;
+	}
+	if (GAME_ENGINE->IsKeyboardKeyReleased(key))
+	{
+		count++;
+	}
+	if (m_IsPaused)
+	{
+		m_HeroPtr->SetPause(0);
+		m_CurlyBracePtr->SetPause(0);
+		m_EnemyListPtr->Pause();
+		//		m_BulletListPtr->Pause();
+	}
+	if ((GAME_ENGINE->IsKeyboardKeyReleased(key)) && (count == 1))
+	{
+		m_HeroPtr->SetPause(1);
+		m_CurlyBracePtr->SetPause(1);
+	}
+	if ((GAME_ENGINE->IsKeyboardKeyPressed(key)) && (count == 1))
+	{
+		if (key == VK_ESCAPE)
+		{
+			m_IsEndGameActive = false;
+		}
+	}
+}
+
+void MainGame::Pause(int number)
+{
 	int windowWidth = (GAME_ENGINE->GetWidth() / 2) - 4;
 	int windowsHeight = (GAME_ENGINE->GetHeight() / 2) - 1;
 	DOUBLE2 strPos(windowWidth, windowsHeight);
@@ -233,28 +294,12 @@ void MainGame::Pause(int number)
 	switch (number)
 	{
 	case 0:
-		if (GAME_ENGINE->IsKeyboardKeyPressed('A'))
-		{
-			m_IsPaused = !m_IsPaused;
-		}
-		if (GAME_ENGINE->IsKeyboardKeyReleased('A'))
-		{
-			count++;
-		}
-		if (m_IsPaused)
-		{
-			m_HeroPtr->SetPause(0);
-			m_EnemyListPtr->Pause();
-			//		m_BulletListPtr->Pause();
-		}
-		if ((GAME_ENGINE->IsKeyboardKeyReleased('A')) && (count == 1))
-		{
-			m_HeroPtr->SetPause(1);
-		}
+		StopRunning('A');
 		break;
 	case 1:
 		if (m_IsPaused)
 		{
+			GAME_ENGINE->SetDefaultFont();
 			GAME_ENGINE->SetWorldMatrix(MATRIX3X2::CreateIdentityMatrix());
 			GAME_ENGINE->SetViewMatrix(MATRIX3X2::CreateIdentityMatrix());
 			GAME_ENGINE->DrawString(String("PAUSED!"), strPos);
@@ -271,29 +316,83 @@ void MainGame::Inventory()
 
 }
 
-void MainGame::EndGame()
+void MainGame::QuitGame(int number, double deltaTime)
 {
 	int count = 0;
 	
-	if (GAME_ENGINE->IsKeyboardKeyPressed(VK_ESCAPE))
+	switch (number)
 	{
-		m_IsPaused = !m_IsPaused;
+	case 0: //TICK
+		StopRunning(VK_ESCAPE);
+		if (m_IsEndGameActive)
+		{
+			m_EndGamePtr->Tick(deltaTime);
+		}
+		break;
+	case 1: //PAINT
+		if (m_IsEndGameActive)
+		{
+			m_EndGamePtr->Paint();
+		}
+		break;
+	default:
+		break;
 	}
-	if (GAME_ENGINE->IsKeyboardKeyReleased(VK_ESCAPE))
+}
+
+void MainGame::Dialogue(int number, double deltaTime)
+{
+	switch (number)
 	{
-		count++;
+	case 0: //TICK
+		if (m_DialogueActive)
+		{
+			m_IsPaused = true;
+			m_DialogueTreePtr->Tick(deltaTime);
+		}
+		break;
+	case 1: //PAINT
+		if (m_DialogueActive)
+		{
+			m_DialogueTreePtr->Paint();
+		}
+		break;
+	default:
+		break;
 	}
-	if (m_IsPaused)
+}
+
+void MainGame::MovieBorder(int number, double deltaTime)
+{
+	int width = GAME_ENGINE->GetWidth();
+	int height = GAME_ENGINE->GetHeight();
+
+	if (m_IsMovieBorderActive)
 	{
-		m_HeroPtr->SetPause(0);
-		m_EnemyListPtr->Pause();
-		//		m_BulletListPtr->Pause();
+		switch (number)
+		{
+		case 0:
+			if (m_DialogueActive == false)
+			{
+				m_MovieBorderOffset -= deltaTime*50;
+			}
+			if (m_MovieBorderOffset <= 0)
+			{
+				m_IsMovieBorderActive = false;
+			}
+			break;
+		case 1:
+			GAME_ENGINE->SetWorldMatrix(MATRIX3X2::CreateIdentityMatrix());
+			GAME_ENGINE->SetViewMatrix(MATRIX3X2::CreateIdentityMatrix());
+			GAME_ENGINE->SetColor(COLOR(0, 0, 0));
+			GAME_ENGINE->FillRect(DOUBLE2(0, 0), DOUBLE2(width, m_MovieBorderOffset));
+			GAME_ENGINE->FillRect(DOUBLE2(0, height - m_MovieBorderOffset), DOUBLE2(width, height));
+			break;
+		default:
+			break;
+		}
 	}
-	if ((GAME_ENGINE->IsKeyboardKeyReleased(VK_ESCAPE)) && (count == 1))
-	{
-		m_HeroPtr->SetPause(1);
-	}
-	//GAME_ENGINE->QuitGame();
+	
 }
 
 // ================ TESTING METHODS ==================

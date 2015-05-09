@@ -20,6 +20,12 @@ void SplashScreen::Tick(double deltaTime)
 {
 	double time = deltaTime * 100;
 	Transition(time);
+
+	/*if ((GAME_ENGINE->IsKeyboardKeyPressed(VK_RETURN)) || (GAME_ENGINE->IsKeyboardKeyPressed('W')))
+	{
+		MyGame::InitMainMenu();
+		MyGame::m_GameState = GameState::MAIN_MENU;
+	}*/
 }
 
 void SplashScreen::Paint()
@@ -28,7 +34,7 @@ void SplashScreen::Paint()
 	int height = GAME_ENGINE->GetHeight();
 	GAME_ENGINE->DrawSolidBackground(COLOR(0, 0, 0));
 	GAME_ENGINE->DrawBitmap(m_BmpSplashScreenPtr);
-	GAME_ENGINE->SetColor(COLOR(0, 0, 0, m_Opacity));
+	GAME_ENGINE->SetColor(COLOR(0, 0, 0, int(m_Opacity)));
 	GAME_ENGINE->FillRect(DOUBLE2(0, 0), DOUBLE2(width, height));
 }
 

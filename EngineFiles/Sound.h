@@ -70,6 +70,8 @@ public:
 
 	//! Playback control. Returns false if the Sound could not be played
 	bool Play();
+	//! Plays the sound immediately
+	bool PlayImmediately();
 	//! Playback control. Returns false if the Sound could not be Stopped
 	bool Stop();
 	//! Playback control. Returns false if the Sound could not be Paused
@@ -114,6 +116,8 @@ private:
 	WAVEFORMATEXTENSIBLE m_Wfx;
 	IXAudio2SourceVoice* m_pSourceVoice;
 	PlayState m_PlayState = PlayState::Stopped;
+
+	std::vector<IXAudio2SourceVoice*> m_OverlappingVoices;
 };
 
 #endif

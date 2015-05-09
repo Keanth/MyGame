@@ -22,6 +22,11 @@ MainMenu::MainMenu()
 
 	m_BitmapWidth = m_BmpLevelOutdoor1Ptr->GetWidth();
 	Background(2,0);
+
+	m_BmpLogoPtr = new Bitmap(String("./Assets/Images/Logo.png"));
+	m_BmpMenuBoxPtr = new Bitmap(String("./Assets/Images/MenuBox.png"));
+	m_BmpExtraPtr = new Bitmap(String("./Assets/Images/Extra.png"));
+	m_BmpExtraSmallPtr = new Bitmap(String("./Assets/Images/ExtraSmall.png"));
 }
 
 MainMenu::~MainMenu()
@@ -32,6 +37,15 @@ MainMenu::~MainMenu()
 	m_BmpFontPtr = nullptr;
 	delete m_BmpFontSelectedPtr;
 	m_BmpFontSelectedPtr = nullptr;
+	delete m_BmpLogoPtr;
+	m_BmpLogoPtr = nullptr;
+	delete m_BmpMenuBoxPtr;
+	m_BmpMenuBoxPtr = nullptr;
+	delete m_BmpExtraPtr;
+	m_BmpExtraPtr = nullptr;
+	delete m_BmpExtraSmallPtr;
+	m_BmpExtraSmallPtr = nullptr;
+
 	Background(3, 0);
 }
 
@@ -40,6 +54,7 @@ void MainMenu::Tick(double deltaTime)
 	Background(1, deltaTime);
 
 	m_Count += deltaTime;
+	m_ExtraCount += deltaTime;
 
 	if (m_Count > 0.6)
 	{
@@ -49,12 +64,17 @@ void MainMenu::Tick(double deltaTime)
 	{
 		m_Menu = true;
 	}
+	Extra(1, deltaTime);
 }
 
 void MainMenu::Paint()
 {	
 	Background(0,0);
+	GAME_ENGINE->DrawBitmap(m_BmpMenuBoxPtr);
 	Menu();	
+	GAME_ENGINE->DrawBitmap(m_BmpLogoPtr);
+	Extra(0,0);
+
 }
 
 RECT2 MainMenu::Rect(int number)
@@ -71,8 +91,9 @@ RECT2 MainMenu::Rect(int number)
 
 void MainMenu::Menu()
 {
-	int x = 200;
-	int y = 200;
+	int width = (GAME_ENGINE->GetWidth() / 2) - (m_BmpFontPtr->GetWidth() / 2);
+	int x = width;
+	int y = 400;
 	int dy = 30;
 
 	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
@@ -235,4 +256,46 @@ void MainMenu::BackgroundLoop()
 	{
 		m_Pos42.x = -m_BitmapWidth;
 	}	
+}
+
+void MainMenu::Extra(int number, double deltaTime)
+{
+	double time = 0.4;
+
+	MATRIX3X2 matPivot, matTransform, matTranslate, matScale;
+	matPivot.SetAsTranslate(DOUBLE2(-25,-25));
+	matTranslate.SetAsTranslate(DOUBLE2(50, 50));
+	matScale.SetAsScale(m_ExtraScale);
+	matTransform = matPivot*matScale*matTranslate;
+	GAME_ENGINE->SetWorldMatrix(matTransform);
+
+	switch (number)
+	{
+	case 0:
+		if (m_IsSmall == false)
+		{
+			GAME_ENGINE->DrawBitmap(m_BmpExtraPtr);
+		}
+		if (m_IsSmall)
+		{
+			GAME_ENGINE->DrawBitmap(m_BmpExtraSmallPtr);
+		}
+		break;
+	case 1:
+		if ((m_ExtraCount >= time) && (m_IsSmall))
+		{
+			m_ExtraCount = 0;
+			m_IsSmall = false;
+		}
+		else if (m_ExtraCount >= time)
+		{
+			m_ExtraCount = 0;
+			m_IsSmall = true;
+		}
+		break;
+	default:
+		break;
+	}
+	
+	GAME_ENGINE->SetWorldMatrix(MATRIX3X2::CreateIdentityMatrix());
 }

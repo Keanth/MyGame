@@ -49,7 +49,7 @@ protected:
 	static const int BOW_FR = 3;
 	static const int BOW_FR_PER_SEC = 9;
 	const int CLIP_SIZE = 32;
-	const DOUBLE2 HERO_SPAWNPOINT = DOUBLE2(950, 5300);
+	const DOUBLE2 HERO_SPAWNPOINT = DOUBLE2(200, 5300);
 	const double AIR_TIMER = 0.3;
 	const double BOOSTER_TIMER = 0.6;
 	const int BOOSTER_FR = 7;
