@@ -24,6 +24,7 @@ public:
 protected:
 	// Methods
 	virtual void UserInput(double deltaTime);
+	virtual void UserInputGodMode(double deltaTime);
 	virtual void Up();
 	virtual void Down();
 	virtual void StartJump();
@@ -75,4 +76,6 @@ protected:
 	bool m_IsShootWorthy = true;
 
 	bool m_Godmode = false;
+	int m_CurrentHealth = 0;
+	int m_GodPointer = 0;
 };

@@ -46,7 +46,11 @@ void Hero::Tick(double deltaTime)
 {
 	UpdateVariables(deltaTime);
 	Entity::UpdateVariables(deltaTime);
-	UserInput(deltaTime);
+	if (m_Godmode == false)
+	{
+		UserInput(deltaTime);
+	}
+	UserInputGodMode(deltaTime);
 	Entity::ApplyImpulse(deltaTime);
 	Gone();
 }
@@ -71,6 +75,7 @@ void Hero::UpdateVariables(double deltaTime)
 	{
 		m_OnFloor = true;
 		m_ActPtr->SetGravityScale(0);
+		m_health = 99;
 	}
 }
 
@@ -144,12 +149,56 @@ void Hero::UserInput(double deltaTime)
 	else if (!GAME_ENGINE->IsKeyboardKeyDown('X'))
 	{
 		m_IsShootWorthy = true;
-	}
-	//Godmode
+	}	
+}
+
+void Hero::UserInputGodMode(double deltaTime)
+{
 	if (GAME_ENGINE->IsKeyboardKeyPressed('G'))
 	{
 		GodMode();
 	}
+	if (m_Godmode)
+	{
+		DOUBLE2 pos = m_ActPtr->GetPosition();
+		int offset = 7;
+
+		if ((GAME_ENGINE->IsKeyboardKeyDown(VK_LEFT)) &&
+			(GAME_ENGINE->IsKeyboardKeyDown(VK_RIGHT))
+			)
+		{
+			m_ActPtr->SetPosition(DOUBLE2(pos.x, pos.y));
+		}
+		else if (GAME_ENGINE->IsKeyboardKeyDown(VK_LEFT))
+		{
+			m_ActPtr->SetPosition(DOUBLE2(pos.x -= offset, pos.y));
+			Entity::m_Direction = Entity::Direction::LEFT;
+		}
+		else if (GAME_ENGINE->IsKeyboardKeyDown(VK_RIGHT))
+		{
+			m_ActPtr->SetPosition(DOUBLE2(pos.x += offset, pos.y));
+			Entity::m_Direction = Entity::Direction::RIGHT;
+		}
+		if ((GAME_ENGINE->IsKeyboardKeyDown(VK_UP)) &&
+			(GAME_ENGINE->IsKeyboardKeyDown(VK_DOWN))
+			)
+		{
+			m_ActPtr->SetPosition(DOUBLE2(pos.x, pos.y));
+		}
+		else if (GAME_ENGINE->IsKeyboardKeyDown(VK_UP))
+		{
+			m_ActPtr->SetPosition(DOUBLE2(pos.x, pos.y -= offset));
+		}
+		else if (GAME_ENGINE->IsKeyboardKeyDown(VK_DOWN))
+		{
+			m_ActPtr->SetPosition(DOUBLE2(pos.x, pos.y += offset));
+		}
+		else
+		{
+			m_ActPtr->SetPosition(DOUBLE2(pos.x, pos.y));
+		}
+	}
+
 }
 
 void Hero::Paint()
@@ -159,7 +208,6 @@ void Hero::Paint()
 	BoosterTrail();
 	GAME_ENGINE->SetColor(COLOR(255, 255, 255));
 //	GAME_ENGINE->DrawString(String("WEAPON XP : " ) + String(PolarStarBullet::m_Exp), -20, -10);
-
 }
 
 void Hero::Up()
@@ -285,38 +333,47 @@ void Hero::Anim()
 RECT Hero::Rect()
 {
 	RECT r;
-
-	switch (m_ActionState)
+	if (m_Godmode)
 	{
-	case Hero::ActionState::WALK:
-		r.top = CLIP_SIZE * 0;
-		break;
-	case Hero::ActionState::IDLE:
-		r.top = CLIP_SIZE * 0;
-		break;
-	case Hero::ActionState::UP:
-		r.top = CLIP_SIZE * 1;
-		break;
-	case Hero::ActionState::DOWN:
-		r.top = CLIP_SIZE * 2;
-		break;
-	case Hero::ActionState::STARTJUMP:
-		r.top = CLIP_SIZE * 0;
-		break;
-	case Hero::ActionState::STOPJUMP:
-		r.top = CLIP_SIZE * 0;
-		break;
-	case Hero::ActionState::DOWNJUMP:
-		r.top = CLIP_SIZE * 2;
-		break;
-	default:
-		break;
+		r.top = CLIP_SIZE * 3;
+		r.left = 0;
+		r.bottom = CLIP_SIZE + r.top;
+		r.right = CLIP_SIZE + r.left;
 	}
+	else
+	{
+		switch (m_ActionState)
+		{
+		case Hero::ActionState::WALK:
+			r.top = CLIP_SIZE * 0;
+			break;
+		case Hero::ActionState::IDLE:
+			r.top = CLIP_SIZE * 0;
+			break;
+		case Hero::ActionState::UP:
+			r.top = CLIP_SIZE * 1;
+			break;
+		case Hero::ActionState::DOWN:
+			r.top = CLIP_SIZE * 2;
+			break;
+		case Hero::ActionState::STARTJUMP:
+			r.top = CLIP_SIZE * 0;
+			break;
+		case Hero::ActionState::STOPJUMP:
+			r.top = CLIP_SIZE * 0;
+			break;
+		case Hero::ActionState::DOWNJUMP:
+			r.top = CLIP_SIZE * 2;
+			break;
+		default:
+			break;
+		}
 
-	r.left = CLIP_SIZE * m_CurrentFrame;
-	r.bottom = CLIP_SIZE + r.top;
-	r.right = CLIP_SIZE + r.left;
-
+		r.left = CLIP_SIZE * m_CurrentFrame;
+		r.bottom = CLIP_SIZE + r.top;
+		r.right = CLIP_SIZE + r.left;
+	}
+	
 	return r;
 }
 
@@ -331,6 +388,7 @@ void Hero::Gone()
 void Hero::GodMode()
 {
 	m_Godmode =! m_Godmode;
+
 	if (m_Godmode)
 	{
 		m_ActPtr->SetGhost(true);
@@ -338,6 +396,17 @@ void Hero::GodMode()
 	else if (!m_Godmode )
 	{
 		m_ActPtr->SetGhost(false);
+	}
+
+	if (m_GodPointer == 0)
+	{
+		m_CurrentHealth = m_health;
+		m_GodPointer++;
+	}
+	else if (m_GodPointer == 1)
+	{
+		m_health = m_CurrentHealth;
+		m_GodPointer--;
 	}
 }
 
