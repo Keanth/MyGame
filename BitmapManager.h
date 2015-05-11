@@ -11,7 +11,7 @@ public:
 	Bitmap* LoadBitmap(const String& fileNameRef);
 
 private:
-	static const int SIZE = 10;
+	static const int SIZE = 30;
 	Bitmap* m_BmpPtrArr[SIZE];
 	String m_FileNameArr[SIZE];
 	int m_NumberOfStoredBitmaps = 0;

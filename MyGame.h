@@ -33,6 +33,7 @@ class Exit;
 class BitmapManager;
 class SoundManager;
 class IOManager;
+class AchievementManager;
 class MyGame : public AbstractGame
 {
 public:
@@ -86,4 +87,7 @@ private:
 	//Log
 	void WriteToLog(int number);
 	IOManager* m_IOManagerPtr = nullptr;
+
+	//AchievementManager
+	AchievementManager* m_AchievementManager = nullptr;
 };

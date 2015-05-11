@@ -18,10 +18,11 @@
 #include "BitmapManager.h"
 #include "SoundManager.h"
 #include "IOManager.h"
+#include "AchievementManager.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-GameState MyGame::m_GameState = GameState::MAIN_GAME;
+GameState MyGame::m_GameState = GameState::MAIN_MENU;
 
 SplashScreen* MyGame::m_SplashScreen = nullptr;
 MainMenu* MyGame::m_MainMenu = nullptr;
@@ -64,6 +65,7 @@ void MyGame::GameStart()
 	m_IOManagerPtr = new IOManager();
 	WriteToLog(0);
 	PopulateBank();
+	m_AchievementManager = new AchievementManager();
 
 	if (m_GameState == GameState::SPLASH_SCREEN)
 	{
@@ -94,16 +96,19 @@ void MyGame::GameEnd()
 	delete m_BitmapManagerPtr;
 	delete m_SoundManagerPtr;
 	delete m_IOManagerPtr;
+	delete m_AchievementManager;
 }
 
 void MyGame::GameTick(double deltaTime)
 {
+	m_AchievementManager->Tick(deltaTime);
 	UpdateGameStates(deltaTime);
 }
 
 void MyGame::GamePaint(RECT rect)
 {
 	DrawGameStates();
+	m_AchievementManager->Paint();
 }
 
 void MyGame::InitSplashScreen()
@@ -206,6 +211,8 @@ void MyGame::PopulateBank()
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Dialogue/CurlyHappy.png"));
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Dialogue/Quote.png"));
 	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/SpriteSheet_Regular.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/AchievementBox.png"));
+	m_BitmapManagerPtr->LoadBitmap(String("./Assets/Images/Achievements/AchievementTest.png"));
 
 	m_SoundManagerPtr = new SoundManager();
 	m_SoundManagerPtr->LoadSound(String("./Assets/Sounds/oside_intro.mp3"));

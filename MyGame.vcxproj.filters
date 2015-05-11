@@ -145,9 +145,6 @@
     <ClCompile Include="Hero.cpp">
       <Filter>Game Files\Hero</Filter>
     </ClCompile>
-    <ClCompile Include="Booster.cpp">
-      <Filter>Game Files\Hero</Filter>
-    </ClCompile>
     <ClCompile Include="HUD.cpp">
       <Filter>Game Files\Other Elements</Filter>
     </ClCompile>
@@ -244,6 +241,8 @@
     <ClCompile Include="CurlyBrace.cpp">
       <Filter>Game Files\Regular</Filter>
     </ClCompile>
+    <ClCompile Include="AchievementManager.cpp" />
+    <ClCompile Include="AchievementList.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -468,9 +467,6 @@
     <ClInclude Include="Hero.h">
       <Filter>Game Files\Hero</Filter>
     </ClInclude>
-    <ClInclude Include="Booster.h">
-      <Filter>Game Files\Hero</Filter>
-    </ClInclude>
     <ClInclude Include="HUD.h">
       <Filter>Game Files\Other Elements</Filter>
     </ClInclude>
@@ -567,6 +563,8 @@
     <ClInclude Include="CurlyBrace.h">
       <Filter>Game Files\Regular</Filter>
     </ClInclude>
+    <ClInclude Include="AchievementManager.h" />
+    <ClInclude Include="AchievementList.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

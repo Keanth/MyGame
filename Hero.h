@@ -10,7 +10,6 @@ public:
 	Hero(const Hero&) = delete;
 	Hero& operator=(const Hero&) = delete;
 	
-
 	// Methods
 	virtual void BeginContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
 	virtual void EndContact(PhysicsActor *actThisPtr, PhysicsActor *actOtherPtr);
