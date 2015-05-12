@@ -83,7 +83,7 @@
   <ItemGroup>
     <ClCompile Include="AbstractGame.cpp" />
     <ClCompile Include="AchievementList.cpp" />
-    <ClCompile Include="AchievementManager.cpp" />
+    <ClCompile Include="Achievement.cpp" />
     <ClCompile Include="Boxhead.cpp" />
     <ClCompile Include="CurlyBrace.cpp" />
     <ClCompile Include="DialogueTree.cpp" />
@@ -148,7 +148,7 @@
   <ItemGroup>
     <ClInclude Include="AbstractGame.h" />
     <ClInclude Include="AchievementList.h" />
-    <ClInclude Include="AchievementManager.h" />
+    <ClInclude Include="Achievement.h" />
     <ClInclude Include="Boxhead.h" />
     <ClInclude Include="CurlyBrace.h" />
     <ClInclude Include="DialogueTree.h" />

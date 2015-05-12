@@ -241,8 +241,8 @@
     <ClCompile Include="CurlyBrace.cpp">
       <Filter>Game Files\Regular</Filter>
     </ClCompile>
-    <ClCompile Include="AchievementManager.cpp" />
     <ClCompile Include="AchievementList.cpp" />
+    <ClCompile Include="Achievement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="resource.h">
@@ -563,8 +563,8 @@
     <ClInclude Include="CurlyBrace.h">
       <Filter>Game Files\Regular</Filter>
     </ClInclude>
-    <ClInclude Include="AchievementManager.h" />
     <ClInclude Include="AchievementList.h" />
+    <ClInclude Include="Achievement.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">

@@ -18,11 +18,11 @@
 #include "BitmapManager.h"
 #include "SoundManager.h"
 #include "IOManager.h"
-#include "AchievementManager.h"
+#include "AchievementList.h"
 
 #define GAME_ENGINE (GameEngine::GetSingleton())
 
-GameState MyGame::m_GameState = GameState::MAIN_MENU;
+GameState MyGame::m_GameState = GameState::SPLASH_SCREEN;
 
 SplashScreen* MyGame::m_SplashScreen = nullptr;
 MainMenu* MyGame::m_MainMenu = nullptr;
@@ -65,7 +65,7 @@ void MyGame::GameStart()
 	m_IOManagerPtr = new IOManager();
 	WriteToLog(0);
 	PopulateBank();
-	m_AchievementManager = new AchievementManager();
+	m_AchievementListPtr = new AchievementList();
 
 	if (m_GameState == GameState::SPLASH_SCREEN)
 	{
@@ -96,19 +96,19 @@ void MyGame::GameEnd()
 	delete m_BitmapManagerPtr;
 	delete m_SoundManagerPtr;
 	delete m_IOManagerPtr;
-	delete m_AchievementManager;
+	delete m_AchievementListPtr;
 }
 
 void MyGame::GameTick(double deltaTime)
 {
-	m_AchievementManager->Tick(deltaTime);
+	m_AchievementListPtr->Tick(deltaTime);
 	UpdateGameStates(deltaTime);
 }
 
 void MyGame::GamePaint(RECT rect)
 {
 	DrawGameStates();
-	m_AchievementManager->Paint();
+	m_AchievementListPtr->Paint();
 }
 
 void MyGame::InitSplashScreen()
